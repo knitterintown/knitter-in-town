@@ -23,7 +23,32 @@
       --accent-hover: #8C2E2D;  /* 按鈕懸停深朱紅 */
       --border-color: #DCD0C9;  /* 柔和劃分線 */
     }
+/* 課程標籤樣式 */
+.card-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
 
+.tag {
+  font-size: 0.82rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+/* 主標籤：工藝種類 (深色) */
+.tag-main {
+  background-color: #8C6D58;
+  color: #ffffff;
+}
+
+/* 副標籤：授課形式 (淡色) */
+.tag-sub {
+  background-color: #F0EAE1;
+  color: #55443B;
+  border: 1px solid #D9CEC2;
+}
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
     body {
@@ -301,9 +326,61 @@
   </header>
 
   <!-- 2. Hero 主視覺區塊 -->
-  <section class="hero" id="about">
-  <h1>理解針法結構，理性的編織與靈魂微光</h1>
-  <p>織造所｜專注於鉤織邏輯與質感繩編教學的手作品牌</p>
+ <section class="courses" id="courses">
+  <div class="section-title">
+    <h2>熱門手作課程</h2>
+    <p style="text-align:center; color: var(--text-muted); margin-top: -15px; margin-bottom: 30px;">
+      從邏輯分析出發，提供系統化線上影片與溫馨實體教學
+    </p>
+  </div>
+
+  <div class="course-grid">
+    <!-- 課程 1：鉤織 + 實體課程 -->
+    <div class="course-card">
+      <div class="card-tags">
+        <span class="tag tag-main">鉤織課程</span>
+        <span class="tag tag-sub">實體課程</span>
+      </div>
+      <h3>基礎鉤織團體課程</h3>
+      <p>獨創邏輯教學法，引導分析針法結構與手勁校正，新手也能理解背後原理。</p>
+      <div class="course-price">NT$ 1,400</div>
+      <div class="card-buttons">
+        <button class="btn-outline">詳細介紹</button>
+        <button class="btn-primary">課程報名</button>
+      </div>
+    </div>
+
+    <!-- 課程 2：繩編 + 實體課程 -->
+    <div class="course-card">
+      <div class="card-tags">
+        <span class="tag tag-main">繩編課程</span>
+        <span class="tag tag-sub">實體課程</span>
+      </div>
+      <h3>質感繩編手機掛繩</h3>
+      <p>融合耐重結藝技巧與質感配色，親手打造專屬的繩編手機掛繩。</p>
+      <div class="course-price">NT$ 980</div>
+      <div class="card-buttons">
+        <button class="btn-outline">詳細介紹</button>
+        <button class="btn-primary">課程報名</button>
+      </div>
+    </div>
+
+    <!-- 課程 3：鉤織 + 線上課程 -->
+    <div class="course-card">
+      <div class="card-tags">
+        <span class="tag tag-main">鉤織課程</span>
+        <span class="tag tag-sub">線上課程</span>
+      </div>
+      <h3>鉤織邏輯起步走：蝴蝶結吊飾</h3>
+      <p>課程分為 7 個單元，影片總長約一小時，可無限次觀看。獨創邏輯教學法，新手也能理解背後原理。</p>
+      <div class="course-price">NT$ 800</div>
+      <div class="card-buttons">
+        <button class="btn-outline">詳細介紹</button>
+        <button class="btn-primary">課程報名</button>
+      </div>
+    </div>
+  </div>
+</section>
   
   <div class="hero-slider">
   <img src="hero1.jpg" alt="織造所手作工作坊教學側拍" class="hero-slide active">
