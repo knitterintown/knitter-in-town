@@ -374,7 +374,7 @@
           <div class="price">NT$ 980</div>
           <div class="btn-group">
             <button class="btn-secondary" onclick="openDetail('class2')">詳細介紹</button>
-            <button class="btn-primary" onclick="openDetail('class2')">選擇場次與配色</button>
+            <button class="btn-primary" onclick="openDetail('class2')">查看詳細與配色</button>
           </div>
         </div>
       </div>
@@ -638,7 +638,7 @@
         price: 980,
         tag: '繩編課程',
         sessions: [
-          "場次規劃中",
+          "場次規劃中"
         ],
         colorOptions: [
           "[東京鳥居] 黑色、珊瑚紅、卡其奶茶",
@@ -762,17 +762,26 @@
       if (!data) return;
       
       let selectsHtml = '';
+      let isPlanningOnly = false; // 判斷是否僅有規劃中場次
 
+      // 1. 場次選單
       if (data.sessions && data.sessions.length > 0) {
+        if (data.sessions.length === 1 && data.sessions[0].includes('規劃中')) {
+          isPlanningOnly = true;
+        }
+
         let sessionOptions = data.sessions.map(s => `<option value="${s}">${s}</option>`).join('');
         selectsHtml += `
           <div style="margin-top: 1rem; margin-bottom: 0.5rem;">
-            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.3rem;">選擇開課梯次與場次 *</label>
-            <select id="session-select-input" class="session-select">${sessionOptions}</select>
+            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.3rem;">開課梯次與場次</label>
+            <select id="session-select-input" class="session-select" ${isPlanningOnly ? 'disabled style="background:#f2f2f2; color:#888;"' : ''}>
+              ${sessionOptions}
+            </select>
           </div>
         `;
       }
 
+      // 2. 配色選單
       if (data.colorOptions && data.colorOptions.length > 0) {
         let colorOptions = data.colorOptions.map(c => `<option value="${c}">${c}</option>`).join('');
         selectsHtml += `
@@ -783,15 +792,26 @@
         `;
       }
 
+      // 3. 按鈕判斷：規劃中則鎖定按鈕
+      let actionBtnHtml = `
+        <button class="btn-primary" style="width: auto; padding: 0.7rem 1.8rem;" onclick="addDetailToCart('${data.title}', ${data.price})">加入購物車 / 報名</button>
+      `;
+
+      if (isPlanningOnly) {
+        actionBtnHtml = `
+          <button class="btn-primary" style="width: auto; padding: 0.7rem 1.8rem; background-color: #ccc; border-color: #ccc; cursor: not-allowed;" disabled>場次規劃中，暫未開放報名</button>
+        `;
+      }
+
       const content = document.getElementById('detail-content');
       content.innerHTML = `
         <span class="tag tag-main">${data.tag}</span>
         <h2 style="margin: 0.5rem 0 1rem; color: var(--text-main); font-size: 1.5rem;">${data.title}</h2>
         <div class="detail-body">${data.body}</div>
         ${selectsHtml}
-        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1.2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1.2rem; flex-wrap: wrap; gap: 10px;">
           <div style="font-size: 1.3rem; font-weight: 700; color: var(--accent);">NT$ ${data.price}</div>
-          <button class="btn-primary" style="width: auto; padding: 0.7rem 1.8rem;" onclick="addDetailToCart('${data.title}', ${data.price})">加入購物車 / 報名</button>
+          ${actionBtnHtml}
         </div>
       `;
       document.getElementById('detail-modal').style.display = 'flex';
