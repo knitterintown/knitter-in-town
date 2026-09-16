@@ -781,32 +781,6 @@
       document.getElementById('detail-modal').style.display = 'none';
     }
 
-    function updateCartUI() {
-      const cartCount = document.getElementById('cart-count');
-      const cartItems = document.getElementById('cart-items');
-      const cartTotal = document.getElementById('cart-total');
-
-      cartCount.innerText = cart.reduce((sum, item) => sum + item.qty, 0);
-      cartItems.innerHTML = '';
-      let total = 0;
-
-      if (cart.length === 0) {
-        cartItems.innerHTML = '<p style="color: #6A4028; opacity: 0.7; text-align:center; padding: 1rem 0;">購物車目前是空的</p>';
-      } else {
-        cart.forEach((item) => {
-          total += item.price * item.qty;
-          cartItems.innerHTML += `
-            <div class="cart-item">
-              <div>${item.name} × ${item.qty}</div>
-              <div style="font-weight: 600;">NT$ ${item.price * item.qty}</div>
-            </div>
-          `;
-        });
-      }
-      cartTotal.innerText = total;
-      localStorage.setItem('kit_cart', JSON.stringify(cart));
-    }
-
     function addToCart(name, price) {
       const existing = cart.find(item => item.name === name);
       if (existing) {
@@ -873,6 +847,60 @@
         alert('訂單已成立！請私訊官方 LINE 告知您的姓名與訂購品項。');
         closeBankModal();
       });
+    }
+
+    // 更新購物車 UI 與加減刪除控制
+    function updateCartUI() {
+      const cartCount = document.getElementById('cart-count');
+      const cartItems = document.getElementById('cart-items');
+      const cartTotal = document.getElementById('cart-total');
+
+      cartCount.innerText = cart.reduce((sum, item) => sum + item.qty, 0);
+      cartItems.innerHTML = '';
+      let total = 0;
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<p style="color: #6A4028; opacity: 0.7; text-align:center; padding: 1rem 0;">購物車目前是空的</p>';
+      } else {
+        cart.forEach((item, index) => {
+          total += item.price * item.qty;
+          cartItems.innerHTML += `
+            <div class="cart-item" style="display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; border-bottom: 1px dashed var(--border-color);">
+              <div style="flex: 1; padding-right: 0.8rem;">
+                <div style="font-weight: 600; font-size: 0.92rem; color: var(--text-main);">${item.name}</div>
+                <div style="font-size: 0.85rem; color: var(--accent); margin-top: 0.2rem;">NT$ ${item.price * item.qty}</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <button onclick="changeQty(${index}, -1)" style="width: 26px; height: 26px; border-radius: 4px; border: 1px solid var(--border-color); background: #FFF; cursor: pointer; font-weight: bold; color: var(--text-main);">-</button>
+                <span style="font-size: 0.9rem; font-weight: 600; min-width: 20px; text-align: center;">${item.qty}</span>
+                <button onclick="changeQty(${index}, 1)" style="width: 26px; height: 26px; border-radius: 4px; border: 1px solid var(--border-color); background: #FFF; cursor: pointer; font-weight: bold; color: var(--text-main);">+</button>
+                <button onclick="removeFromCart(${index})" style="background: none; border: none; color: #999; cursor: pointer; font-size: 1.1rem; margin-left: 6px; padding: 0 4px;" title="刪除">✕</button>
+              </div>
+            </div>
+          `;
+        });
+      }
+      cartTotal.innerText = total;
+      localStorage.setItem('kit_cart', JSON.stringify(cart));
+    }
+
+    // 調整數量 (+1 或 -1)
+    function changeQty(index, delta) {
+      if (cart[index]) {
+        cart[index].qty += delta;
+        if (cart[index].qty <= 0) {
+          cart.splice(index, 1);
+        }
+        updateCartUI();
+      }
+    }
+
+    // 移除指定商品
+    function removeFromCart(index) {
+      if (cart[index]) {
+        cart.splice(index, 1);
+        updateCartUI();
+      }
     }
 
     updateCartUI();
