@@ -3,179 +3,256 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>織造所 knitter in town</title>
+  <title>織造所 knitter in town｜手作線藝與教學</title>
+
+  <!-- 引入日系人文雙字型：思源宋體 (標題) + 思源黑體 (內文) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+
   <style>
+    /* 日本傳統色配色系統 (NIPPON COLORS) */
     :root {
-      --bg-color: #FAF8F5;
-      --card-bg: #FFFFFF;
-      --text-main: #3D2E24;
-      --accent: #8C6239;
-      --accent-hover: #704E2D;
-      --border-color: #E6DFD5;
+      --bg-main: #EFE6E2;       /* 網站主背景色：淺灰櫻 (60%) */
+      --bg-card: #FDFBF8;       /* 卡片與彈窗底色：柔白 */
+      --header-bg: #947A6D;     /* 頂部導覽列：胡桃 (KURUMI) */
+      --text-main: #6A4028;     /* 主要文字與標題：栗皮茶 */
+      --text-light: #FDFBF8;    /* 深色背景上的淺色文字 */
+      --secondary: #82663A;     /* 輔助與邊框裝飾：銀煤竹 (30%) */
+      --accent: #AB3B3A;        /* 重點按鈕與焦點：真朱 (10%) */
+      --accent-hover: #8C2E2D;  /* 按鈕懸停深朱紅 */
+      --border-color: #DCD0C9;  /* 柔和劃分線 */
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color: var(--bg-color);
+      font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
       color: var(--text-main);
-      line-height: 1.6;
-      padding: 20px;
+      line-height: 1.8;
+      letter-spacing: 0.05em;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    h1 {
+    h1, h2, h3, .logo {
       font-family: 'Noto Serif TC', serif;
-      font-weight: 600;
-      color: var(--text-main);
-      margin-bottom: 0.5rem;
+      font-weight: 700;
     }
 
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .product-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 1.2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .product-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .price {
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .add-btn {
-      background-color: transparent;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      padding: 0.5rem;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .add-btn:hover {
-      background-color: var(--accent);
-      color: white;
-    }
-
-    /* 購物車區塊 */
-    .cart-section {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 1.5rem;
-    }
-
-    .cart-item {
+    /* 頂部導覽列 (胡桃配色 Header) */
+    header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.5rem 0;
-      border-bottom: 1px dashed var(--border-color);
+      padding: 1.1rem 2.5rem;
+      background-color: rgba(148, 122, 109, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(106, 64, 40, 0.08);
+    }
+    .logo { font-size: 1.35rem; color: var(--text-light); letter-spacing: 0.12em; }
+    nav { display: flex; align-items: center; }
+    nav a { 
+      margin-left: 1.8rem; 
+      color: var(--text-light); 
+      text-decoration: none; 
+      font-size: 0.92rem;
+      font-weight: 500;
+      opacity: 0.9;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    nav a:hover { opacity: 1; color: #FFF; }
+    
+    .cart-btn {
+      background-color: var(--accent);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.55rem 1.4rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 0.88rem;
+      margin-left: 1.8rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.2s;
+    }
+    .cart-btn:hover { background-color: var(--accent-hover); transform: translateY(-1px); }
+
+    /* Hero 主視覺區塊 */
+    .hero {
+      text-align: center;
+      padding: 4.5rem 1.5rem 2.5rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .hero h1 { font-size: 2.1rem; margin-bottom: 1rem; color: var(--text-main); line-height: 1.4; }
+    .hero p { font-size: 1rem; color: #523522; margin-bottom: 2.5rem; letter-spacing: 0.08em; }
+    .hero-img {
+      width: 100%;
+      height: 340px;
+      background-color: #C2B2A9;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 12px 30px rgba(106, 64, 40, 0.08);
+      border: 4px solid var(--bg-card);
     }
 
-    .cart-total {
-      text-align: right;
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin: 1rem 0;
-      color: var(--accent);
+    /* 區塊標題 */
+    .container { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+    .section-title {
+      font-size: 1.45rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      color: var(--text-main);
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 38px;
+      height: 2px;
+      background-color: var(--accent);
+      margin: 0.6rem auto 0;
     }
 
+    /* 卡片與標籤設計 */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 18px rgba(106, 64, 40, 0.04);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(106, 64, 40, 0.08);
+    }
+    
+    .card .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 4px;
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+    }
+    .tag-crochet { background-color: #F3ECE6; color: var(--secondary); border: 1px solid #D8C8B8; }
+    .tag-knotting { background-color: #F8EBEA; color: var(--accent); border: 1px solid #E8C2C1; }
+
+    .card h3 { font-size: 1.15rem; margin-bottom: 0.6rem; color: var(--text-main); font-weight: 600; }
+    .card p { font-size: 0.88rem; color: #523522; line-height: 1.6; }
+    .card .price { color: var(--accent); font-weight: 700; font-size: 1.2rem; margin: 1.2rem 0; }
+    
+    .btn-group { display: flex; gap: 0.6rem; }
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--secondary);
+      border: 1px solid var(--secondary);
+      padding: 0.6rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      width: 50%;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { background-color: var(--secondary); color: #FFF; }
+    
+    .btn-primary {
+      background-color: var(--accent);
+      color: #FFF;
+      border: 1px solid var(--accent);
+      padding: 0.6rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      width: 50%;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover { background-color: var(--accent-hover); }
+
+    /* 通用 Modal 彈窗樣式 */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-color: rgba(106, 64, 40, 0.4);
+      backdrop-filter: blur(5px);
+      justify-content: center;
+      align-items: center;
+      z-index: 200;
+    }
+    .modal-content {
+      background-color: var(--bg-card);
+      padding: 2.2rem;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 650px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      border: 1px solid var(--border-color);
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      top: 1.2rem; right: 1.5rem;
+      background: none; border: none;
+      font-size: 1.5rem; color: var(--text-main);
+      cursor: pointer; opacity: 0.7;
+    }
+    .close-btn:hover { opacity: 1; }
+
+    /* 詳細介紹 Modal 內部內容 */
+    .detail-img {
+      width: 100%;
+      height: 260px;
+      background-color: #E2D5CE;
+      border-radius: 10px;
+      margin: 1rem 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--secondary);
+    }
+    .detail-body { font-size: 0.95rem; color: #523522; line-height: 1.8; margin-bottom: 1.8rem; }
+    .detail-body ul { margin-left: 1.2rem; margin-top: 0.5rem; }
+
+    /* 購物車與匯款彈窗樣式 */
+    .cart-item { display: flex; justify-content: space-between; margin-bottom: 1rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.6rem; font-size: 0.9rem; }
     .checkout-btn {
       width: 100%;
       background-color: var(--accent);
       color: white;
       border: none;
-      padding: 0.8rem;
+      padding: 0.9rem;
       border-radius: 8px;
+      font-weight: 500;
       font-size: 1rem;
       cursor: pointer;
+      margin-top: 1.5rem;
+      box-shadow: 0 4px 12px rgba(171, 59, 58, 0.25);
       transition: background-color 0.2s;
     }
-
-    .checkout-btn:hover {
-      background-color: var(--accent-hover);
-    }
-
-    /* Modal 彈窗 */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.4);
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .modal.active {
-      display: flex;
-    }
-
-    .modal-content {
-      background-color: var(--card-bg);
-      padding: 2rem;
-      border-radius: 12px;
-      width: 100%;
-      max-width: 480px;
-      position: relative;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: none;
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-      color: #999;
-    }
+    .checkout-btn:hover { background-color: var(--accent-hover); }
 
     .bank-box {
-      background-color: #F7F4EF;
-      border-radius: 8px;
-      padding: 1rem;
-      margin: 1rem 0;
+      background-color: var(--bg-main);
       border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.2rem;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+      color: var(--text-main);
     }
+    .bank-box p { margin-bottom: 0.4rem; }
 
     .form-input {
       width: 100%;
@@ -184,70 +261,222 @@
       border: 1px solid var(--border-color);
       border-radius: 8px;
       font-size: 0.95rem;
+      background-color: #FFF;
+      color: var(--text-main);
     }
 
-    .form-input:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
+    footer { text-align: center; padding: 2.5rem; border-top: 1px solid var(--border-color); margin-top: 4rem; font-size: 0.8rem; color: #6A4028; opacity: 0.8; }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <header>
-      <h1>織造所 knitter in town</h1>
-      <p>手作課程與材料包線上預約</p>
-    </header>
+  <!-- 1. 頂部導覽列 (胡桃配色 Header) -->
+  <header>
+    <div class="logo">織造所</div>
+    <nav>
+      <a href="#about">關於織造所</a>
+      <a href="#classes">課程</a>
+      <a href="#shop">作品 / 材料包</a>
+      <button class="cart-btn" onclick="openCart()">購物車 (<span id="cart-count">0</span>)</button>
+    </nav>
+  </header>
 
-    <!-- 商品列表區塊 -->
-    <div class="product-grid">
-      <div class="product-card">
+  <!-- 2. Hero 主視覺區塊 -->
+  <section class="hero" id="about">
+    <h1>理解針法結構，理性的編織與靈魂微光</h1>
+    <p>織造所｜專注於鉤織邏輯與質感繩編教學的手作品牌</p>
+    <div class="hero-img"></div>
+  </section>
+
+  <!-- 3. 課程專區 -->
+  <div class="container" id="classes">
+    <h2 class="section-title">實體與線上課程</h2>
+    <div class="grid">
+      
+      <!-- 課程 1 -->
+      <div class="card">
         <div>
-          <h3>珍珠奶茶造型提袋</h3>
-          <p class="price">NT$ 680</p>
+          <span class="tag tag-crochet">鉤織課程</span>
+          <h3>基礎鉤織團體課程</h3>
+          <p>獨創邏輯教學法，引導分析針法結構與手勁校正，新手也能理解背後原理。</p>
         </div>
-        <button class="add-btn" onclick="addToCart('珍珠奶茶造型提袋', 680)">加入購物車</button>
+        <div>
+          <div class="price">NT$ 1,400</div>
+          <div class="btn-group">
+            <button class="btn-secondary" onclick="openDetail('class1')">詳細介紹</button>
+            <button class="btn-primary" onclick="addToCart('基礎鉤織團體課程', 1400)">課程報名</button>
+          </div>
+        </div>
       </div>
 
-      <div class="product-card">
+      <!-- 課程 2 -->
+      <div class="card">
         <div>
-          <h3>窗花意象束口包</h3>
-          <p class="price">NT$ 850</p>
+          <span class="tag tag-knotting">繩編課程</span>
+          <h3>質感繩編手機掛繩</h3>
+          <p>融合耐重結藝技巧與質感配色，親手打造專屬的繩編手機掛繩。</p>
         </div>
-        <button class="add-btn" onclick="addToCart('窗花意象束口包', 850)">加入購物車</button>
+        <div>
+          <div class="price">NT$ 980</div>
+          <div class="btn-group">
+            <button class="btn-secondary" onclick="openDetail('class2')">詳細介紹</button>
+            <button class="btn-primary" onclick="addToCart('質感繩編手機掛繩課程', 980)">課程報名</button>
+          </div>
+        </div>
       </div>
 
-      <div class="product-card">
+      <!-- 課程 3 -->
+      <div class="card">
         <div>
-          <h3>基礎鉤織入門單單堂體驗</h3>
-          <p class="price">NT$ 1,200</p>
+          <span class="tag tag-crochet">鉤織課程</span>
+          <h3>鉤織邏輯起步走：蝴蝶結吊飾</h3>
+          <p>課程分為 7 個單元，影片總長約一小時，可無限次觀看。獨創邏輯教學法，新手也能理解背後原理。</p>
         </div>
-        <button class="add-btn" onclick="addToCart('基礎鉤織入門單堂體驗', 1200)">加入購物車</button>
+        <div>
+          <div class="price">NT$ 800</div>
+          <div class="btn-group">
+            <button class="btn-secondary" onclick="openDetail('class3')">詳細介紹</button>
+            <button class="btn-primary" onclick="addToCart('線上課：鉤織邏輯起步走', 800)">課程報名</button>
+          </div>
+        </div>
       </div>
+
     </div>
+  </div>
 
-    <!-- 購物車明細 -->
-    <div class="cart-section">
-      <h2 style="font-family: 'Noto Serif TC', serif; margin-bottom: 1rem;">已選擇品項</h2>
-      <div id="cart-list">
-        <p style="color: #888;">購物車目前是空的</p>
+  <!-- 4. 原創作品與材料包 -->
+  <div class="container" id="shop">
+    <h2 class="section-title">原創作品與材料包</h2>
+    <div class="grid">
+      
+      <!-- 商品 1 -->
+      <div class="card">
+        <div>
+          <span class="tag tag-crochet">鉤織材料包</span>
+          <h3>【織造所原創系列】East-West 都會漫遊者 材料包</h3>
+          <p>內含完整文字織圖，在家也能體驗編織樂趣。</p>
+        </div>
+        <div>
+          <div class="price">NT$ 1,280</div>
+          <div class="btn-group">
+            <button class="btn-secondary" onclick="openDetail('item1')">詳細介紹</button>
+            <button class="btn-primary" onclick="addToCart('【織造所原創系列】East-West 都會漫遊者 材料包', 1280)">加入購物車</button>
+          </div>
+        </div>
       </div>
-      <div class="cart-total">
-        總計：NT$ <span id="cart-total-amount">0</span>
+
+      <!-- 商品 2 -->
+      <div class="card">
+        <div>
+          <span class="tag tag-crochet">鉤織材料包</span>
+          <h3>【織造所原創系列】Petit Walk 小步隨行包 材料包</h3>
+          <p>內含完整文字織圖，在家也能體驗編織樂趣。</p>
+        </div>
+        <div>
+          <div class="price">NT$ 1,280</div>
+          <div class="btn-group">
+            <button class="btn-secondary" onclick="openDetail('item2')">詳細介紹</button>
+            <button class="btn-primary" onclick="addToCart('【織造所原創系列】Petit Walk 小步隨行包 材料包', 1280)">加入購物車</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 商品 3 -->
+      <div class="card">
+        <div>
+          <span class="tag tag-knotting">手機掛繩材料包</span>
+          <h3>【織造所原創系列】結點 (Node) 手機掛繩 材料包</h3>
+          <p>嚴選高強度編繩與精緻金屬五金件，多色可選，呈現兼具耐用度與極致美感的手作質感。</p>
+        </div>
+        <div>
+          <div class="price">NT$ 380</div>
+          <div class="btn-group">
+            <button class="btn-secondary" onclick="openDetail('item3')">詳細介紹</button>
+            <button class="btn-primary" onclick="addToCart('【織造所原創系列】結點 (Node) 手機掛繩 材料包', 380)">加入購物車</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 商品 4 -->
+      <div class="card">
+        <div>
+          <span class="tag tag-crochet">鉤織包成品</span>
+          <h3>【織造所原創系列】East-West 都會漫遊者</h3>
+          <p>嚴選台製優質線材手作鉤織，流線廓形搭配優雅質感，呈現兼具美感與實用度的手作精品。</p>
+        </div>
+        <div>
+          <div class="price">NT$ 2,680</div>
+          <div class="btn-group">
+            <button class="btn-secondary" onclick="openDetail('item4')">詳細介紹</button>
+            <button class="btn-primary" onclick="addToCart('【織造所原創系列】East-West 都會漫遊者', 2680)">加入購物車</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 商品 5 -->
+      <div class="card">
+        <div>
+          <span class="tag tag-crochet">鉤織包成品</span>
+          <h3>【織造所原創系列】Petit Walk 小步隨行包</h3>
+          <p>嚴選台製優質線材純手作鉤織，輕巧好收納，為你的日常漫步增添精緻質感。</p>
+        </div>
+        <div>
+          <div class="price">NT$ 2,080</div>
+          <div class="btn-group">
+            <button class="btn-secondary" onclick="openDetail('item5')">詳細介紹</button>
+            <button class="btn-primary" onclick="addToCart('【織造所原創系列】Petit Walk 小步隨行包', 2080)">加入購物車</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 商品 6 -->
+      <div class="card">
+        <div>
+          <span class="tag tag-knotting">手機掛繩成品</span>
+          <h3>【織造所原創系列】結點 (Node) 手機掛繩</h3>
+          <p>以繩為線，以結為點，為你定格日常的優雅節奏。</p>
+        </div>
+        <div>
+          <div class="price">NT$ 580</div>
+          <div class="btn-group">
+            <button class="btn-secondary" onclick="openDetail('item6')">詳細介紹</button>
+            <button class="btn-primary" onclick="addToCart('【織造所原創系列】結點 (Node) 手機掛繩', 580)">加入購物車</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 詳細介紹 Modal 彈窗 -->
+  <div class="modal" id="detail-modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeDetail()">✕</button>
+      <div id="detail-content"></div>
+    </div>
+  </div>
+
+  <!-- 購物車 Modal -->
+  <div class="modal" id="cart-modal">
+    <div class="modal-content" style="max-width: 480px;">
+      <button class="close-btn" onclick="closeCart()">✕</button>
+      <h3 style="font-family: 'Noto Serif TC', serif; color: var(--text-main); margin-bottom: 1.5rem;">已選擇的項目</h3>
+      <div id="cart-items"></div>
+      <div style="margin-top: 1.5rem; text-align: right; font-weight: 500; color: var(--text-main); font-size: 1.05rem;">
+        總金額：NT$ <span id="cart-total">0</span>
       </div>
       <button class="checkout-btn" onclick="openBankModal()">前往結帳與對帳</button>
     </div>
   </div>
 
-  <!-- 訂單聯絡資訊與匯款 Modal -->
+  <!-- 訂單與永豐銀行 Modal -->
   <div class="modal" id="bank-modal">
-    <div class="modal-content">
+    <div class="modal-content" style="max-width: 480px;">
       <button class="close-btn" onclick="closeBankModal()">✕</button>
       <h3 style="font-family: 'Noto Serif TC', serif; color: var(--text-main); margin-bottom: 0.8rem;">填寫訂購資料</h3>
       
       <p style="font-size: 0.88rem; color: #523522; margin-bottom: 1rem;">
-        請填寫您的基本資料。點擊成立訂單後，系統將自動為您複製明細並開啟官方 LINE，您可以後續完成匯款並於 LINE 回覆對帳。
+        請填寫聯絡資料。點擊成立訂單後，系統將自動為您複製明細與匯款資訊並開啟官方 LINE，您可以後續完成轉帳並於 LINE 回覆帳號末 5 碼。
       </p>
 
       <input type="text" id="buyer-name" class="form-input" placeholder="訂購人姓名 *">
@@ -265,67 +494,215 @@
     </div>
   </div>
 
-  <script>
-    let cart = [];
+  <!-- 5. 頁尾區塊 -->
+  <footer>
+    &copy; 2026 織造所. All Rights Reserved.
+  </footer>
 
-    // 加入購物車
+  <script>
+    // 詳細介紹資料
+    const detailsData = {
+      'class1': {
+        title: '基礎鉤織團體課程',
+        price: 1400,
+        tag: '鉤織課程',
+        body: `
+          <div class="detail-img">📷 課程現場照片與學員作品預覽</div>
+          <p><strong>【課程特色】</strong></p>
+          <p>織造所獨創「邏輯教學法」，不需死記硬背針法步驟！我們將引導你從針法結構拆解、手勁張力校正開始，掌握織圖背後的邏輯與語言。</p>
+          <br>
+          <p><strong>【課程資訊】</strong></p>
+          <ul>
+            <li>適合對象：完全零基礎新手、想校正編織手勁者</li>
+            <li>開課梯次：台北 / 嘉義 / 台南 巡迴開課</li>
+            <li>課程時間：每堂約 2.5 小時</li>
+            <li>包含費用：現場工具借用、專屬線材工具包一套</li>
+          </ul>
+        `
+      },
+      'class2': {
+        title: '質感繩編手機掛繩',
+        price: 980,
+        tag: '繩編課程',
+        body: `
+          <div class="detail-img">📷 繩編成品示範與色彩搭配照片</div>
+          <p><strong>【課程特色】</strong></p>
+          <p>結合戶外高強度繩結技巧與日系溫潤配色，帶你體驗從線繩到精緻配件的創作樂趣。</p>
+          <br>
+          <p><strong>【課程資訊】</strong></p>
+          <ul>
+            <li>適合對象：喜愛隨身質感配件、手作新手皆可</li>
+            <li>包含材料：高強度五金配件、多色編繩任選</li>
+            <li>上課地點：快閃工作坊門市</li>
+          </ul>
+        `
+      },
+      'class3': {
+        title: '鉤織邏輯起步走：蝴蝶結吊飾 (線上課)',
+        price: 800,
+        tag: '鉤織課程',
+        body: `
+          <div class="detail-img">📷 線上課程章節與影音截圖</div>
+          <p><strong>【線上課程架構】</strong></p>
+          <p>全系列分為 7 個章節，總長約 60 分鐘，提供高清近距離多角度示範。</p>
+          <br>
+          <ul>
+            <li>單元 1：線材與鉤針的基礎選擇</li>
+            <li>單元 2：認識起針與基礎針樣結構</li>
+            <li>單元 3：蝴蝶結本體鉤織示範與邏輯拆解</li>
+            <li>觀看期限：無限次數重複觀看，隨時隨地發問</li>
+          </ul>
+        `
+      },
+      'item1': {
+        title: '【織造所原創系列】East-West 都會漫遊者 材料包',
+        price: 1280,
+        tag: '鉤織材料包',
+        body: `
+          <div class="detail-img">📷 材料包內容物與完成品情境照</div>
+          <p><strong>【材料包內容】</strong></p>
+          <ul>
+            <li>嚴選台製優質線材（足量）</li>
+            <li>全彩高清文字織圖與結構解說頁</li>
+            <li>織造所品牌專屬五金扣環組</li>
+          </ul>
+        `
+      },
+      'item2': {
+        title: '【織造所原創系列】Petit Walk 小步隨行包 材料包',
+        price: 1280,
+        tag: '鉤織材料包',
+        body: `
+          <div class="detail-img">📷 小步隨行包細節與穿搭照片</div>
+          <p><strong>【材料包內容】</strong></p>
+          <ul>
+            <li>嚴選台製優質線材</li>
+            <li>完整紙本文字織圖說明</li>
+            <li>專屬背帶配件組</li>
+          </ul>
+        `
+      },
+      'item3': {
+        title: '【織造所原創系列】結點 (Node) 手機掛繩 材料包',
+        price: 380,
+        tag: '手機掛繩材料包',
+        body: `
+          <div class="detail-img">📷 繩編材料包材料配件近照</div>
+          <p><strong>【材料包內容】</strong></p>
+          <ul>
+            <li>高強度抗磨損繩編線材</li>
+            <li>精緻耐用金屬掛扣五金</li>
+            <li>圖解編繩步驟教學卡</li>
+          </ul>
+        `
+      },
+      'item4': {
+        title: '【織造所原創系列】East-West 都會漫遊者',
+        price: 2680,
+        tag: '鉤織包成品',
+        body: `
+          <div class="detail-img">📷 成品多角度展現與細節照</div>
+          <p><strong>【商品特色】</strong></p>
+          <p>由織造所設計師純手作鉤織完成，流線廓形搭配優雅質感。</p>
+        `
+      },
+      'item5': {
+        title: '【織造所原創系列】Petit Walk 小步隨行包',
+        price: 2080,
+        tag: '鉤織包成品',
+        body: `
+          <div class="detail-img">📷 小步隨行包實體拍攝</div>
+          <p><strong>【商品特色】</strong></p>
+          <p>輕巧好收納，為你的日常漫步增添精緻質感。</p>
+        `
+      },
+      'item6': {
+        title: '【織造所原創系列】結點 (Node) 手機掛繩',
+        price: 580,
+        tag: '手機掛繩成品',
+        body: `
+          <div class="detail-img">📷 手機掛繩實戴情境照片</div>
+          <p><strong>【商品特色】</strong></p>
+          <p>以繩為線，以結為點，為你定格日常的優雅節奏。</p>
+        `
+      }
+    };
+
+    let cart = JSON.parse(localStorage.getItem('kit_cart')) || [];
+
+    function openDetail(key) {
+      const data = detailsData[key];
+      if (!data) return;
+      
+      const content = document.getElementById('detail-content');
+      content.innerHTML = `
+        <span class="tag ${data.tag.includes('繩') ? 'tag-knotting' : 'tag-crochet'}">${data.tag}</span>
+        <h2 style="margin: 0.5rem 0 1rem; color: var(--text-main); font-size: 1.5rem;">${data.title}</h2>
+        <div class="detail-body">${data.body}</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1.2rem;">
+          <div style="font-size: 1.3rem; font-weight: 700; color: var(--accent);">NT$ ${data.price}</div>
+          <button class="btn-primary" style="width: auto; padding: 0.7rem 1.8rem;" onclick="addToCart('${data.title}', ${data.price}); closeDetail();">加入購物車 / 報名</button>
+        </div>
+      `;
+      document.getElementById('detail-modal').style.display = 'flex';
+    }
+
+    function closeDetail() {
+      document.getElementById('detail-modal').style.display = 'none';
+    }
+
+    function updateCartUI() {
+      const cartCount = document.getElementById('cart-count');
+      const cartItems = document.getElementById('cart-items');
+      const cartTotal = document.getElementById('cart-total');
+
+      cartCount.innerText = cart.reduce((sum, item) => sum + item.qty, 0);
+      cartItems.innerHTML = '';
+      let total = 0;
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<p style="color: #6A4028; opacity: 0.7; text-align:center; padding: 1rem 0;">購物車目前是空的</p>';
+      } else {
+        cart.forEach((item) => {
+          total += item.price * item.qty;
+          cartItems.innerHTML += `
+            <div class="cart-item">
+              <div>${item.name} × ${item.qty}</div>
+              <div style="font-weight: 600;">NT$ ${item.price * item.qty}</div>
+            </div>
+          `;
+        });
+      }
+      cartTotal.innerText = total;
+      localStorage.setItem('kit_cart', JSON.stringify(cart));
+    }
+
     function addToCart(name, price) {
-      const existingItem = cart.find(item => item.name === name);
-      if (existingItem) {
-        existingItem.qty += 1;
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.qty += 1;
       } else {
         cart.push({ name, price, qty: 1 });
       }
       updateCartUI();
+      openCart();
     }
 
-    // 更新購物車畫面
-    function updateCartUI() {
-      const cartList = document.getElementById('cart-list');
-      const totalAmountSpan = document.getElementById('cart-total-amount');
+    function openCart() { document.getElementById('cart-modal').style.display = 'flex'; }
+    function closeCart() { document.getElementById('cart-modal').style.display = 'none'; }
 
-      if (cart.length === 0) {
-        cartList.innerHTML = '<p style="color: #888;">購物車目前是空的</p>';
-        totalAmountSpan.innerText = '0';
-        return;
-      }
-
-      let html = '';
-      let total = 0;
-
-      cart.forEach(item => {
-        const itemTotal = item.price * item.qty;
-        total += itemTotal;
-        html += `
-          <div class="cart-item">
-            <span>${item.name} x${item.qty}</span>
-            <span>NT$ ${itemTotal}</span>
-          </div>
-        `;
-      });
-
-      cartList.innerHTML = html;
-      totalAmountSpan.innerText = total;
-    }
-
-    // 開啟 Modal
     function openBankModal() {
-      if (cart.length === 0) {
-        alert('購物車是空的，請先選擇商品或課程！');
-        return;
-      }
-      
+      if (cart.length === 0) return alert('購物車是空的！');
       const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
       document.getElementById('bank-total').innerText = total;
-      document.getElementById('bank-modal').classList.add('active');
+      closeCart();
+      document.getElementById('bank-modal').style.display = 'flex';
     }
 
-    // 關閉 Modal
     function closeBankModal() {
-      document.getElementById('bank-modal').classList.remove('active');
+      document.getElementById('bank-modal').style.display = 'none';
     }
 
-    // 成立訂單並導向 LINE
     function submitOrderToLine() {
       const name = document.getElementById('buyer-name').value.trim();
       const phone = document.getElementById('buyer-phone').value.trim();
@@ -338,22 +715,27 @@
       const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
       const itemList = cart.map(item => `${item.name} x${item.qty}`).join('、');
       
-      // 組合傳給 LINE 的預設對話文字
-      const orderText = `【織造所訂單成立通知】\n` +
-                        `訂購人：${name}\n` +
-                        `電 話：${phone}\n` +
-                        `項 目：${itemList}\n` +
-                        `總金額：NT$ ${total}\n\n` +
-                        `（已收到訂單！我將於完成轉帳後在此回覆帳號末 5 碼）`;
+      // 組合包含永豐銀行資訊與對帳備註的 LINE 訊息格式
+      const orderText = `【織造所｜訂單成立通知】\n` +
+                        `------------------------\n` +
+                        `訂購姓名：${name}\n` +
+                        `聯絡電話：${phone}\n` +
+                        `訂購項目：${itemList}\n` +
+                        `應付金額：NT$ ${total}\n` +
+                        `------------------------\n` +
+                        `【匯款帳號資訊】\n` +
+                        `銀行代碼：807 (永豐銀行)\n` +
+                        `轉帳帳號：10101800006824\n` +
+                        `------------------------\n` +
+                        `帳號末 5 碼：\n\n` +
+                        `（訂單已成立！請於完成轉帳後，直接在此回覆帳號末 5 碼，我們將儘速為您對帳與安排製作，謝謝！）`;
 
-      // 複製訊息並跳轉至 LINE
       navigator.clipboard.writeText(orderText).then(() => {
         alert('訂單已成立！資料已自動複製。\n按下「確定」將開啟官方 LINE，請直接「貼上訊息」送出即可！');
         
-        // 請將此處連結替換為你的 LINE 官方帳號網址
+        // 請替換為您實際的 LINE 官方帳號網址
         window.open('https://line.me/R/ti/p/@YOUR_LINE_ID', '_blank'); 
 
-        // 清空購物車與輸入欄
         cart = [];
         document.getElementById('buyer-name').value = '';
         document.getElementById('buyer-phone').value = '';
@@ -364,6 +746,8 @@
         closeBankModal();
       });
     }
+
+    updateCartUI();
   </script>
 </body>
 </html>
