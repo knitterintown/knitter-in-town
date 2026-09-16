@@ -257,17 +257,6 @@
     }
     .close-btn:hover { opacity: 1; }
 
-    .detail-img {
-      width: 100%;
-      height: 240px;
-      background-color: #E2D5CE;
-      border-radius: 10px;
-      margin: 1rem 0 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--secondary);
-    }
     .detail-body { font-size: 0.95rem; color: #523522; line-height: 1.8; margin-bottom: 1.8rem; }
     .detail-body ul { margin-left: 1.2rem; margin-top: 0.5rem; }
 
@@ -299,13 +288,13 @@
     }
     .bank-box p { margin-bottom: 0.4rem; }
 
-    .form-input {
+    .form-input, .session-select {
       width: 100%;
       padding: 0.65rem;
       margin-bottom: 0.6rem;
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       background-color: #FFF;
       color: var(--text-main);
     }
@@ -366,7 +355,7 @@
           <div class="price">NT$ 1,400</div>
           <div class="btn-group">
             <button class="btn-secondary" onclick="openDetail('class1')">詳細介紹</button>
-            <button class="btn-primary" onclick="addToCart('基礎鉤織團體課程', 1400)">課程報名</button>
+            <button class="btn-primary" onclick="openDetail('class1')">選擇場次報名</button>
           </div>
         </div>
       </div>
@@ -616,24 +605,31 @@
         title: '基礎鉤織團體課程',
         price: 1400,
         tag: '鉤織課程',
+        sessions: [
+          "10/17（六）13:00-16:00 嘉義 好好生活",
+          "10/31（六）13:00-16:00 台南 小樹屋（虹樹）",
+          "11/01（日）13:00-16:00 朴子",
+          "11/07（六）13:00-16:00 斗六",
+          "11/08（日）13:00-16:00 北港"
+        ],
         body: `
-          <img src="class1.jpg" alt="基礎鉤織團體課程教學現場" style="width:100%; height:auto; border-radius:10px; margin: 0.5rem 0 1.2rem; object-fit:cover;">
+          <img src="460775_0_2.jpg" alt="基礎鉤織團體課程教學現場" style="width:100%; height:auto; border-radius:10px; margin: 0.5rem 0 1.2rem; object-fit:cover;">
           <p><strong>【課程特色】</strong></p>
           <p>織造所獨創「邏輯教學法」，引導你從針法結構拆解、手勁張力校正開始，不需死記硬背針法步驟，就能掌握織圖背後的邏輯與語言。</p>
           <br>
           <p><strong>【課程資訊】</strong></p>
           <ul>
             <li><strong>適合對象：</strong>完全零基礎新手、想校正編織手勁者</li>
-            <li><strong>包含費用：</strong>講師費、場地費、材料包（上課不需另外準備其他工具，放鬆心情來參加就好～）</li>
+            <li><strong>包含費用：</strong>講師、場地、材料包（上課不須另外準備其他工具，放鬆心情來參加就好～）</li>
           </ul>
           <br>
           <p><strong>【開課梯次】</strong></p>
           <ul style="line-height: 1.9;">
-            <li>10/17（六）13:00-16:00 嘉義 好好生活</li>
-            <li>10/31（六）13:00-16:00 台南 小樹屋（虹樹）</li>
-            <li>11/01（日）13:00-16:00 朴子</li>
-            <li>11/07（六）13:00-16:00 斗六</li>
-            <li>11/08（日）13:00-16:00 北港</li>
+            <li>10/17 週六 13:00-16:00 嘉義 好好生活</li>
+            <li>10/31 週六 13:00-16:00 台南 小樹屋 (虹樹)</li>
+            <li>11/1 週日 13:00-16:00 朴子</li>
+            <li>11/7 週六 13:00-16:00 斗六</li>
+            <li>11/8 週日 13:00-16:00 北港</li>
           </ul>
         `
       },
@@ -642,7 +638,6 @@
         price: 980,
         tag: '繩編課程',
         body: `
-          <div class="detail-img">📷 繩編成品示範與色彩搭配照片</div>
           <p><strong>【課程特色】</strong></p>
           <p>結合戶外高強度繩結技巧與日系溫潤配色，帶你體驗從線繩到精緻配件的創作樂趣。</p>
           <br>
@@ -659,9 +654,8 @@
         price: 800,
         tag: '鉤織課程',
         body: `
-          <div class="detail-img">📷 線上課程章節與影音截圖</div>
           <p><strong>【線上課程架構】</strong></p>
-          <p>全系列分為 7 個章節，總長約 60 分鐘，提供高清近距離多角度示範。</p>
+          <p>全系列分為 7 個單元，影片總長約一小時，可無限次觀看。獨創邏輯教學法，新手也能理解背後原理。</p>
           <br>
           <ul>
             <li>單元 1：線材與鉤針的基礎選擇</li>
@@ -676,7 +670,6 @@
         price: 1280,
         tag: '鉤織材料包',
         body: `
-          <div class="detail-img">📷 材料包內容物與完成品情境照</div>
           <p><strong>【材料包內容】</strong></p>
           <ul>
             <li>嚴選台製優質線材（足量）</li>
@@ -690,7 +683,6 @@
         price: 1280,
         tag: '鉤織材料包',
         body: `
-          <div class="detail-img">📷 小步隨行包細節與穿搭照片</div>
           <p><strong>【材料包內容】</strong></p>
           <ul>
             <li>嚴選台製優質線材</li>
@@ -704,7 +696,6 @@
         price: 380,
         tag: '繩編材料包',
         body: `
-          <div class="detail-img">📷 繩編材料包材料配件近照</div>
           <p><strong>【材料包內容】</strong></p>
           <ul>
             <li>高強度抗磨損繩編線材</li>
@@ -718,7 +709,6 @@
         price: 2680,
         tag: '鉤織包成品',
         body: `
-          <div class="detail-img">📷 成品多角度展現與細節照</div>
           <p><strong>【商品特色】</strong></p>
           <p>由織造所設計師純手作鉤織完成，流線廓形搭配優雅質感。</p>
         `
@@ -728,7 +718,6 @@
         price: 2080,
         tag: '鉤織包成品',
         body: `
-          <div class="detail-img">📷 小步隨行包實體拍攝</div>
           <p><strong>【商品特色】</strong></p>
           <p>輕巧好收納，為你的日常漫步增添精緻質感。</p>
         `
@@ -738,7 +727,6 @@
         price: 580,
         tag: '繩編成品',
         body: `
-          <div class="detail-img">📷 手機掛繩實戴情境照片</div>
           <p><strong>【商品特色】</strong></p>
           <p>以繩為線，以結為點，為你定格日常的優雅節奏。</p>
         `
@@ -752,17 +740,41 @@
       const data = detailsData[key];
       if (!data) return;
       
+      let sessionSelectHtml = '';
+      if (data.sessions && data.sessions.length > 0) {
+        let options = data.sessions.map(s => `<option value="${s}">${s}</option>`).join('');
+        sessionSelectHtml = `
+          <div style="margin-top: 1rem; margin-bottom: 0.5rem;">
+            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.3rem;">選擇開課梯次與場次 *</label>
+            <select id="session-select-input" class="session-select">
+              ${options}
+            </select>
+          </div>
+        `;
+      }
+
       const content = document.getElementById('detail-content');
       content.innerHTML = `
         <span class="tag tag-main">${data.tag}</span>
         <h2 style="margin: 0.5rem 0 1rem; color: var(--text-main); font-size: 1.5rem;">${data.title}</h2>
         <div class="detail-body">${data.body}</div>
+        ${sessionSelectHtml}
         <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1.2rem;">
           <div style="font-size: 1.3rem; font-weight: 700; color: var(--accent);">NT$ ${data.price}</div>
-          <button class="btn-primary" style="width: auto; padding: 0.7rem 1.8rem;" onclick="addToCart('${data.title}', ${data.price}); closeDetail();">加入購物車 / 報名</button>
+          <button class="btn-primary" style="width: auto; padding: 0.7rem 1.8rem;" onclick="addDetailToCart('${data.title}', ${data.price})">加入購物車 / 報名</button>
         </div>
       `;
       document.getElementById('detail-modal').style.display = 'flex';
+    }
+
+    function addDetailToCart(title, price) {
+      const select = document.getElementById('session-select-input');
+      let finalName = title;
+      if (select) {
+        finalName = `${title} (${select.value})`;
+      }
+      addToCart(finalName, price);
+      closeDetail();
     }
 
     function closeDetail() {
