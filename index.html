@@ -374,7 +374,7 @@
           <div class="price">NT$ 980</div>
           <div class="btn-group">
             <button class="btn-secondary" onclick="openDetail('class2')">詳細介紹</button>
-            <button class="btn-primary" onclick="addToCart('質感繩編手機掛繩課程', 980)">課程報名</button>
+            <button class="btn-primary" onclick="openDetail('class2')">選擇場次與配色</button>
           </div>
         </div>
       </div>
@@ -637,15 +637,39 @@
         title: '質感繩編手機掛繩',
         price: 980,
         tag: '繩編課程',
+        sessions: [
+          "場次規劃中（可先預選配色報名）",
+          "10/24（六）14:00-16:00 台北Happ.小樹屋",
+          "11/14（六）14:00-16:00 台南慢半拍",
+          "11/15（日）14:00-16:00 嘉義好好生活"
+        ],
+        colorOptions: [
+          "[東京鳥居] 黑色、珊瑚紅、卡其奶茶",
+          "[抹茶焙茶] 卡其奶茶、灰苔綠、咖啡",
+          "[清晨晴空] 卡其奶茶、鋼藍、鵝黃",
+          "[墨色煙雲] 黑色、霧青灰、灰苔綠"
+        ],
         body: `
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0.5rem 0 1.2rem;">
+            <img src="class2.jpg" alt="質感繩編手機掛繩作品" style="width:100%; height:180px; border-radius:10px; object-fit:cover;">
+            <img src="class2-colors.jpg" alt="傘繩四大主題色卡" style="width:100%; height:180px; border-radius:10px; object-fit:cover;">
+          </div>
           <p><strong>【課程特色】</strong></p>
-          <p>結合戶外高強度繩結技巧與日系溫潤配色，帶你體驗從線繩到精緻配件的創作樂趣。</p>
+          <p>融合戶外高強度傘繩結藝技巧與日系溫潤配色，帶你體驗從線繩到精緻隨身配件的創作樂趣。</p>
+          <br>
+          <p><strong>【四大主題配色】</strong></p>
+          <ul style="line-height: 1.8;">
+            <li><strong>[東京鳥居]：</strong>黑色、珊瑚紅、卡其奶茶</li>
+            <li><strong>[抹茶焙茶]：</strong>卡其奶茶、灰苔綠、咖啡</li>
+            <li><strong>[清晨晴空]：</strong>卡其奶茶、鋼藍、鵝黃</li>
+            <li><strong>[墨色煙雲]：</strong>黑色、霧青灰、灰苔綠</li>
+          </ul>
           <br>
           <p><strong>【課程資訊】</strong></p>
           <ul>
-            <li>適合對象：喜愛隨身質感配件、手作新手皆可</li>
-            <li>包含材料：高強度五金配件、多色編繩任選</li>
-            <li>上課地點：快閃體驗活動門市</li>
+            <li><strong>適合對象：</strong>喜愛隨身質感配件、手作新手皆可</li>
+            <li><strong>包含費用：</strong>講師、場地、高強度傘繩材料包、精緻金屬五金件（上課不須另外準備工具）</li>
+            <li><strong>現場亮點：</strong>現場準備塑膠珍珠與銀珠，供學員自由挑選點綴專屬細節！</li>
           </ul>
         `
       },
@@ -733,22 +757,31 @@
       }
     };
 
-    // 4. 購物車機制
+    // 4. 購物車與彈窗控制腳本
     let cart = JSON.parse(localStorage.getItem('kit_cart')) || [];
 
     function openDetail(key) {
       const data = detailsData[key];
       if (!data) return;
       
-      let sessionSelectHtml = '';
+      let selectsHtml = '';
+
       if (data.sessions && data.sessions.length > 0) {
-        let options = data.sessions.map(s => `<option value="${s}">${s}</option>`).join('');
-        sessionSelectHtml = `
+        let sessionOptions = data.sessions.map(s => `<option value="${s}">${s}</option>`).join('');
+        selectsHtml += `
           <div style="margin-top: 1rem; margin-bottom: 0.5rem;">
             <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.3rem;">選擇開課梯次與場次 *</label>
-            <select id="session-select-input" class="session-select">
-              ${options}
-            </select>
+            <select id="session-select-input" class="session-select">${sessionOptions}</select>
+          </div>
+        `;
+      }
+
+      if (data.colorOptions && data.colorOptions.length > 0) {
+        let colorOptions = data.colorOptions.map(c => `<option value="${c}">${c}</option>`).join('');
+        selectsHtml += `
+          <div style="margin-bottom: 0.5rem;">
+            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.3rem;">預選傘繩主題配色 *</label>
+            <select id="color-select-input" class="session-select">${colorOptions}</select>
           </div>
         `;
       }
@@ -758,7 +791,7 @@
         <span class="tag tag-main">${data.tag}</span>
         <h2 style="margin: 0.5rem 0 1rem; color: var(--text-main); font-size: 1.5rem;">${data.title}</h2>
         <div class="detail-body">${data.body}</div>
-        ${sessionSelectHtml}
+        ${selectsHtml}
         <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1.2rem;">
           <div style="font-size: 1.3rem; font-weight: 700; color: var(--accent);">NT$ ${data.price}</div>
           <button class="btn-primary" style="width: auto; padding: 0.7rem 1.8rem;" onclick="addDetailToCart('${data.title}', ${data.price})">加入購物車 / 報名</button>
@@ -768,11 +801,18 @@
     }
 
     function addDetailToCart(title, price) {
-      const select = document.getElementById('session-select-input');
+      const sessionSelect = document.getElementById('session-select-input');
+      const colorSelect = document.getElementById('color-select-input');
+      
+      let detailsText = [];
+      if (sessionSelect) detailsText.push(sessionSelect.value);
+      if (colorSelect) detailsText.push(`配色: ${colorSelect.value.split(' ')[0]}`);
+
       let finalName = title;
-      if (select) {
-        finalName = `${title} (${select.value})`;
+      if (detailsText.length > 0) {
+        finalName = `${title} (${detailsText.join(' / ')})`;
       }
+
       addToCart(finalName, price);
       closeDetail();
     }
