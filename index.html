@@ -812,26 +812,30 @@
       let selectsHtml = '';
       let isPlanningOnly = false;
 
-      // 1. 實體課場次選單
+      // 1. 實體課場次選單 (改為「開課場次 *」並新增預設請選擇選項)
       if (data.sessions && data.sessions.length > 0) {
         if (data.sessions.length === 1 && data.sessions[0].includes('規劃中')) {
           isPlanningOnly = true;
         }
 
-        let sessionOptions = data.sessions.map(s => `<option value="${s}">${s}</option>`).join('');
+        let sessionOptions = `<option value="">-- 請選擇開課場次 --</option>` + 
+          data.sessions.map(s => `<option value="${s}">${s}</option>`).join('');
+
         selectsHtml += `
           <div style="margin-top: 1rem; margin-bottom: 0.5rem;">
-            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.3rem;">開課梯次與場次</label>
+            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.3rem;">開課場次 *</label>
             <select id="session-select-input" class="session-select" ${isPlanningOnly ? 'disabled style="background:#f2f2f2; color:#888;"' : ''}>
-              ${sessionOptions}
+              ${isPlanningOnly ? `<option value="場次規劃中">場次規劃中</option>` : sessionOptions}
             </select>
           </div>
         `;
       }
 
-      // 2. 繩編配色選單
+      // 2. 繩編配色選單 (新增預設請選擇選項)
       if (data.colorOptions && data.colorOptions.length > 0) {
-        let colorOptions = data.colorOptions.map(c => `<option value="${c}">${c}</option>`).join('');
+        let colorOptions = `<option value="">-- 請選擇傘繩主題配色 --</option>` + 
+          data.colorOptions.map(c => `<option value="${c}">${c}</option>`).join('');
+
         selectsHtml += `
           <div style="margin-bottom: 0.5rem;">
             <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.3rem;">預選傘繩主題配色 *</label>
@@ -896,17 +900,59 @@
     function addDetailToCart(title, price) {
       const sessionSelect = document.getElementById('session-select-input');
       const colorSelect = document.getElementById('color-select-input');
-      
+      const driveEmail = document.getElementById('drive-email-input');
+      const shippingInfo = document.getElementById('shipping-info-input');
+
+      // 1. 檢查實體課「開課場次」必填 (若非場次規劃中)
+      if (sessionSelect && !sessionSelect.disabled && !sessionSelect.value) {
+        alert('請完成必填欄位');
+        sessionSelect.focus();
+        return;
+      }
+
+      // 2. 檢查繩編「預選傘繩主題配色」必填
+      if (colorSelect && !colorSelect.value) {
+        alert('請完成必填欄位');
+        colorSelect.focus();
+        return;
+      }
+
+      // 3. 檢查線上課 (class3) 必填欄位 (Email 與 收件地址資訊)
+      if (driveEmail && !driveEmail.value.trim()) {
+        alert('請完成必填欄位');
+        driveEmail.focus();
+        return;
+      }
+      if (shippingInfo && !shippingInfo.value.trim()) {
+        alert('請完成必填欄位');
+        shippingInfo.focus();
+        return;
+      }
+
+      // 組裝選項名稱與價格計算
       let detailsText = [];
-      if (sessionSelect) detailsText.push(sessionSelect.value);
-      if (colorSelect) detailsText.push(`配色: ${colorSelect.value.split(' ')[0]}`);
+      let finalPrice = price;
+
+      if (sessionSelect && sessionSelect.value) detailsText.push(sessionSelect.value);
+      if (colorSelect && colorSelect.value) detailsText.push(`配色: ${colorSelect.value.split(' ')[0]}`);
+
+      // 線上課程方案金額判斷
+      const selectedPlan = document.querySelector('input[name="course-plan"]:checked');
+      if (selectedPlan) {
+        detailsText.push(selectedPlan.value);
+        if (selectedPlan.value.includes('1,090')) {
+          finalPrice = 1090;
+        } else {
+          finalPrice = 990;
+        }
+      }
 
       let finalName = title;
       if (detailsText.length > 0) {
         finalName = `${title} (${detailsText.join(' / ')})`;
       }
 
-      addToCart(finalName, price);
+      addToCart(finalName, finalPrice);
       closeDetail();
     }
 
