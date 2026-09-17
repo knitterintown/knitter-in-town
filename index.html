@@ -695,7 +695,7 @@
         `
       },
       'class3': {
-        title: '基礎課程 1 : 鉤織邏輯起步走 (線上課)',
+        title: '基礎課程 1 : 鉤織邏輯起步走',
         price: 800,
         tag: '鉤織課程',
         body: `
@@ -712,6 +712,14 @@
             <li>6. 掛繩</li>
               </ul>
 
+          <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【毛線色卡參考】</strong></p>
+          <p style="margin-top: 0; margin-bottom: 0.8rem; font-size: 0.88rem; color: #666;">有加購線材者請參考下方色卡，並請避免選擇高飽和度及深色線材。</p>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.2rem;">
+            <img src="yarn-color1.jpg" alt="毛線色卡 001-030" style="width:100%; height:auto; border-radius:8px; display:block;">
+            <img src="yarn-color2.jpg" alt="毛線色卡 2231-2264" style="width:100%; height:auto; border-radius:8px; display:block;">
+            <img src="yarn-color3.jpg" alt="毛線色卡 66-73" style="width:100%; height:auto; border-radius:8px; display:block;">
+          </div>
+          
           <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【報名須知】</strong></p>
           <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 1.2rem;">
             <li>表單填寫完畢不代表報名成功，匯款完成後務必通知我們以完成報名</li>
@@ -798,9 +806,9 @@
       if (!data) return;
       
       let selectsHtml = '';
-      let isPlanningOnly = false; // 判斷是否僅有規劃中場次
+      let isPlanningOnly = false;
 
-      // 1. 場次選單
+      // 1. 實體課場次選單
       if (data.sessions && data.sessions.length > 0) {
         if (data.sessions.length === 1 && data.sessions[0].includes('規劃中')) {
           isPlanningOnly = true;
@@ -817,7 +825,7 @@
         `;
       }
 
-      // 2. 配色選單
+      // 2. 繩編配色選單
       if (data.colorOptions && data.colorOptions.length > 0) {
         let colorOptions = data.colorOptions.map(c => `<option value="${c}">${c}</option>`).join('');
         selectsHtml += `
@@ -828,7 +836,31 @@
         `;
       }
 
-      // 3. 按鈕判斷：規劃中則鎖定按鈕
+      // 3. 線上課 (class3) 專屬加購選項與填寫欄位
+      if (key === 'class3') {
+        selectsHtml += `
+          <div style="margin-top: 1.2rem; border-top: 1px dashed var(--border-color); padding-top: 1rem;">
+            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.5rem; color: var(--accent);">Google Drive 影片觀看權限 Email *</label>
+            <input type="email" id="drive-email-input" class="form-input" placeholder="例如：example@gmail.com" required>
+
+            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-top: 0.8rem; margin-bottom: 0.5rem;">材料包與加購項目</label>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.88rem; margin-bottom: 1rem;">
+              <label><input type="radio" name="addon-option" value="不需要材料包" checked> 不需要材料包（自備鉤針與線材）</label>
+              <label><input type="radio" name="addon-option" value="加購【蝴蝶結材料包】+$200"> 加購【蝴蝶結材料包】+ $200/份 (含鉤針/42淺黃線材/記號扣/運費)</label>
+              <label><input type="radio" name="addon-option" value="加購【線材】+$60/球"> 加購【線材】+ $60/球</label>
+              <label><input type="radio" name="addon-option" value="加購【30分鐘 1對1 線上診所】+$200"> 加購【30分鐘 1 對 1 線上診所】+ $200</label>
+            </div>
+
+            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.3rem;">加購線材顏色 (請填寫編號，例如：001)</label>
+            <input type="text" id="color-code-input" class="form-input" placeholder="有加購線材才需填寫，請避免高飽和度及深色線材">
+
+            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-top: 0.5rem; margin-bottom: 0.3rem;">收件地址與門市資訊</label>
+            <input type="text" id="shipping-info-input" class="form-input" placeholder="若有加購材料包，請填寫門市名稱(7-11)或收件地址(郵局)、收件人姓名及電話">
+          </div>
+        `;
+      }
+
+      // 4. 按鈕判斷
       let actionBtnHtml = `
         <button class="btn-primary" style="width: auto; padding: 0.7rem 1.8rem;" onclick="addDetailToCart('${data.title}', ${data.price})">加入購物車 / 報名</button>
       `;
