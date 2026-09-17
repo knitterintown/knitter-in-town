@@ -199,6 +199,20 @@
     .card .price { color: var(--accent); font-weight: 700; font-size: 1.2rem; margin: 1.2rem 0; }
     
     .btn-group { display: flex; gap: 0.6rem; }
+    .btn-full {
+      width: 100%;
+      background-color: var(--accent);
+      color: #FFF;
+      border: 1px solid var(--accent);
+      padding: 0.7rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .btn-full:hover { background-color: var(--accent-hover); }
+
     .btn-secondary {
       background-color: transparent;
       color: var(--secondary);
@@ -353,10 +367,7 @@
         </div>
         <div>
           <div class="price">NT$ 1,400</div>
-          <div class="btn-group">
-            <button class="btn-secondary" onclick="openDetail('class1')">詳細介紹</button>
-            <button class="btn-primary" onclick="openDetail('class1')">選擇場次報名</button>
-          </div>
+          <button class="btn-full" onclick="openDetail('class1')">詳細內容及報名</button>
         </div>
       </div>
 
@@ -372,10 +383,7 @@
         </div>
         <div>
           <div class="price">NT$ 980</div>
-          <div class="btn-group">
-            <button class="btn-secondary" onclick="openDetail('class2')">詳細介紹</button>
-            <button class="btn-primary" onclick="openDetail('class2')">查看詳細與配色</button>
-          </div>
+          <button class="btn-full" onclick="openDetail('class2')">詳細內容及報名</button>
         </div>
       </div>
 
@@ -391,10 +399,7 @@
         </div>
         <div>
           <div class="price">NT$ 800</div>
-          <div class="btn-group">
-            <button class="btn-secondary" onclick="openDetail('class3')">詳細介紹</button>
-            <button class="btn-primary" onclick="addToCart('線上課：鉤織邏輯起步走', 800)">課程報名</button>
-          </div>
+          <button class="btn-full" onclick="openDetail('class3')">詳細內容及報名</button>
         </div>
       </div>
 
@@ -614,22 +619,39 @@
         ],
         body: `
           <img src="class1.jpg" alt="基礎鉤織團體課程教學現場" style="width:100%; height:auto; border-radius:10px; margin: 0.5rem 0 1.2rem; object-fit:cover;">
-          <p><strong>【課程特色】</strong></p>
-          <p>織造所獨創「邏輯教學法」，引導你從針法結構拆解、手勁張力校正開始，不需死記硬背針法步驟，就能掌握織圖背後的邏輯與語言。</p>
-          <br>
-          <p><strong>【課程資訊】</strong></p>
-          <ul>
-            <li><strong>適合對象：</strong>完全零基礎新手、想校正編織手勁者</li>
-            <li><strong>包含費用：</strong>講師、場地、材料包（上課不須另外準備其他工具，放鬆心情來參加就好～）</li>
+          
+          <p><strong>【課程內容】</strong></p>
+          <p>這是專為第一次接觸鉤織的朋友設計的入門課程，內容包含：</p>
+          <ul style="line-height: 1.8; margin-bottom: 0.8rem;">
+            <li>線材與鉤針介紹</li>
+            <li>線與針的拿法</li>
+            <li>鎖針、短針、長針鉤織方式</li>
           </ul>
-          <br>
-          <p><strong>【開課梯次】</strong></p>
-          <ul style="line-height: 1.9;">
-            <li>10/17 週六 13:00-16:00 嘉義 好好生活</li>
-            <li>10/31 週六 13:00-16:00 台南 小樹屋 (虹樹)</li>
-            <li>11/1 週日 13:00-16:00 朴子</li>
-            <li>11/7 週六 13:00-16:00 斗六</li>
-            <li>11/8 週日 13:00-16:00 北港</li>
+          <p>我們會在課程中運用所學針法，完成一枚可愛的蝴蝶結吊飾 🎀</p>
+          
+          <div style="display: flex; flex-direction: column; gap: 10px; margin: 1.2rem 0;">
+            <img src="yarn-color1.jpg" alt="毛線色卡 001-030" style="width:100%; height:auto; border-radius:8px; display:block;">
+            <img src="yarn-color2.jpg" alt="毛線色卡 2231-2264" style="width:100%; height:auto; border-radius:8px; display:block;">
+            <img src="yarn-color3.jpg" alt="毛線色卡 66-73" style="width:100%; height:auto; border-radius:8px; display:block;">
+          </div>
+
+          <hr style="border: none; border-top: 1px dashed var(--border-color); margin: 1.2rem 0;">
+
+          <p><strong>【織造所的課程保障】</strong></p>
+          <ul style="line-height: 1.8; margin-bottom: 1.2rem;">
+            <li><strong>精緻小班制：</strong>每場上限 6 人，確保能照顧到每位學員的學習狀況</li>
+            <li><strong>高品質材料：</strong>報名皆含材料包 (鉤針、線材、記號扣)，讓你的作品不只是練習，更是能陪伴長久的日常好物</li>
+            <li><strong>終身課後支援：</strong>加入織造所官方 Line，回家練習卡關時，隨時請老師解答</li>
+          </ul>
+
+          <p><strong>【報名須知】</strong></p>
+          <ul style="line-height: 1.8;">
+            <li>表單填寫完畢不代表報名成功，<u>匯款完成後務必通知我們以完成報名</u></li>
+            <li>為確保上課品質，<u>恕無法攜伴參加</u></li>
+            <li>課堂禁止全程錄影，可針對特定部分提供示範影片</li>
+            <li>報名成功即開始準備材料，不得因個人因素取消預約，可選擇轉讓他人 / 轉為線上課程 / 延期上課</li>
+            <li>報名額滿即不再招生，如人數不足須取消課程，將於上課前 5 天通知並全額退費</li>
+            <li>knitter in town 織造所保有修改內容之權利</li>
           </ul>
         `
       },
