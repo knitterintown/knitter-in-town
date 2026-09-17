@@ -711,7 +711,11 @@
             <li>5. 縫合、纏繞與收尾</li>
             <li>6. 掛繩</li>
               </ul>
-
+          <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【課程方案】</strong></p>
+          <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 1.2rem;">
+            <li><strong>基礎標準套組 $990：</strong>內含《鉤織邏輯起步走》線上課程及全套入門材料包（台製鉤針、42淺黃線材、記號扣組、寄送運費）。適合想無痛入門、一次備齊所有工具的新手。</li>
+            <li><strong>日本廣島旗艦套組 $1,090（升級首選）：</strong>內含《鉤織邏輯起步走》線上課程及全套升級材料包（升級為日製廣島灰柄鉤針、42淺黃線材、記號扣組、寄送運費）。適合重視握持手感、想一支鉤針用很久的質感學員（加價 $100 極致升級）。</li>
+          </ul>
           <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【毛線色卡參考】</strong></p>
           <p style="margin-top: 0; margin-bottom: 0.8rem; font-size: 0.88rem; color: #666;">有加購線材者請參考下方色卡，並請避免選擇高飽和度及深色線材。</p>
           <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.2rem;">
@@ -836,26 +840,30 @@
         `;
       }
 
-      // 3. 線上課 (class3) 專屬加購選項與填寫欄位
+      // 3. 線上課 (class3) 專屬方案選擇與加購項目
       if (key === 'class3') {
         selectsHtml += `
           <div style="margin-top: 1.2rem; border-top: 1px dashed var(--border-color); padding-top: 1rem;">
+            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.5rem; color: var(--accent);">選擇課程方案 *</label>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.88rem; margin-bottom: 1rem;">
+              <label><input type="radio" name="course-plan" value="基礎標準套組 $990" checked> 基礎標準套組 $990</label>
+              <label><input type="radio" name="course-plan" value="日本廣島旗艦套組 $1,090"> 日本廣島旗艦套組 $1,090（升級首選）</label>
+            </div>
+
             <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.5rem; color: var(--accent);">Google Drive 影片觀看權限 Email *</label>
             <input type="email" id="drive-email-input" class="form-input" placeholder="例如：example@gmail.com" required>
 
-            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-top: 0.8rem; margin-bottom: 0.5rem;">材料包與加購項目</label>
+            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-top: 0.8rem; margin-bottom: 0.5rem;">加購項目</label>
             <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.88rem; margin-bottom: 1rem;">
-              <label><input type="radio" name="addon-option" value="不需要材料包" checked> 不需要材料包（自備鉤針與線材）</label>
-              <label><input type="radio" name="addon-option" value="加購【蝴蝶結材料包】+$200"> 加購【蝴蝶結材料包】+ $200/份 (含鉤針/42淺黃線材/記號扣/運費)</label>
-              <label><input type="radio" name="addon-option" value="加購【線材】+$60/球"> 加購【線材】+ $60/球</label>
-              <label><input type="radio" name="addon-option" value="加購【30分鐘 1對1 線上診所】+$200"> 加購【30分鐘 1 對 1 線上診所】+ $200</label>
+              <label><input type="checkbox" name="addon-option" value="加購線材 +$60/球"> 加購【線材】+ $60/球</label>
+              <label><input type="checkbox" name="addon-option" value="加購 30 分鐘 1 對 1 線上診所 +$200"> 加購【30 分鐘 1 對 1 線上診所】+ $200</label>
             </div>
 
             <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.3rem;">加購線材顏色 (請填寫編號，例如：001)</label>
             <input type="text" id="color-code-input" class="form-input" placeholder="有加購線材才需填寫，請避免高飽和度及深色線材">
 
-            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-top: 0.5rem; margin-bottom: 0.3rem;">收件地址與門市資訊</label>
-            <input type="text" id="shipping-info-input" class="form-input" placeholder="若有加購材料包，請填寫門市名稱(7-11)或收件地址(郵局)、收件人姓名及電話">
+            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-top: 0.5rem; margin-bottom: 0.3rem;">收件地址與門市資訊 *</label>
+            <input type="text" id="shipping-info-input" class="form-input" placeholder="請填寫門市名稱(7-11)或收件地址(郵局)、收件人姓名及電話">
           </div>
         `;
       }
