@@ -890,10 +890,43 @@
         <div class="detail-body">${data.body}</div>
         ${selectsHtml}
         <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1.2rem; flex-wrap: wrap; gap: 10px;">
-          <div style="font-size: 1.3rem; font-weight: 700; color: var(--accent);">NT$ ${data.price}</div>
+          <div style="font-size: 1.3rem; font-weight: 700; color: var(--accent);">NT$ <span id="modal-price-display">${typeof data.price === 'number' ? data.price : '990'}</span></div>
           ${actionBtnHtml}
         </div>
       `;
+
+      // 線上課 (class3) 方案與加購選項金額動態計算
+      if (key === 'class3') {
+        const updateClass3Price = () => {
+          let currentTotal = 990; // 預設基礎套組金額
+
+          // 1. 方案判斷
+          const selectedPlan = document.querySelector('input[name="course-plan"]:checked');
+          if (selectedPlan && selectedPlan.value.includes('1,090')) {
+            currentTotal = 1090;
+          }
+
+          // 2. 加購項目判斷
+          const selectedAddons = document.querySelectorAll('input[name="addon-option"]:checked');
+          selectedAddons.forEach(addon => {
+            if (addon.value.includes('+$60')) currentTotal += 60;
+            if (addon.value.includes('+$200')) currentTotal += 200;
+          });
+
+          // 3. 更新彈窗左下角顯示金額
+          const priceDisplay = document.getElementById('modal-price-display');
+          if (priceDisplay) priceDisplay.innerText = currentTotal.toLocaleString();
+        };
+
+        // 綁定動態監聽
+        document.querySelectorAll('input[name="course-plan"], input[name="addon-option"]').forEach(input => {
+          input.addEventListener('change', updateClass3Price);
+        });
+
+        // 初始計算一次
+        updateClass3Price();
+      }
+
       document.getElementById('detail-modal').style.display = 'flex';
     }
 
@@ -917,7 +950,7 @@
         return;
       }
 
-      // 3. 檢查線上課 (class3) 必填欄位 (Email 與 收件地址資訊)
+      // 3. 檢查線上課 (class3) 必填欄位
       if (driveEmail && !driveEmail.value.trim()) {
         alert('請完成必填欄位');
         driveEmail.focus();
@@ -929,29 +962,33 @@
         return;
       }
 
-      // 組裝選項名稱與價格計算
+      // 4. 計算最後名稱與加總金額
       let detailsText = [];
-      let finalPrice = price;
+      let finalPrice = typeof price === 'number' ? price : 990;
 
       if (sessionSelect && sessionSelect.value) detailsText.push(sessionSelect.value);
       if (colorSelect && colorSelect.value) detailsText.push(`配色: ${colorSelect.value.split(' ')[0]}`);
 
-      // 線上課程方案金額判斷
+      // 線上課程方案與加購金額統計
       const selectedPlan = document.querySelector('input[name="course-plan"]:checked');
       if (selectedPlan) {
         detailsText.push(selectedPlan.value);
-        if (selectedPlan.value.includes('1,090')) {
-          finalPrice = 1090;
-        } else {
-          finalPrice = 990;
-        }
+        finalPrice = selectedPlan.value.includes('1,090') ? 1090 : 990;
       }
+
+      const selectedAddons = document.querySelectorAll('input[name="addon-option"]:checked');
+      selectedAddons.forEach(addon => {
+        detailsText.push(addon.value);
+        if (addon.value.includes('+$60')) finalPrice += 60;
+        if (addon.value.includes('+$200')) finalPrice += 200;
+      });
 
       let finalName = title;
       if (detailsText.length > 0) {
         finalName = `${title} (${detailsText.join(' / ')})`;
       }
 
+      // 加入購物車
       addToCart(finalName, finalPrice);
       closeDetail();
     }
