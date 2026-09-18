@@ -406,9 +406,18 @@
     </div>
   </div>
 
-  <!-- 4. 原創作品與材料包 -->
+  <!-- 4. 原創作品與材料包 (含頁籤篩選) -->
   <div class="container" id="shop">
     <h2 class="section-title">原創作品與材料包</h2>
+   
+    <!-- 分類頁籤 -->
+    <div class="filter-tabs">
+      <button class="tab-btn active" onclick="filterClasses('all', this)">鉤織材料包</button>
+      <button class="tab-btn" onclick="filterClasses('crochet', this)">繩編材料包</button>
+      <button class="tab-btn" onclick="filterClasses('knotting', this)">鉤織包成品</button>
+      <button class="tab-btn" onclick="filterClasses('offline', this)">繩編成品</button>
+    </div>
+
     <div class="grid">
       
       <div class="card">
@@ -417,13 +426,13 @@
             <span class="tag tag-main">鉤織材料包</span>
           </div>
           <h3>【織造所原創系列】East-West 都會漫遊者 材料包</h3>
-          <p>內含完整文字織圖，在家也能體驗編織樂趣。</p>
+          <p>經典洗練的橫長包型（East-West），專為穿梭於城市間的你而設計。簡約俐落的線條，無論搭配正式套裝或日常休閒穿搭都毫無違和，輕鬆展現洗鍊的職人質感。</p>
         </div>
         <div>
-          <div class="price">NT$ 1,280</div>
+          <div class="price">NT$ 1,380</div>
           <div class="btn-group">
             <button class="btn-secondary" onclick="openDetail('item1')">詳細介紹</button>
-            <button class="btn-primary" onclick="addToCart('【織造所原創系列】East-West 都會漫遊者 材料包', 1280)">加入購物車</button>
+            <button class="btn-primary" onclick="addToCart('【織造所原創系列】East-West 都會漫遊者 材料包', 1380)">加入購物車</button>
           </div>
         </div>
       </div>
@@ -434,30 +443,13 @@
             <span class="tag tag-main">鉤織材料包</span>
           </div>
           <h3>【織造所原創系列】Petit Walk 小步隨行包 材料包</h3>
-          <p>內含完整文字織圖，在家也能體驗編織樂趣。</p>
+          <p>極致織面質感 ✕ 俐落都會機能，手機與卡片二合一的設計，完全讓你解放雙手。</p>
         </div>
         <div>
-          <div class="price">NT$ 1,280</div>
+          <div class="price">NT$ 1,180</div>
           <div class="btn-group">
             <button class="btn-secondary" onclick="openDetail('item2')">詳細介紹</button>
-            <button class="btn-primary" onclick="addToCart('【織造所原創系列】Petit Walk 小步隨行包 材料包', 1280)">加入購物車</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div>
-          <div class="card-tags">
-            <span class="tag tag-main" style="background-color: var(--accent);">繩編材料包</span>
-          </div>
-          <h3>【織造所原創系列】結點 (Node) 手機掛繩 材料包</h3>
-          <p>嚴選高強度編繩與精緻金屬五金件，多色可選，呈現兼具耐用度與極致美感的手作質感。</p>
-        </div>
-        <div>
-          <div class="price">NT$ 380</div>
-          <div class="btn-group">
-            <button class="btn-secondary" onclick="openDetail('item3')">詳細介紹</button>
-            <button class="btn-primary" onclick="addToCart('【織造所原創系列】結點 (Node) 手機掛繩 材料包', 380)">加入購物車</button>
+            <button class="btn-primary" onclick="addToCart('【織造所原創系列】Petit Walk 小步隨行包 材料包', 1180)">加入購物車</button>
           </div>
         </div>
       </div>
