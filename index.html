@@ -659,7 +659,7 @@
           "10/18（日）10:00-12:00 嘉義 好好生活"
         ],
         body: `
-          <img src="strap.jpg" alt="質感繩編手機掛繩教學現場" style="width:100%; height:auto; border-radius:10px; margin: 0.5rem 0 1.2rem; object-fit:cover;">
+          <img src="class2.jpg" alt="質感繩編手機掛繩成品" style="width:100%; height:auto; border-radius:10px; margin: 0.5rem 0 1.2rem; object-fit:cover;">
           
           <p style="margin-top: 0.5rem; margin-bottom: 0.3rem;"><strong>【課程內容】</strong></p>
           <p style="margin-bottom: 0;">融合耐重結藝技巧與質感配色，親手打造專屬的繩編手機掛繩。</p>
@@ -855,10 +855,27 @@
           data.colorOptions.map(c => `<option value="${c}">${c}</option>`).join('');
 
         selectsHtml += `
-          <div style="margin-bottom: 0.5rem;">
-            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.3rem;">預選傘繩主題配色 *</label>
-            <select id="color-select-input" class="session-select">${colorOptions}</select>
+         <div style="margin-bottom: 0.5rem;">
+        <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.3rem;">預選傘繩主題配色 *</label>
+        <select id="color-select-input" class="session-select">${colorOptions}</select>
+      </div>
+
+      <!-- 加購項目（緊接在預選配色下方） -->
+      <div style="margin-top: 1.2rem; padding-top: 1rem; border-top: 1px dashed #ddd;">
+        <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.5rem; color: #8b2626;">加購項目</label>
+        <label style="display: flex; align-items: flex-start; gap: 0.5rem; cursor: pointer; font-size: 0.9rem; margin-bottom: 0.8rem;">
+          <input type="checkbox" id="add-paracord-kit" style="margin-top: 0.2rem;">
+          <div>
+            <span>加購【配色傘繩套組】+ $350 / 套</span>
+            <span style="display: block; font-size: 0.8rem; color: #666; margin-top: 0.1rem;">（含高強度傘繩材料包、精緻金屬五金件）</span>
           </div>
+        </label>
+
+        <div style="margin-top: 0.8rem;">
+          <label style="font-weight: 600; font-size: 0.85rem; display: block; margin-bottom: 0.3rem;">加購傘繩顏色 (請填寫名稱，例如：東京鳥居)</label>
+          <input type="text" id="add-paracord-color-input" placeholder="有加購配色傘繩套組才需填寫" style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 0.9rem;">
+        </div>
+      </div>
         `;
       }
 
