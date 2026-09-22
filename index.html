@@ -324,7 +324,7 @@
     <nav>
       <a href="#about">關於織造所</a>
       <a href="#classes">課程</a>
-      <a href="#shop">作品 / 材料包</a>
+      <a href="#shop">原創系列材料包</a>
       <button class="cart-btn" onclick="openCart()">購物車 (<span id="cart-count">0</span>)</button>
     </nav>
   </header>
@@ -332,7 +332,7 @@
   <!-- 2. 主標題 ➔ 副標題 ➔ 照片自動輪播 -->
   <section class="hero" id="about">
     <h1>理解針法結構，理性的編織與靈魂微光</h1>
-    <p>織造所｜專注於鉤織邏輯與質感繩編教學的手作品牌</p>
+    <p>織造所｜專注於鉤織邏輯教學的手作品牌</p>
     
     <div class="hero-slider">
       <img src="hero1.jpg" alt="織造所手作課程教學側拍" class="hero-slide active">
@@ -347,8 +347,6 @@
     <!-- 分類頁籤 -->
     <div class="filter-tabs">
       <button class="tab-btn active" onclick="filterClasses('all', this)">全部課程</button>
-      <button class="tab-btn" onclick="filterClasses('crochet', this)">鉤織課程</button>
-      <button class="tab-btn" onclick="filterClasses('knotting', this)">繩編課程</button>
       <button class="tab-btn" onclick="filterClasses('offline', this)">實體課程</button>
       <button class="tab-btn" onclick="filterClasses('online', this)">線上課程</button>
     </div>
@@ -387,23 +385,7 @@
         </div>
       </div>
 
-      <!-- 課程 3 -->
-      <div class="card" data-craft="knotting" data-type="offline">
-        <div>
-          <div class="card-tags">
-            <span class="tag tag-main">繩編課程</span>
-            <span class="tag tag-sub">實體課程</span>
-          </div>
-          <h3>質感繩編手機掛繩</h3>
-          <p>融合耐重結藝技巧與質感配色，親手打造專屬的繩編手機掛繩。</p>
-        </div>
-        <div>
-          <div class="price">NT$ 980</div>
-          <button class="btn-full" onclick="openDetail('class3')">詳細內容及報名</button>
-        </div>
-      </div>
-
-      <!-- 課程 4 -->
+          <!-- 課程 4 -->
       <div class="card" data-craft="crochet" data-type="online">
         <div>
           <div class="card-tags">
@@ -651,49 +633,7 @@ const detailsData = {
       </ul>
     `
   },
-  'class3': {
-    title: '質感繩編手機掛繩',
-    price: 980,
-    tag: '繩編課程',
-    colorOptions: ["東京鳥居", "抹茶焙茶", "清晨晴空", "墨色煙雲"],
-    sessions: [
-      "10/18（日）10:00-12:00 嘉義 好好生活"
-    ],
-    body: `
-      <img src="class2.jpg" alt="質感繩編手機掛繩成品" style="width:100%; height:auto; border-radius:10px; margin: 0.5rem 0 1.2rem; object-fit:cover;">
-      
-      <p style="margin-top: 0.5rem; margin-bottom: 0.3rem;"><strong>【課程內容】</strong></p>
-      <p style="margin-bottom: 0;">融合耐重結藝技巧與質感配色，親手打造專屬的繩編手機掛繩。</p>
-      <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 0;">
-        <li>高強度傘繩材質認識與運用</li>
-        <li>基礎編繩結藝技巧（平結、螺旋結等）</li>
-        <li>金屬五金扣環結合與尾端整理</li>
-      </ul>
-      
-      <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【織造所的課程保障】</strong></p>
-      <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 0.8rem;">
-        <li><strong>精緻小班制：</strong>每場上限 6 人，確保能照顧到每位學員的學習狀況</li>
-        <li><strong>高品質材料：</strong>報名皆含完整材料包（高強度傘繩、精緻金屬五金件）</li>
-        <li><strong>終身課後支援：</strong>加入織造所官方 Line，回家練習卡關時，隨時請老師解答</li>
-      </ul>
-
-      <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【報名須知】</strong></p>
-      <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 0.8rem;">
-        <li>表單填寫完畢不代表報名成功，<u>匯款完成後務必通知我們以完成報名</u></li>
-        <li>為確保上課品質，<u>恕無法攜伴參加</u></li>
-        <li>課堂禁止全程錄影，可針對特定部分提供示範影片</li>
-        <li>報名成功即開始準備材料，不得因個人因素取消預約，可選擇轉讓他人 / 轉為線上課程 / 延期上課</li>
-        <li>報名額滿即不再招生，如人數不足須取消課程，將於上課前 5 天通知並全額退費</li>
-        <li>knitter in town 織造所保有修改內容之權利</li>
-      </ul>
-
-      <div style="margin-top: 1.5rem;">
-        <p style="margin-bottom: 0.5rem;"><strong>【傘繩主題配色參考】</strong></p>
-        <img src="class2-colors.jpg" alt="傘繩主題配色參考" style="width:100%; border-radius:8px;">
-      </div>
-    `
-  },
-  'class4': {
+    'class4': {
     title: '線上基礎課程 - 1',
     price: 990,
     tag: '鉤織課程',
@@ -840,36 +780,6 @@ const detailsData = {
           </div>
         `;
       }
-
-      // 2. 繩編配色選單與加購項目
-if (data.colorOptions && data.colorOptions.length > 0) {
-  let colorOptions = `<option value="">-- 請選擇傘繩主題配色 --</option>` + 
-    data.colorOptions.map(c => `<option value="${c}">${c}</option>`).join('');
-
-  selectsHtml += `
-    <div style="margin-bottom: 0.5rem;">
-      <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.3rem;">預選傘繩主題配色 *</label>
-      <select id="color-select-input" class="session-select">${colorOptions}</select>
-    </div>
-
-    <!-- 加購項目（緊接在預選配色下方） -->
-    <div style="margin-top: 1.2rem; padding-top: 1rem; border-top: 1px dashed #ddd;">
-      <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.5rem; color: #8b2626;">加購項目</label>
-      <label style="display: flex; align-items: flex-start; gap: 0.5rem; cursor: pointer; font-size: 0.9rem; margin-bottom: 0.8rem;">
-        <input type="checkbox" id="add-paracord-kit" style="margin-top: 0.2rem;">
-        <div>
-          <span>加購【配色傘繩套組】+ $350 / 套</span>
-          <span style="display: block; font-size: 0.8rem; color: #666; margin-top: 0.1rem;">（含高強度傘繩材料包、精緻金屬五金件）</span>
-        </div>
-      </label>
-
-      <div style="margin-top: 0.8rem;">
-        <label style="font-weight: 600; font-size: 0.85rem; display: block; margin-bottom: 0.3rem;">加購傘繩顏色 (請填寫名稱，例如：東京鳥居)</label>
-        <input type="text" id="add-paracord-color-input" placeholder="有加購配色傘繩套組才需填寫" style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 0.9rem;">
-      </div>
-    </div>
-  `;
-}
 
       // 3. 線上課 (class3) 專屬方案選擇與加購項目
       if (key === 'class3') {
