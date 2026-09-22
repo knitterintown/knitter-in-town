@@ -11,16 +11,14 @@
 
   <style>
     :root {
-      --bg-main: #EFE6E2;
-      --bg-card: #FDFBF8;
-      --header-bg: #947A6D;
-      --text-main: #6A4028;
-      --text-light: #FDFBF8;
-      --secondary: #82663A;
-      --accent: #AB3B3A;
-      --accent-hover: #8C2E2D;
-      --border-color: #DCD0C9;
-    }
+  --bg-main: #FBF6F0;       /* 頁面背景：溫暖奶白 */
+  --card-bg: #FFFFFF;       /* 卡片背景：純白 */
+  --text-main: #4A3A31;     /* 主要文字：深摩卡棕 (閱讀最舒適) */
+  --accent: #A47B64;        /* 主按鈕/重點：摩卡棕 */
+  --accent-light: #E4C7B7;  /* 次要標籤/hover：柔粉蜜桃 */
+  --tag-bg: #C39D88;        /* 分類標籤：乾燥玫瑰粉棕 */
+  --border-color: #E8DACF;  /* 柔和邊框色 */
+}
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
@@ -868,67 +866,67 @@ const detailsData = {
     }
 
     function addDetailToCart(title, price) {
-      const sessionSelect = document.getElementById('session-select-input');
-      const colorSelect = document.getElementById('color-select-input');
-      const driveEmail = document.getElementById('drive-email-input');
-      const shippingInfo = document.getElementById('shipping-info-input');
+  const sessionSelect = document.getElementById('session-select-input');
+  const colorSelect = document.getElementById('color-select-input');
+  const driveEmail = document.getElementById('drive-email-input');
+  const shippingInfo = document.getElementById('shipping-info-input');
 
-      // 1. 檢查實體課「開課場次」必填 (若非場次規劃中)
-      if (sessionSelect && !sessionSelect.disabled && !sessionSelect.value) {
-        alert('請完成必填欄位');
-        sessionSelect.focus();
-        return;
-      }
+  // 1. 檢查實體課「開課場次」必填 (若存在且未停用)
+  if (sessionSelect && !sessionSelect.disabled && !sessionSelect.value) {
+    alert('請完成必填欄位：請選擇開課場次');
+    sessionSelect.focus();
+    return;
+  }
 
-      // 2. 檢查繩編「預選傘繩主題配色」必填
-      if (colorSelect && !colorSelect.value) {
-        alert('請完成必填欄位');
-        colorSelect.focus();
-        return;
-      }
+  // 2. 檢查繩編配色 (若欄位存在)
+  if (colorSelect && !colorSelect.value) {
+    alert('請選擇配色選項');
+    colorSelect.focus();
+    return;
+  }
 
-      // 3. 檢查線上課 (class3) 必填欄位
-      if (driveEmail && !driveEmail.value.trim()) {
-        alert('請完成必填欄位');
-        driveEmail.focus();
-        return;
-      }
-      if (shippingInfo && !shippingInfo.value.trim()) {
-        alert('請完成必填欄位');
-        shippingInfo.focus();
-        return;
-      }
+  // 3. 檢查線上課必填欄位 (若欄位存在)
+  if (driveEmail && !driveEmail.value.trim()) {
+    alert('請完成必填欄位：Google Drive Email');
+    driveEmail.focus();
+    return;
+  }
+  if (shippingInfo && !shippingInfo.value.trim()) {
+    alert('請完成必填欄位：收件地址與門市資訊');
+    shippingInfo.focus();
+    return;
+  }
 
-      // 4. 計算最後名稱與加總金額
-      let detailsText = [];
-      let finalPrice = typeof price === 'number' ? price : 990;
+  // 4. 計算最後名稱與金額
+  let detailsText = [];
+  let finalPrice = typeof price === 'number' ? price : 990;
 
-      if (sessionSelect && sessionSelect.value) detailsText.push(sessionSelect.value);
-      if (colorSelect && colorSelect.value) detailsText.push(`配色: ${colorSelect.value.split(' ')[0]}`);
+  if (sessionSelect && sessionSelect.value) detailsText.push(sessionSelect.value);
+  if (colorSelect && colorSelect.value) detailsText.push(`配色: ${colorSelect.value.split(' ')[0]}`);
 
-      // 線上課程方案與加購金額統計
-      const selectedPlan = document.querySelector('input[name="course-plan"]:checked');
-      if (selectedPlan) {
-        detailsText.push(selectedPlan.value);
-        finalPrice = selectedPlan.value.includes('1,090') ? 1090 : 990;
-      }
+  // 線上課程方案與加購金額統計
+  const selectedPlan = document.querySelector('input[name="course-plan"]:checked');
+  if (selectedPlan) {
+    detailsText.push(selectedPlan.value);
+    finalPrice = selectedPlan.value.includes('1,090') ? 1090 : 990;
+  }
 
-      const selectedAddons = document.querySelectorAll('input[name="addon-option"]:checked');
-      selectedAddons.forEach(addon => {
-        detailsText.push(addon.value);
-        if (addon.value.includes('+$60')) finalPrice += 60;
-        if (addon.value.includes('+$200')) finalPrice += 200;
-      });
+  const selectedAddons = document.querySelectorAll('input[name="addon-option"]:checked');
+  selectedAddons.forEach(addon => {
+    detailsText.push(addon.value);
+    if (addon.value.includes('+$60')) finalPrice += 60;
+    if (addon.value.includes('+$200')) finalPrice += 200;
+  });
 
-      let finalName = title;
-      if (detailsText.length > 0) {
-        finalName = `${title} (${detailsText.join(' / ')})`;
-      }
+  let finalName = title;
+  if (detailsText.length > 0) {
+    finalName = `${title} (${detailsText.join(' / ')})`;
+  }
 
-      // 加入購物車
-      addToCart(finalName, finalPrice);
-      closeDetail();
-    }
+  // 加入購物車並關閉彈窗
+  addToCart(finalName, finalPrice);
+  closeDetail();
+}
 
     function closeDetail() {
       document.getElementById('detail-modal').style.display = 'none';
