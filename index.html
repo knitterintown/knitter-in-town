@@ -11,13 +11,31 @@
 
   <style>
     :root {
-  --bg-main: #FBF6F0;       /* 頁面背景：溫暖奶白 */
-  --card-bg: #FFFFFF;       /* 卡片背景：純白 */
-  --text-main: #4A3A31;     /* 主要文字：深摩卡棕 (閱讀最舒適) */
-  --accent: #A47B64;        /* 主按鈕/重點：摩卡棕 */
-  --accent-light: #E4C7B7;  /* 次要標籤/hover：柔粉蜜桃 */
-  --tag-bg: #C39D88;        /* 分類標籤：乾燥玫瑰粉棕 */
-  --border-color: #E8DACF;  /* 柔和邊框色 */
+  /* 60% 主背景：大面積白/奶白底，保持網頁清爽透亮 */
+  --bg-main: #FBF6F0; 
+
+  /* 30% 次要色：頁首 Header、選單區域、側邊欄背景 */
+  --header-bg: #E4C7B7;      /* 替換原本過深的頂部顏色 */
+  --card-bg: #FFFFFF;        /* 卡片本體保持純白 */
+  --border-color: #D8BDB0;    /* 柔和分隔線 */
+
+  /* 10% 強調色：按鈕、購物車 Floating Button、深色文字 */
+  --text-main: #4A3A31;      /* 主文字：深咖啡色，閱讀清晰 */
+  --text-muted: #8C7365;     /* 次要文字 */
+  --accent-btn: #A47B64;     /* 按鈕/購物車標籤底色 */
+  --accent-btn-hover: #8C624C;
+}
+
+/* 修正頂部 Header 樣式 */
+header, .navbar {
+  background-color: var(--header-bg) !important;
+  color: var(--text-main) !important;
+}
+
+/* 修正購物車按鈕樣式 (10% 點綴) */
+.cart-button, #cart-toggle {
+  background-color: var(--accent-btn) !important;
+  color: #FFFFFF !important;
 }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -754,8 +772,20 @@ const detailsData = {
     let cart = JSON.parse(localStorage.getItem('kit_cart')) || [];
 
     function openDetail(key) {
-      const data = detailsData[key];
-      if (!data) return;
+  const data = detailsData[key];
+  
+  // 1. 如果找不到資料，在 Console 印出錯誤，方便檢查是哪個 Key 寫錯
+  if (!data) {
+    console.error(`[彈窗錯誤] detailsData 中找不到 Key: "${key}"，請檢查卡片按鈕的 onclick 傳值是否正確。`);
+    return;
+  }
+
+  // 取得彈窗元素
+  const modal = document.getElementById('detail-modal');
+  if (!modal) {
+    console.error('[彈窗錯誤] 網頁中找不到 id="detail-modal" 的 HTML 元素！');
+    return;
+  }
       
       let selectsHtml = '';
       let isPlanningOnly = false;
@@ -849,21 +879,29 @@ const detailsData = {
           });
 
           // 3. 更新彈窗左下角顯示金額
-          const priceDisplay = document.getElementById('modal-price-display');
-          if (priceDisplay) priceDisplay.innerText = currentTotal.toLocaleString();
-        };
+      const priceDisplay = document.getElementById('modal-price-display');
+      if (priceDisplay) priceDisplay.innerText = currentTotal.toLocaleString();
+    };
 
-        // 綁定動態監聽
-        document.querySelectorAll('input[name="course-plan"], input[name="addon-option"]').forEach(input => {
-          input.addEventListener('change', updateClass3Price);
-        });
+    // 綁定動態監聽
+    document.querySelectorAll('input[name="course-plan"], input[name="addon-option"]').forEach(input => {
+      input.addEventListener('change', updateClass3Price);
+    });
 
-        // 初始計算一次
-        updateClass3Price();
-      }
+    // 初始計算一次
+    updateClass3Price();
+  } // <--- 注意：這個 } 是 if (key === 'class3') 的結束！
 
-      document.getElementById('detail-modal').style.display = 'flex';
-    }
+  // -------------------------------------------------------------
+  // ▼ 不管是 class1, class2, class3 還是 item1~4，最後都要執行打開彈窗 ▼
+  // -------------------------------------------------------------
+  const modal = document.getElementById('detail-modal');
+  if (modal) {
+    modal.style.display = 'flex';
+  } else {
+    console.error('[彈窗錯誤] 網頁 HTML 中找不到 id="detail-modal" 的元素！');
+  }
+} // <--- 第 896 行：這是 openDetail(key) 函式的最終結尾！
 
     function addDetailToCart(title, price) {
   const sessionSelect = document.getElementById('session-select-input');
@@ -1051,10 +1089,27 @@ const detailsData = {
       if (cart[index]) {
         cart.splice(index, 1);
         updateCartUI();
-      }
-    }
+  }
+}
 
-    updateCartUI();
-  </script>
+updateCartUI();
+
+// 新增關閉彈窗函式
+function closeDetail() {
+  const modal = document.getElementById('detail-modal');
+  if (modal) {
+    modal.style.display = 'none';
+  }
+}
+</script>
+
+<!-- 彈窗 HTML 結構放在 script 標籤外側 -->
+<div id="detail-modal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeDetail()">&times;</span>
+    <div id="detail-modal-content"></div>
+  </div>
+</div>
+
 </body>
 </html>
