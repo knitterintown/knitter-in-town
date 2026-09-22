@@ -12,18 +12,18 @@
   <style>
     :root {
   /* 60% 主背景：大面積白/奶白底，保持網頁清爽透亮 */
-  --bg-main: #FBF6F0; 
+  --bg-main: #FBF6F0;
 
   /* 30% 次要色：頁首 Header、選單區域、側邊欄背景 */
   --header-bg: #E4C7B7;      /* 替換原本過深的頂部顏色 */
   --card-bg: #FFFFFF;        /* 卡片本體保持純白 */
   --border-color: #D8BDB0;    /* 柔和分隔線 */
 
-  /* 10% 強調色：按鈕、購物車 Floating Button、深色文字 */
+  /* 10% 強調色：換成「復古苔蘚墨綠」，增強對比度與讀取清晰度 */
   --text-main: #4A3A31;      /* 主文字：深咖啡色，閱讀清晰 */
   --text-muted: #8C7365;     /* 次要文字 */
-  --accent-btn: #A47B64;     /* 按鈕/購物車標籤底色 */
-  --accent-btn-hover: #8C624C;
+  --accent-btn: #4A5B4E;     /* 按鈕/購物車標籤底色：復古苔蘚墨綠 */
+  --accent-btn-hover: #38463C; /* 滑鼠懸停時的深墨綠 */
 }
 
 /* 修正頂部 Header 樣式 */
@@ -33,9 +33,26 @@ header, .navbar {
 }
 
 /* 修正購物車按鈕樣式 (10% 點綴) */
-.cart-button, #cart-toggle {
+.cart-button, #cart-toggle, .cart-btn {
   background-color: var(--accent-btn) !important;
   color: #FFFFFF !important;
+  border: none !important;
+}
+
+/* 修正卡片報名按鈕樣式 (加上 .btn-full) */
+.card button, .card .btn, .detail-btn, .btn-detail, .btn-full {
+  background-color: var(--accent-btn) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: 20px !important; /* 加上圓角更精緻 */
+  padding: 10px 16px !important;
+  cursor: pointer !important;
+  font-size: 15px !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.card button:hover, .card .btn:hover, .detail-btn:hover, .btn-detail:hover, .btn-full:hover {
+  background-color: var(--accent-btn-hover) !important;
 }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -895,13 +912,17 @@ const detailsData = {
   // -------------------------------------------------------------
   // ▼ 不管是 class1, class2, class3 還是 item1~4，最後都要執行打開彈窗 ▼
   // -------------------------------------------------------------
+  // -------------------------------------------------------------
+  // ▼ 強制顯示彈窗（同時改 style 與加 active/show class）▼
+  // -------------------------------------------------------------
   const modal = document.getElementById('detail-modal');
   if (modal) {
-    modal.style.display = 'flex';
+    modal.style.setProperty('display', 'flex', 'important'); // 強制覆蓋 display: none
+    modal.classList.add('active', 'show'); // 確保有吃 class 動畫顯現
   } else {
     console.error('[彈窗錯誤] 網頁 HTML 中找不到 id="detail-modal" 的元素！');
   }
-} // <--- 第 896 行：這是 openDetail(key) 函式的最終結尾！
+}
 
     function addDetailToCart(title, price) {
   const sessionSelect = document.getElementById('session-select-input');
