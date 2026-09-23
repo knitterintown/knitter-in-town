@@ -342,6 +342,37 @@ header, .navbar {
     }
     .bank-box p { margin-bottom: 0.4rem; }
 
+    /* 課程選項：radio / checkbox 統一為方形樣式 */
+    .online-course-order-fields input[type="radio"],
+    .online-course-order-fields input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      margin: 0 6px 0 0;
+      border: 1.5px solid var(--border-color);
+      border-radius: 3px;
+      background: #FAF7F2;
+      vertical-align: -3px;
+      position: relative;
+      cursor: pointer;
+    }
+    .online-course-order-fields input[type="radio"]:checked,
+    .online-course-order-fields input[type="checkbox"]:checked {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .online-course-order-fields input[type="radio"]:checked::after,
+    .online-course-order-fields input[type="checkbox"]:checked::after {
+      content: '✓';
+      position: absolute;
+      left: 2px;
+      top: -3px;
+      color: #FAF7F2;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
     .form-input, .session-select {
       width: 100%;
       padding: 0.65rem;
@@ -436,7 +467,7 @@ header, .navbar {
           <p>課程分為 7 個單元，影片總長約一小時，可無限次觀看。獨創邏輯教學法，新手也能理解背後原理。</p>
         </div>
         <div>
-          <div class="price">NT$ 990起</div>
+          <div class="price">NT$ 990 起</div>
           <button class="btn-full" onclick="openDetail('class4')">詳細內容及報名</button>
         </div>
       </div>
@@ -690,10 +721,10 @@ const detailsData = {
         <li>5. 縫合、纏繞與收尾</li>
         <li>6. 掛繩</li>
       </ul>
-      <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【課程方案】</strong></p>
+      <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【購買方案】</strong></p>
       <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 1.2rem;">
-        <li><strong>基礎標準套組 $990：</strong>內含《鉤織邏輯起步走》線上課程及全套入門材料包（台製鉤針、42淺黃線材、記號扣組、寄送運費）。適合想無痛入門、一次備齊所有工具的新手。</li>
-        <li><strong>日本廣島旗艦套組 $1,090（升級首選）：</strong>內含《鉤織邏輯起步走》線上課程及全套升級材料包（升級為日製廣島灰柄鉤針、42淺黃線材、記號扣組、寄送運費）。適合重視握持手感、想一支鉤針用很久的質感學員（加價 $100 極致升級）。</li>
+        <li>《鉤織邏輯起步走》線上課程 $990</li>
+        <li>升級日本廣島旗艦套組 $1,090</li>
       </ul>
       <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【毛線色卡參考】</strong></p>
       <p style="margin-top: 0; margin-bottom: 0.8rem; font-size: 0.88rem; color: #666;">有加購線材者請參考下方色卡，並請避免選擇高飽和度及深色線材。</p>
@@ -713,28 +744,25 @@ const detailsData = {
       </ul>
 
       <div class="online-course-order-fields" style="margin-top:1.5rem; border-top:1px dashed var(--border-color); padding-top:1.2rem;">
-        <p style="margin:0 0 0.8rem;"><strong>【購買方案】*</strong></p>
-        <div style="display:flex; flex-direction:column; gap:0.7rem; font-size:0.92rem;">
-          <label><input type="radio" name="course-plan" value="《鉤織邏輯起步走》線上課程 $990" > 《鉤織邏輯起步走》線上課程 $990</label>
-          <p style="margin:0 0 0.2rem 1.6rem; font-size:0.88rem; line-height:1.6;">內含《鉤織邏輯起步走》線上課程及全套入門材料包（台製鉤針、42淺黃線材、記號扣組、寄送運費）</p>
+        <p style="margin:0 0 0.8rem; line-height:1.8;"><strong>【購買方案】*</strong></p>
+        <div style="display:flex; flex-direction:column; gap:0.7rem; font-size:0.92rem; line-height:1.8;">
+          <label><input type="radio" name="course-plan" value="《鉤織邏輯起步走》線上課程 $990"> 《鉤織邏輯起步走》線上課程 $990</label>
           <label><input type="radio" name="course-plan" value="升級日本廣島旗艦套組 $1,090"> 升級日本廣島旗艦套組 $1,090</label>
-          <p style="margin:0 0 0.2rem 1.6rem; font-size:0.88rem; line-height:1.6;">內含《鉤織邏輯起步走》線上課程及全套升級材料包（升級為日製廣島灰柄鉤針、42淺黃線材、記號扣組、寄送運費）</p>
         </div>
 
-        <p style="margin:1.2rem 0 0.6rem;"><strong>【加購】項目</strong></p>
-        <div style="display:flex; flex-direction:column; gap:0.6rem; font-size:0.92rem;">
+        <p style="margin:1.2rem 0 0.6rem; line-height:1.8;"><strong>【加購】項目</strong></p>
+        <div style="display:flex; flex-direction:column; gap:0.6rem; font-size:0.92rem; line-height:1.8;">
           <label><input type="checkbox" name="addon-option" value="加購【線材】+$60/球"> 加購【線材】+ $60/球</label>
           <label><input type="checkbox" name="addon-option" value="加購【30 分鐘 1 對 1 線上診所】+$200"> 加購【30 分鐘 1 對 1 線上診所】+ $200</label>
         </div>
 
-        <label style="display:block; margin-top:1.2rem; margin-bottom:0.4rem; font-weight:600;">【加購線材顏色】</label>
-        <input type="text" id="color-code-input" class="form-input" placeholder="有加購線材才需填寫，請填入編號，例如：001">
-        <p style="margin:0.3rem 0 0; font-size:0.82rem; color:var(--text-muted);">有加購線材才需填寫，請避免高飽和度及深色線材。</p>
+        <label style="display:block; margin-top:1.2rem; margin-bottom:0.4rem; font-weight:600; line-height:1.8;">【加購線材顏色】</label>
+        <input type="text" id="color-code-input" class="form-input" placeholder="請填入編號，例如：001">
 
-        <label style="display:block; margin-top:1.2rem; margin-bottom:0.4rem; font-weight:600;">【收件地址與門市資訊】*</label>
+        <label style="display:block; margin-top:1.2rem; margin-bottom:0.4rem; font-weight:600; line-height:1.8;">【收件地址與門市資訊】*</label>
         <input type="text" id="shipping-info-input" class="form-input" placeholder="請填寫門市名稱（7-11寄送）或收件地址（郵局寄送）、收件人姓名及收件人電話">
 
-        <label style="display:block; margin-top:1.2rem; margin-bottom:0.4rem; font-weight:600;">【Google Drive 影片觀看權限 Email】*</label>
+        <label style="display:block; margin-top:1.2rem; margin-bottom:0.4rem; font-weight:600; line-height:1.8;">【Google Drive 影片觀看權限 Email】*</label>
         <input type="email" id="drive-email-input" class="form-input" placeholder="例如：example@gmail.com">
       </div>
     `
