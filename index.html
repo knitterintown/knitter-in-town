@@ -711,6 +711,32 @@ const detailsData = {
         <li>本課程影片為【織造所】所有，僅供購買者個人觀看，禁止下載、轉載或商業傳播</li>
         <li>knitter in town 織造所保有修改內容之權利</li>
       </ul>
+
+      <div class="online-course-order-fields" style="margin-top:1.5rem; border-top:1px dashed var(--border-color); padding-top:1.2rem;">
+        <p style="margin:0 0 0.8rem;"><strong>【購買方案】*</strong></p>
+        <div style="display:flex; flex-direction:column; gap:0.7rem; font-size:0.92rem;">
+          <label><input type="radio" name="course-plan" value="《鉤織邏輯起步走》線上課程 $990" > 《鉤織邏輯起步走》線上課程 $990</label>
+          <p style="margin:0 0 0.2rem 1.6rem; font-size:0.88rem; line-height:1.6;">內含《鉤織邏輯起步走》線上課程及全套入門材料包（台製鉤針、42淺黃線材、記號扣組、寄送運費）</p>
+          <label><input type="radio" name="course-plan" value="升級日本廣島旗艦套組 $1,090"> 升級日本廣島旗艦套組 $1,090</label>
+          <p style="margin:0 0 0.2rem 1.6rem; font-size:0.88rem; line-height:1.6;">內含《鉤織邏輯起步走》線上課程及全套升級材料包（升級為日製廣島灰柄鉤針、42淺黃線材、記號扣組、寄送運費）</p>
+        </div>
+
+        <p style="margin:1.2rem 0 0.6rem;"><strong>【加購】項目</strong></p>
+        <div style="display:flex; flex-direction:column; gap:0.6rem; font-size:0.92rem;">
+          <label><input type="checkbox" name="addon-option" value="加購【線材】+$60/球"> 加購【線材】+ $60/球</label>
+          <label><input type="checkbox" name="addon-option" value="加購【30 分鐘 1 對 1 線上診所】+$200"> 加購【30 分鐘 1 對 1 線上診所】+ $200</label>
+        </div>
+
+        <label style="display:block; margin-top:1.2rem; margin-bottom:0.4rem; font-weight:600;">【加購線材顏色】</label>
+        <input type="text" id="color-code-input" class="form-input" placeholder="有加購線材才需填寫，請填入編號，例如：001">
+        <p style="margin:0.3rem 0 0; font-size:0.82rem; color:var(--text-muted);">有加購線材才需填寫，請避免高飽和度及深色線材。</p>
+
+        <label style="display:block; margin-top:1.2rem; margin-bottom:0.4rem; font-weight:600;">【收件地址與門市資訊】*</label>
+        <input type="text" id="shipping-info-input" class="form-input" placeholder="請填寫門市名稱（7-11寄送）或收件地址（郵局寄送）、收件人姓名及收件人電話">
+
+        <label style="display:block; margin-top:1.2rem; margin-bottom:0.4rem; font-weight:600;">【Google Drive 影片觀看權限 Email】*</label>
+        <input type="email" id="drive-email-input" class="form-input" placeholder="例如：example@gmail.com">
+      </div>
     `
   },
       'item1': {
@@ -833,33 +859,8 @@ const detailsData = {
         `;
       }
 
-      // 3. 線上課 (class3) 專屬方案選擇與加購項目
-      if (key === 'class3') {
-        selectsHtml += `
-          <div style="margin-top: 1.2rem; border-top: 1px dashed var(--border-color); padding-top: 1rem;">
-            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.5rem; color: var(--accent);">選擇課程方案 *</label>
-            <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.88rem; margin-bottom: 1rem;">
-              <label><input type="radio" name="course-plan" value="基礎標準套組 $990" checked> 基礎標準套組 $990</label>
-              <label><input type="radio" name="course-plan" value="日本廣島旗艦套組 $1,090"> 日本廣島旗艦套組 $1,090（升級首選）</label>
-            </div>
-
-            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-top: 0.8rem; margin-bottom: 0.5rem;">加購項目</label>
-            <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.88rem; margin-bottom: 1rem;">
-              <label><input type="checkbox" name="addon-option" value="加購線材 +$60/球"> 加購【線材】+ $60/球</label>
-              <label><input type="checkbox" name="addon-option" value="加購 30 分鐘 1 對 1 線上診所 +$200"> 加購【30 分鐘 1 對 1 線上診所】+ $200</label>
-            </div>
-
-            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.5rem; color: var(--accent);">Google Drive 影片觀看權限 Email *</label>
-            <input type="email" id="drive-email-input" class="form-input" placeholder="例如：example@gmail.com" required>
-
-            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.3rem;">加購線材顏色 (請填寫編號，例如：001)</label>
-            <input type="text" id="color-code-input" class="form-input" placeholder="有加購線材才需填寫，請避免高飽和度及深色線材">
-
-            <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-top: 0.5rem; margin-bottom: 0.3rem;">收件地址與門市資訊 *</label>
-            <input type="text" id="shipping-info-input" class="form-input" placeholder="請填寫門市名稱(7-11)或收件地址(郵局)、收件人姓名及電話">
-          </div>
-        `;
-      }
+      // 線上基礎課程 - 1 的方案欄位已放在課程內容的【報名須知】下方。
+      // 這裡只負責依選擇的方案與加購項目更新金額。
 
       // 4. 按鈕判斷
       let actionBtnHtml = `
@@ -884,9 +885,9 @@ const detailsData = {
         </div>
       `;
 
-      // 線上課 (class3) 方案與加購選項金額動態計算
-      if (key === 'class3') {
-        const updateClass3Price = () => {
+      // 線上基礎課程 - 1 方案與加購選項金額動態計算
+      if (key === 'class4') {
+        const updateClass4Price = () => {
           let currentTotal = 990; // 預設基礎套組金額
 
           // 1. 方案判斷
@@ -909,11 +910,11 @@ const detailsData = {
 
     // 綁定動態監聽
     document.querySelectorAll('input[name="course-plan"], input[name="addon-option"]').forEach(input => {
-      input.addEventListener('change', updateClass3Price);
+      input.addEventListener('change', updateClass4Price);
     });
 
     // 初始計算一次
-    updateClass3Price();
+    updateClass4Price();
   } // <--- 注意：這個 } 是 if (key === 'class3') 的結束！
 
   // -------------------------------------------------------------
@@ -932,7 +933,7 @@ const detailsData = {
 
     function addDetailToCart(title, price) {
   const sessionSelect = document.getElementById('session-select-input');
-  const colorSelect = document.getElementById('color-select-input');
+  const colorSelect = document.getElementById('color-code-input');
   const driveEmail = document.getElementById('drive-email-input');
   const shippingInfo = document.getElementById('shipping-info-input');
 
@@ -950,16 +951,49 @@ const detailsData = {
     return;
   }
 
-  // 3. 檢查線上課必填欄位 (若欄位存在)
-  if (driveEmail && !driveEmail.value.trim()) {
-    alert('請完成必填欄位：Google Drive Email');
-    driveEmail.focus();
-    return;
-  }
-  if (shippingInfo && !shippingInfo.value.trim()) {
-    alert('請完成必填欄位：收件地址與門市資訊');
-    shippingInfo.focus();
-    return;
+  // 3. 線上基礎課程 - 1 必填欄位檢查
+  const selectedPlan = document.querySelector('input[name="course-plan"]:checked');
+  const selectedAddons = document.querySelectorAll('input[name="addon-option"]:checked');
+
+  if (title === '線上基礎課程 - 1') {
+    if (!selectedPlan) {
+      alert('請完成必填欄位：請選擇購買方案');
+      const firstPlan = document.querySelector('input[name="course-plan"]');
+      if (firstPlan) firstPlan.focus();
+      return;
+    }
+
+    if (driveEmail && !driveEmail.value.trim()) {
+      alert('請完成必填欄位：Google Drive 影片觀看權限 Email');
+      driveEmail.focus();
+      return;
+    }
+
+    if (shippingInfo && !shippingInfo.value.trim()) {
+      alert('請完成必填欄位：收件地址與門市資訊');
+      shippingInfo.focus();
+      return;
+    }
+
+    const addonYarnSelected = Array.from(selectedAddons).some(addon => addon.value.includes('線材'));
+    if (addonYarnSelected && (!colorSelect || !colorSelect.value.trim())) {
+      const colorInput = document.getElementById('color-code-input');
+      alert('您有加購線材，請填寫加購線材顏色編號，例如：001');
+      if (colorInput) colorInput.focus();
+      return;
+    }
+  } else {
+    // 其他線上課程仍沿用原本的 Email / 收件資訊檢查
+    if (driveEmail && !driveEmail.value.trim()) {
+      alert('請完成必填欄位：Google Drive Email');
+      driveEmail.focus();
+      return;
+    }
+    if (shippingInfo && !shippingInfo.value.trim()) {
+      alert('請完成必填欄位：收件地址與門市資訊');
+      shippingInfo.focus();
+      return;
+    }
   }
 
   // 4. 計算最後名稱與金額
@@ -970,7 +1004,6 @@ const detailsData = {
   if (colorSelect && colorSelect.value) detailsText.push(`配色: ${colorSelect.value.split(' ')[0]}`);
 
   // 線上課程方案與加購金額統計
-  const selectedPlan = document.querySelector('input[name="course-plan"]:checked');
   if (selectedPlan) {
     detailsText.push(selectedPlan.value);
     finalPrice = selectedPlan.value.includes('1,090') ? 1090 : 990;
