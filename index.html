@@ -1009,7 +1009,6 @@ const detailsData = {
     finalPrice = selectedPlan.value.includes('1,090') ? 1090 : 990;
   }
 
-  const selectedAddons = document.querySelectorAll('input[name="addon-option"]:checked');
   selectedAddons.forEach(addon => {
     detailsText.push(addon.value);
     if (addon.value.includes('+$60')) finalPrice += 60;
