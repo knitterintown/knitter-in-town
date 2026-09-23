@@ -972,13 +972,6 @@ const detailsData = {
     return;
   }
 
-  // 2. 檢查繩編配色 (若欄位存在)
-  if (colorSelect && !colorSelect.value) {
-    alert('請選擇配色選項');
-    colorSelect.focus();
-    return;
-  }
-
   // 3. 線上基礎課程 - 1 必填欄位檢查
   const selectedPlan = document.querySelector('input[name="course-plan"]:checked');
   const selectedAddons = document.querySelectorAll('input[name="addon-option"]:checked');
