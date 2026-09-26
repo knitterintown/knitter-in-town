@@ -499,7 +499,7 @@ header, .navbar {
       <!-- 卡片 2 -->
       <div class="card">
         <div>
-          <h3>【織造所原創系列】Petit Walk 小步隨行包 DIY 材料包</h3>
+          <h3>【織造所原創系列】Petit Walk 小步隨行包 材料包</h3>
           <p>包含台製嚴選線材、彈簧圈與磁吸扣，結構簡潔輕巧，隨附完整文字織圖與 30 分鐘線上邏輯輔導。</p>
         </div>
         <div>
@@ -928,6 +928,22 @@ const detailsData = {
         actionBtnHtml = `<button class="btn-primary" style="width:auto; padding:0.7rem 1.8rem;" onclick="addDetailToCart('${data.title}', 0)">加入購物車 / 購買</button>`;
       }
 
+
+      if (key === 'item2') {
+        selectsHtml += `
+          <div style="margin-top:1.4rem; padding-top:1.2rem; border-top:1px solid var(--border-color);">
+            <p style="font-weight:600; margin-bottom:0.6rem;">【購買項目】*</p>
+            <div style="display:flex; flex-direction:column; gap:0.55rem; line-height:1.8; font-size:0.92rem;">
+              <label><input type="checkbox" name="petit-walk-option" value="材料包" data-price="1180"> 材料包 $1180</label>
+              <label><input type="checkbox" name="petit-walk-option" value="線材＆五金配件加購" data-price="780"> 線材 ＆ 五金配件加購 $780（不含織圖及線上課程）</label>
+              <label><input type="checkbox" name="petit-walk-option" value="日本廣島紅柄鉤針 5 號" data-price="280"> 日本廣島紅柄鉤針 5 號 $280</label>
+              <label><input type="checkbox" name="petit-walk-option" value="日本廣島紅柄鉤針 6 號" data-price="280"> 日本廣島紅柄鉤針 6 號 $280</label>
+              <label><input type="checkbox" name="petit-walk-option" value="成品包" data-price="2280"> 成品包 $2280</label>
+            </div>
+          </div>`;
+        actionBtnHtml = `<button class="btn-primary" style="width:auto; padding:0.7rem 1.8rem;" onclick="addDetailToCart('${data.title}', 0)">加入購物車 / 購買</button>`;
+      }
+
       if (isPlanningOnly) {
         actionBtnHtml = `
           <button class="btn-primary" style="width: auto; padding: 0.7rem 1.8rem; background-color: #827266; border-color: #827266; cursor: not-allowed;" disabled>場次規劃中，暫未開放報名</button>
@@ -977,6 +993,18 @@ const detailsData = {
     // 初始計算一次
     updateClass4Price();
   } // <--- 注意：這個 } 是 if (key === 'class3') 的結束！
+
+
+  if (key === 'item2') {
+    const updatePetitWalkPrice = () => {
+      const options = document.querySelectorAll('input[name="petit-walk-option"]:checked');
+      const total = Array.from(options).reduce((sum, option) => sum + Number(option.dataset.price || 0), 0);
+      const priceDisplay = document.getElementById('modal-price-display');
+      if (priceDisplay) priceDisplay.innerText = total.toLocaleString();
+    };
+    document.querySelectorAll('input[name="petit-walk-option"]').forEach(input => input.addEventListener('change', updatePetitWalkPrice));
+    updatePetitWalkPrice();
+  }
 
   if (key === 'item1') {
     const updateEastWestPrice = () => {
@@ -1102,6 +1130,20 @@ const detailsData = {
       finalPrice += Number(option.dataset.price);
     });
   }
+
+  if (title === '【織造所原創系列】Petit Walk 小步隨行包 材料包') {
+    const selectedOptions = document.querySelectorAll('input[name="petit-walk-option"]:checked');
+    if (!selectedOptions.length) {
+      alert('請至少選擇一項購買項目');
+      return;
+    }
+    finalPrice = 0;
+    selectedOptions.forEach(option => {
+      detailsText.push(`${option.value} ${Number(option.dataset.price).toLocaleString()}`);
+      finalPrice += Number(option.dataset.price);
+    });
+  }
+
   if (sessionSelect && sessionSelect.value) detailsText.push(sessionSelect.value);
   if (colorSelect && colorSelect.value) detailsText.push(`配色: ${colorSelect.value.split(' ')[0]}`);
 
@@ -1148,8 +1190,7 @@ const detailsData = {
     function openBankModal() {
       if (cart.length === 0) return alert('購物車是空的！');
       const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-      const hasEastWest = cart.some(item => item.name.includes('East-West 都會漫遊者'));
-      const shippingFee = hasEastWest && subtotal < 1800 ? 60 : 0;
+      const shippingFee = subtotal < 1800 ? 60 : 0;
       document.getElementById('bank-total').innerText = subtotal + shippingFee;
       document.getElementById('bank-shipping-line').innerText = shippingFee;
       closeCart();
@@ -1166,8 +1207,7 @@ const detailsData = {
       const storeName = document.getElementById('store-name').value.trim();
       if (!name || !phone || !storeName) { alert('請填寫訂購人姓名、聯絡電話及 7-11 收貨門市！'); return; }
       const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-      const hasEastWest = cart.some(item => item.name.includes('East-West 都會漫遊者'));
-      const shippingFee = hasEastWest && subtotal < 1800 ? 60 : 0;
+      const shippingFee = subtotal < 1800 ? 60 : 0;
       const total = subtotal + shippingFee;
       const itemList = cart.map(item => `${item.name} x${item.qty}`).join('、');
       const orderText = `【織造所｜訂單成立通知】\n` +
