@@ -491,7 +491,7 @@ header, .navbar {
           <p>嚴選台製線材搭配五金扣環、純黑傘繩與皮標，附帶文字織圖與 30 分鐘專屬線上邏輯輔導。</p>
         </div>
         <div>
-          <div class="price">NT$ 1,380</div>
+          <div class="price">NT$ 1,380 起</div>
           <button class="btn-full" onclick="openDetail('item1')">詳細內容及購買</button>
         </div>
       </div>
@@ -503,7 +503,7 @@ header, .navbar {
           <p>包含台製嚴選線材、彈簧圈與磁吸扣，結構簡潔輕巧，隨附完整文字織圖與 30 分鐘線上邏輯輔導。</p>
         </div>
         <div>
-          <div class="price">NT$ 1,180</div>
+          <div class="price">NT$ 1,180 起</div>
           <button class="btn-full" onclick="openDetail('item2')">詳細內容及購買</button>
         </div>
       </div>
@@ -515,7 +515,7 @@ header, .navbar {
           <p>嚴選台製甜芯棉，線材滑順圓潤、手感佳且不勾紗，新手也能輕鬆快速完工。</p>
         </div>
         <div>
-          <div class="price">NT$ 1,280</div>
+          <div class="price">NT$ 1,280 起</div>
           <button class="btn-full" onclick="openDetail('item3')">詳細內容及購買</button>
         </div>
       </div>
@@ -523,11 +523,11 @@ header, .navbar {
       <!-- 卡片 4 -->
       <div class="card">
         <div>
-          <h3>【織造所原創系列】網格手機袋 DIY 材料包</h3>
+          <h3>【織造所原創系列】法式網格手機袋 DIY 材料包</h3>
           <p>結合極簡俐落與法式優雅，不論搭配日常休閒或俐落上班穿搭，都能為造型加分。</p>
         </div>
         <div>
-          <div class="price">NT$ 450</div>
+          <div class="price">NT$ 680 起</div>
           <button class="btn-full" onclick="openDetail('item4')">詳細內容及購買</button>
         </div>
       </div>
@@ -775,7 +775,7 @@ header, .navbar {
         `
       },
       'item1': {
-        title: '【織造所原創系列】East-West 都會漫遊者 材料包', price: 1380, tag: '鉤織材料包',
+        title: '【織造所原創系列】East-West 都會漫遊者 DIY 材料包', price: 1380, tag: '鉤織材料包',
         body: `
           <div style="display:flex; flex-direction:column; gap:12px; margin:0.5rem 0 1.2rem;">
             <img src="East-West - 1.jpg" alt="都會漫遊者成品" style="width:100%; height:auto; border-radius:10px; display:block;">
@@ -855,7 +855,7 @@ header, .navbar {
       },
       'item4': {
         title: '【織造所原創系列】法式網格手機袋 DIY 材料包',
-        price: 450,
+        price: 680,
         tag: '鉤織材料包',
         body: `
           <div style="display: flex; flex-direction: column; gap: 12px; margin: 0.5rem 0 1.2rem;">
@@ -970,6 +970,71 @@ header, .navbar {
         actionBtnHtml = `<button class="btn-primary" style="width:auto; padding:0.7rem 1.8rem;" onclick="addDetailToCart('${data.title}', 0)">加入購物車 / 購買</button>`;
       }
 
+      if (key === 'item3') {
+        selectsHtml += `
+          <div style="margin-top:1.4rem; padding-top:1.2rem; border-top:1px solid var(--border-color);">
+            <p style="font-weight:600; margin-bottom:0.6rem;">【購買項目】*</p>
+            <div style="display:flex; flex-direction:column; gap:0.55rem; line-height:1.8; font-size:0.92rem;">
+              <div style="display:flex; flex-direction:column; gap:0.35rem;">
+                <label style="font-weight:600; color:var(--text-main);">材料包：</label>
+                <select id="balloon-kit-select" class="form-input" style="margin-bottom:0.35rem;">
+                  <option value="" data-price="0">-- 請選擇材料包配色 --</option>
+                  <option value="材料包 - 草莓布蕾（上: 07*2 / 下: 27*1，示範色）" data-price="1280">材料包 - 草莓布蕾 （上: 07*2 / 下: 27*1，示範色） $1280</option>
+                  <option value="材料包 - 苔原晨霧（上: 21*2 / 下: 22*1）" data-price="1280">材料包 - 苔原晨霧（上: 21*2 / 下: 22*1） $1280</option>
+                  <option value="材料包 - 俐落對比（上: 01*2 / 下: 29*1）" data-price="1280">材料包 - 俐落對比（上: 01*2 / 下: 29*1） $1280</option>
+                  <option value="材料包 - 煙燻森林（上: 13*2 / 下: 20*1）" data-price="1280">材料包 - 煙燻森林（上: 13*2 / 下: 20*1） $1280</option>
+                  <option value="材料包 - 燕麥拿鐵（上: 23*2 / 下: 28*1）" data-price="1280">材料包 - 燕麥拿鐵（上: 23*2 / 下: 28*1） $1280</option>
+                  <option value="材料包 - 蜜桃晚霞（上: 03*2 / 下: 09*1）" data-price="1280">材料包 - 蜜桃晚霞（上: 03*2 / 下: 09*1） $1280</option>
+                  <option value="材料包 - 自行配色（上*2 / 下*1）" data-price="1280">材料包 - 自行配色（上*2 / 下*1） $1280</option>
+                </select>
+                <input type="text" id="balloon-kit-custom-color" class="form-input" placeholder="請填寫您選擇的甜芯棉顏色編號（例：上16下27）" style="display:none; margin-bottom:0.6rem;">
+              </div>
+
+              <div style="display:flex; flex-direction:column; gap:0.35rem; margin-top:0.4rem;">
+                <label style="font-weight:600; color:var(--text-main);">線材 ＆ 五金配件加購 $880（不含織圖及線上課程）：</label>
+                <select id="balloon-addon-select" class="form-input" style="margin-bottom:0.35rem;">
+                  <option value="" data-price="0">-- 請選擇加購線材＆配件配色 --</option>
+                  <option value="線材 ＆ 五金配件加購 - 草莓布蕾（上: 07*2 / 下: 27*1，示範色）" data-price="780">材料包 - 草莓布蕾 （上: 07*2 / 下: 27*1，示範色） $780</option>
+                  <option value="線材 ＆ 五金配件加購 - 苔原晨霧（上: 21*2 / 下: 22*1）" data-price="780">材料包 - 苔原晨霧（上: 21*2 / 下: 22*1） $780</option>
+                  <option value="線材 ＆ 五金配件加購 - 俐落對比（上: 01*2 / 下: 29*1）" data-price="780">材料包 - 俐落對比（上: 01*2 / 下: 29*1） $780</option>
+                  <option value="線材 ＆ 五金配件加購 - 煙燻森林（上: 13*2 / 下: 20*1）" data-price="780">材料包 - 煙燻森林（上: 13*2 / 下: 20*1） $780</option>
+                  <option value="線材 ＆ 五金配件加購 - 燕麥拿鐵（上: 23*2 / 下: 28*1）" data-price="780">材料包 - 燕麥拿鐵（上: 23*2 / 下: 28*1） $780</option>
+                  <option value="線材 ＆ 五金配件加購 - 蜜桃晚霞（上: 03*2 / 下: 09*1）" data-price="780">材料包 - 蜜桃晚霞（上: 03*2 / 下: 09*1） $780</option>
+                  <option value="線材 ＆ 五金配件加購 - 自行配色（上*2 / 下*1）" data-price="780">材料包 - 自行配色（上*2 / 下*1） $780</option>
+                </select>
+                <input type="text" id="balloon-addon-custom-color" class="form-input" placeholder="請填寫您選擇的甜芯棉顏色編號（例：上16下27）" style="display:none; margin-bottom:0.6rem;">
+              </div>
+
+              <label><input type="checkbox" name="balloon-option" value="日本廣島紅柄鉤針 6 號" data-price="280"> 日本廣島紅柄鉤針 6 號 $280</label>
+              <label><input type="checkbox" name="balloon-option" value="日本廣島紅柄鉤針 7 號" data-price="280"> 日本廣島紅柄鉤針 7 號 $280</label>
+              <label><input type="checkbox" name="balloon-option" value="日本廣島紅柄鉤針 8 號" data-price="280"> 日本廣島紅柄鉤針 8 號 $280</label>
+              <label><input type="checkbox" name="balloon-option" value="成品包" data-price="2280"> 成品包 $2280</label>
+            </div>
+          </div>`;
+        actionBtnHtml = `<button class="btn-primary" style="width:auto; padding:0.7rem 1.8rem;" onclick="addDetailToCart('${data.title}', 0)">加入購物車 / 購買</button>`;
+      }
+
+      if (key === 'item4') {
+        selectsHtml += `
+          <div style="margin-top:1.4rem; padding-top:1.2rem; border-top:1px solid var(--border-color);">
+            <p style="font-weight:600; margin-bottom:0.6rem;">【購買項目】*</p>
+            <div style="display:flex; flex-direction:column; gap:0.55rem; line-height:1.8; font-size:0.92rem;">
+              <label style="display:block;">
+                <input type="checkbox" name="mesh-option" value="材料包" data-price="680"> 材料包 $680
+                <input type="text" id="mesh-kit-color-input" class="form-input" placeholder="請填寫您選擇的純棉線顏色編號（例：20）" style="margin:0.35rem 0 0 22px; width:calc(100% - 22px);">
+              </label>
+              <label style="display:block;">
+                <input type="checkbox" name="mesh-option" value="線材＆配件加購" data-price="480"> 線材 ＆ 配件加購 $480（不含織圖及線上課程）
+                <input type="text" id="mesh-yarn-color-input" class="form-input" placeholder="請填寫您選擇的純棉線顏色編號（例：20）" style="margin:0.35rem 0 0 22px; width:calc(100% - 22px);">
+              </label>
+              <label><input type="checkbox" name="mesh-option" value="日本廣島紅柄鉤針 3 號" data-price="280"> 日本廣島紅柄鉤針 3 號 $280</label>
+              <label><input type="checkbox" name="mesh-option" value="日本廣島紅柄鉤針 4 號" data-price="280"> 日本廣島紅柄鉤針 4 號 $280</label>
+              <label><input type="checkbox" name="mesh-option" value="成品包" data-price="1080"> 成品包 $1080</label>
+            </div>
+          </div>`;
+        actionBtnHtml = `<button class="btn-primary" style="width:auto; padding:0.7rem 1.8rem;" onclick="addDetailToCart('${data.title}', 0)">加入購物車 / 購買</button>`;
+      }
+
       if (isPlanningOnly) {
         actionBtnHtml = `
           <button class="btn-primary" style="width: auto; padding: 0.7rem 1.8rem; background-color: #827266; border-color: #827266; cursor: not-allowed;" disabled>場次規劃中，暫未開放報名</button>
@@ -1034,6 +1099,66 @@ header, .navbar {
         };
         document.querySelectorAll('input[name="petit-walk-option"]').forEach(input => input.addEventListener('change', updatePetitWalkPrice));
         updatePetitWalkPrice();
+      }
+
+      if (key === 'item3') {
+        const balloonKitSelect = document.getElementById('balloon-kit-select');
+        const balloonAddonSelect = document.getElementById('balloon-addon-select');
+        const balloonKitCustomColor = document.getElementById('balloon-kit-custom-color');
+        const balloonAddonCustomColor = document.getElementById('balloon-addon-custom-color');
+
+        const updateBalloonPrice = () => {
+          let total = 0;
+          if (balloonKitSelect) {
+            const opt = balloonKitSelect.options[balloonKitSelect.selectedIndex];
+            total += Number(opt ? opt.dataset.price || 0 : 0);
+          }
+          if (balloonAddonSelect) {
+            const opt = balloonAddonSelect.options[balloonAddonSelect.selectedIndex];
+            total += Number(opt ? opt.dataset.price || 0 : 0);
+          }
+          const options = document.querySelectorAll('input[name="balloon-option"]:checked');
+          total += Array.from(options).reduce((sum, option) => sum + Number(option.dataset.price || 0), 0);
+
+          const priceDisplay = document.getElementById('modal-price-display');
+          if (priceDisplay) priceDisplay.innerText = total.toLocaleString();
+        };
+
+        if (balloonKitSelect) {
+          balloonKitSelect.addEventListener('change', () => {
+            if (balloonKitSelect.value.includes('自行配色')) {
+              balloonKitCustomColor.style.display = 'block';
+            } else {
+              balloonKitCustomColor.style.display = 'none';
+            }
+            updateBalloonPrice();
+          });
+        }
+
+        if (balloonAddonSelect) {
+          balloonAddonSelect.addEventListener('change', () => {
+            if (balloonAddonSelect.value.includes('自行配色')) {
+              balloonAddonCustomColor.style.display = 'block';
+            } else {
+              balloonAddonCustomColor.style.display = 'none';
+            }
+            updateBalloonPrice();
+          });
+        }
+
+        document.querySelectorAll('input[name="balloon-option"]').forEach(input => input.addEventListener('change', updateBalloonPrice));
+        updateBalloonPrice();
+      }
+
+      if (key === 'item4') {
+        const updateMeshPrice = () => {
+          const options = document.querySelectorAll('input[name="mesh-option"]:checked');
+          const total = Array.from(options).reduce((sum, option) => sum + Number(option.dataset.price || 0), 0);
+          const priceDisplay = document.getElementById('modal-price-display');
+          if (priceDisplay) priceDisplay.innerText = total.toLocaleString();
+        };
+        document.querySelectorAll('input[name="mesh-option"]').forEach(input => input.addEventListener('change', updateMeshPrice));
+        updateMeshPrice();
       }
 
       // 開啟 Modal 視窗
@@ -1162,6 +1287,96 @@ header, .navbar {
           if (option.value === '線材＆五金配件加購' && yarnColorInput && yarnColorInput.value.trim()) {
             detailsText.push('加購線材 QQ 線顏色：' + yarnColorInput.value.trim());
           }
+          finalPrice += Number(option.dataset.price);
+        });
+      }
+
+      if (title === '【織造所原創系列】花漾氣球包 DIY 材料包' || title.includes('花漾氣球包')) {
+        const balloonKitSelect = document.getElementById('balloon-kit-select');
+        const balloonAddonSelect = document.getElementById('balloon-addon-select');
+        const balloonKitCustomColor = document.getElementById('balloon-kit-custom-color');
+        const balloonAddonCustomColor = document.getElementById('balloon-addon-custom-color');
+        const selectedOptions = document.querySelectorAll('input[name="balloon-option"]:checked');
+
+        const kitVal = balloonKitSelect ? balloonKitSelect.value : '';
+        const addonVal = balloonAddonSelect ? balloonAddonSelect.value : '';
+
+        if (!kitVal && !addonVal && !selectedOptions.length) {
+          alert('請至少選擇一項購買項目');
+          return;
+        }
+
+        if (kitVal.includes('自行配色') && (!balloonKitCustomColor || !balloonKitCustomColor.value.trim())) {
+          alert('請填寫材料包選擇的甜芯棉顏色編號，例如：上16下27');
+          if (balloonKitCustomColor) balloonKitCustomColor.focus();
+          return;
+        }
+
+        if (addonVal.includes('自行配色') && (!balloonAddonCustomColor || !balloonAddonCustomColor.value.trim())) {
+          alert('請填寫加購線材選擇的甜芯棉顏色編號，例如：上16下27');
+          if (balloonAddonCustomColor) balloonAddonCustomColor.focus();
+          return;
+        }
+
+        finalPrice = 0;
+        if (kitVal) {
+          const opt = balloonKitSelect.options[balloonKitSelect.selectedIndex];
+          const p = Number(opt ? opt.dataset.price || 0 : 0);
+          finalPrice += p;
+          let text = `${kitVal} $${p}`;
+          if (kitVal.includes('自行配色')) text += ` (顏色: ${balloonKitCustomColor.value.trim()})`;
+          detailsText.push(text);
+        }
+
+        if (addonVal) {
+          const opt = balloonAddonSelect.options[balloonAddonSelect.selectedIndex];
+          const p = Number(opt ? opt.dataset.price || 0 : 0);
+          finalPrice += p;
+          let text = `${addonVal} $${p}`;
+          if (addonVal.includes('自行配色')) text += ` (顏色: ${balloonAddonCustomColor.value.trim()})`;
+          detailsText.push(text);
+        }
+
+        selectedOptions.forEach(option => {
+          detailsText.push(`${option.value} $${Number(option.dataset.price).toLocaleString()}`);
+          finalPrice += Number(option.dataset.price);
+        });
+      }
+
+      if (title === '【織造所原創系列】法式網格手機袋 DIY 材料包' || title.includes('網格手機袋')) {
+        const selectedOptions = document.querySelectorAll('input[name="mesh-option"]:checked');
+        if (!selectedOptions.length) { alert('請至少選擇一項購買項目'); return; }
+
+        const kitColorInput = document.getElementById('mesh-kit-color-input');
+        const yarnColorInput = document.getElementById('mesh-yarn-color-input');
+
+        const kitSelected = Array.from(selectedOptions).some(option => option.value === '材料包');
+        const yarnSelected = Array.from(selectedOptions).some(option => option.value === '線材＆配件加購');
+
+        if (kitSelected && (!kitColorInput || !kitColorInput.value.trim())) {
+          alert('請填寫材料包的純棉線顏色編號，例如：20');
+          if (kitColorInput) kitColorInput.focus();
+          return;
+        }
+
+        if (yarnSelected && (!yarnColorInput || !yarnColorInput.value.trim())) {
+          alert('請填寫線材＆配件加購的純棉線顏色編號，例如：20');
+          if (yarnColorInput) yarnColorInput.focus();
+          return;
+        }
+
+        finalPrice = 0;
+        selectedOptions.forEach(option => {
+          detailsText.push(`${option.value} $${Number(option.dataset.price).toLocaleString()}`);
+
+          if (option.value === '材料包' && kitColorInput && kitColorInput.value.trim()) {
+            detailsText.push(`材料包純棉線顏色：${kitColorInput.value.trim()}`);
+          }
+
+          if (option.value === '線材＆配件加購' && yarnColorInput && yarnColorInput.value.trim()) {
+            detailsText.push(`加購純棉線顏色：${yarnColorInput.value.trim()}`);
+          }
+
           finalPrice += Number(option.dataset.price);
         });
       }
@@ -1314,4 +1529,5 @@ header, .navbar {
     updateCartUI();
   </script>
 </body>
+</html>
 </html>
