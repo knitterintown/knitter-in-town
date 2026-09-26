@@ -1187,7 +1187,7 @@ const detailsData = {
 
     finalPrice = 0;
     selectedOptions.forEach(option => {
-      detailsText.push(\`\${option.value} \${Number(option.dataset.price).toLocaleString()}\`);
+      detailsText.push(`${option.value} ${Number(option.dataset.price).toLocaleString()}`);
       if (option.value === '材料包' && kitColorInput && kitColorInput.value.trim()) {
         detailsText.push('材料包 QQ 線顏色：' + kitColorInput.value.trim());
       }
@@ -1279,10 +1279,10 @@ const detailsData = {
                         `轉帳帳號：10101800006824\n` +
                         `------------------------\n` +
                         `帳號末 5 碼：\n\n` +
-                        `（訂單已成立！請於完成轉帳後，直接在此回覆帳號末 5 碼，我們將儘速為您對帳與安排製作，謝謝！）`;
+                        `（訂單已送出！請於完成轉帳後，直接在此回覆帳號末 5 碼，我們將儘速為您對帳與安排製作，謝謝！）`;
 
       navigator.clipboard.writeText(orderText).then(() => {
-        alert('訂單已成立！資料已自動複製。\n按下「確定」將開啟官方 LINE，請直接「貼上訊息」送出即可！');
+        alert('訂單已送出！資料已自動複製。\n按下「確定」將開啟官方 LINE，請直接「貼上訊息」送出即可！');
         
         window.open('https://lin.ee/yyzyhp2', '_blank'); 
 
@@ -1293,7 +1293,7 @@ const detailsData = {
         updateCartUI();
         closeBankModal();
       }).catch(() => {
-        alert('訂單已成立！請私訊官方 LINE 告知您的姓名與訂購品項。');
+        alert('訂單已送出！請私訊官方 LINE 告知您的姓名與訂購品項。');
         closeBankModal();
       });
     }
