@@ -443,7 +443,7 @@ header, .navbar {
         </div>
       </div>
       
-<!-- 課程 2 -->
+      <!-- 課程 2 -->
       <div class="card" data-craft="crochet" data-type="offline">
         <div>
           <div class="card-tags">
@@ -459,7 +459,7 @@ header, .navbar {
         </div>
       </div>
 
-          <!-- 課程 4 -->
+      <!-- 課程 4 -->
       <div class="card" data-craft="crochet" data-type="online">
         <div>
           <div class="card-tags">
@@ -628,152 +628,152 @@ header, .navbar {
     }
 
     // 3. 詳細介紹彈窗內容資料
-const detailsData = {
-  'class1': {
-    title: '基礎鉤織團體課程 (1)',
-    price: 1400,
-    tag: '鉤織課程',
-    sessions: [
-      "10/17（六）13:00-16:00 嘉義 好好生活",
-      "10/31（六）13:00-16:00 台南 小樹屋（虹樹）",
-      "11/04（三）18:00-21:00 北港",
-      "11/14（六）13:00-16:00 北港",
-      "11/18（三）18:00-21:00 嘉義"
-    ],
-    body: `
-      <img src="class1.jpg" alt="基礎鉤織團體課程教學現場" style="width:100%; height:auto; border-radius:10px; margin: 0.5rem 0 1.2rem; object-fit:cover;">
-      
-      <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【課程內容】</strong></p>
-      <p style="margin-bottom: 0;">這是專為第一次接觸鉤織的朋友設計的入門課程，內容包含：</p>
-      <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 0;">
-        <li>線材與鉤針介紹</li>
-        <li>線與針的拿法</li>
-        <li>鎖針、短針、長針鉤織方式</li>
-      </ul>
-      <p style="margin-top: 0; margin-bottom: 0.8rem;">我們會在課程中運用所學針法，完成一枚可愛的蝴蝶結吊飾 🎀</p>
-      
-      <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【織造所的課程保障】</strong></p>
-      <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 0.8rem;">
-        <li><strong>精緻小班制：</strong>每場上限 6 人，確保能照顧到每位學員的學習狀況</li>
-        <li><strong>高品質材料：</strong>報名皆含材料包 (鉤針、線材、記號扣)，讓你的作品不只是練習，更是能陪伴長久的日常好物</li>
-        <li><strong>終身課後支援：</strong>加入織造所官方 Line，回家練習卡關時，隨時請老師解答</li>
-      </ul>
+    const detailsData = {
+      'class1': {
+        title: '基礎鉤織團體課程 (1)',
+        price: 1400,
+        tag: '鉤織課程',
+        sessions: [
+          "10/17（六）13:00-16:00 嘉義 好好生活",
+          "10/31（六）13:00-16:00 台南 小樹屋（虹樹）",
+          "11/04（三）18:00-21:00 北港",
+          "11/14（六）13:00-16:00 北港",
+          "11/18（三）18:00-21:00 嘉義"
+        ],
+        body: `
+          <img src="class1.jpg" alt="基礎鉤織團體課程教學現場" style="width:100%; height:auto; border-radius:10px; margin: 0.5rem 0 1.2rem; object-fit:cover;">
+          
+          <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【課程內容】</strong></p>
+          <p style="margin-bottom: 0;">這是專為第一次接觸鉤織的朋友設計的入門課程，內容包含：</p>
+          <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 0;">
+            <li>線材與鉤針介紹</li>
+            <li>線與針的拿法</li>
+            <li>鎖針、短針、長針鉤織方式</li>
+          </ul>
+          <p style="margin-top: 0; margin-bottom: 0.8rem;">我們會在課程中運用所學針法，完成一枚可愛的蝴蝶結吊飾 🎀</p>
+          
+          <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【織造所的課程保障】</strong></p>
+          <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 0.8rem;">
+            <li><strong>精緻小班制：</strong>每場上限 6 人，確保能照顧到每位學員的學習狀況</li>
+            <li><strong>高品質材料：</strong>報名皆含材料包 (鉤針、線材、記號扣)，讓你的作品不只是練習，更是能陪伴長久的日常好物</li>
+            <li><strong>終身課後支援：</strong>加入織造所官方 Line，回家練習卡關時，隨時請老師解答</li>
+          </ul>
 
-      <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【報名須知】</strong></p>
-      <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 0.8rem;">
-        <li>表單填寫完畢不代表報名成功，匯款完成後務必通知我們以完成報名</li>
-        <li>為確保上課品質，恕無法攜伴參加</li>
-        <li>課堂禁止全程錄影，可針對特定部分提供示範影片</li>
-        <li>報名成功即開始準備材料，不得因個人因素取消預約，可選擇轉讓他人 / 轉為線上課程 / 延期上課</li>
-        <li>報名額滿即不再招生，如人數不足須取消課程，將於上課前 5 天通知並全額退費</li>
-        <li>knitter in town 織造所保有修改內容之權利</li>
-      </ul>
-    `
-  },
-  'class2': {
-    title: '基礎鉤織團體課程 (2)',
-    price: 1500,
-    tag: '鉤織課程',
-    sessions: [
-      "11/7（六）13:00-16:00 嘉義",
-      "11/11（三）18:00-21:00 北港",
-      "11/25（三）18:00-21:00 嘉義",
-      "11/28（六）13:00-16:00 北港"
-    ],
-    body: `
-      <img src="class1.jpg" alt="基礎鉤織團體課程教學現場" style="width:100%; height:auto; border-radius:10px; margin: 0.5rem 0 1.2rem; object-fit:cover;">
-      
-      <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【課程內容】</strong></p>
-      <p style="margin-bottom: 0;">這是一堂為有一點鉤織的朋友設計的課程，內容包含：</p>
-      <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 0;">
-        <li>環形起針的手勢</li>
-        <li>圓形的邏輯</li>
-        <li>普通短針、外鉤短針、逆短針的鉤織方式</li>
-        <li>基礎針法符號及織圖導讀</li>
-      </ul>
-      <p style="margin-top: 0; margin-bottom: 0.8rem;">解鎖手作人最想掌握的「環形起針」與「織圖導讀」！透過系統化教學，帶你摸透圓形結構的加針規律，並掌握普通短針、外鉤短針與逆短針的精緻變化。給自己 3 小時，徹底擺脫盲目摸索，建立看圖獨立創作的能力。</p>
-      
-      <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【織造所的課程保障】</strong></p>
-      <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 0.8rem;">
-        <li><strong>精緻小班制：</strong>每場上限 6 人，確保能照顧到每位學員的學習狀況</li>
-        <li><strong>高品質材料：</strong>報名皆含材料包 (鉤針、線材、記號扣)，讓你的作品不只是練習，更是能陪伴長久的日常好物</li>
-        <li><strong>終身課後支援：</strong>加入織造所官方 Line，回家練習卡關時，隨時請老師解答</li>
-      </ul>
+          <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【報名須知】</strong></p>
+          <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 0.8rem;">
+            <li>表單填寫完畢不代表報名成功，匯款完成後務必通知我們以完成報名</li>
+            <li>為確保上課品質，恕無法攜伴參加</li>
+            <li>課堂禁止全程錄影，可針對特定部分提供示範影片</li>
+            <li>報名成功即開始準備材料，不得因個人因素取消預約，可選擇轉讓他人 / 轉為線上課程 / 延期上課</li>
+            <li>報名額滿即不再招生，如人數不足須取消課程，將於上課前 5 天通知並全額退費</li>
+            <li>knitter in town 織造所保有修改內容之權利</li>
+          </ul>
+        `
+      },
+      'class2': {
+        title: '基礎鉤織團體課程 (2)',
+        price: 1500,
+        tag: '鉤織課程',
+        sessions: [
+          "11/7（六）13:00-16:00 嘉義",
+          "11/11（三）18:00-21:00 北港",
+          "11/25（三）18:00-21:00 嘉義",
+          "11/28（六）13:00-16:00 北港"
+        ],
+        body: `
+          <img src="class1.jpg" alt="基礎鉤織團體課程教學現場" style="width:100%; height:auto; border-radius:10px; margin: 0.5rem 0 1.2rem; object-fit:cover;">
+          
+          <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【課程內容】</strong></p>
+          <p style="margin-bottom: 0;">這是一堂為有一點鉤織的朋友設計的課程，內容包含：</p>
+          <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 0;">
+            <li>環形起針的手勢</li>
+            <li>圓形的邏輯</li>
+            <li>普通短針、外鉤短針、逆短針的鉤織方式</li>
+            <li>基礎針法符號及織圖導讀</li>
+          </ul>
+          <p style="margin-top: 0; margin-bottom: 0.8rem;">解鎖手作人最想掌握的「環形起針」與「織圖導讀」！透過系統化教學，帶你摸透圓形結構的加針規律，並掌握普通短針、外鉤短針與逆短針的精緻變化。給自己 3 小時，徹底擺脫盲目摸索，建立看圖獨立創作的能力。</p>
+          
+          <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【織造所的課程保障】</strong></p>
+          <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 0.8rem;">
+            <li><strong>精緻小班制：</strong>每場上限 6 人，確保能照顧到每位學員的學習狀況</li>
+            <li><strong>高品質材料：</strong>報名皆含材料包 (鉤針、線材、記號扣)，讓你的作品不只是練習，更是能陪伴長久的日常好物</li>
+            <li><strong>終身課後支援：</strong>加入織造所官方 Line，回家練習卡關時，隨時請老師解答</li>
+          </ul>
 
-      <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【報名須知】</strong></p>
-      <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 0.8rem;">
-        <li>表單填寫完畢不代表報名成功，匯款完成後務必通知我們以完成報名</li>
-        <li>為確保上課品質，恕無法攜伴參加</li>
-        <li>課堂禁止全程錄影，可針對特定部分提供示範影片</li>
-        <li>報名成功即開始準備材料，不得因個人因素取消預約，可選擇轉讓他人 / 轉為線上課程 / 延期上課</li>
-        <li>報名額滿即不再招生，如人數不足須取消課程，將於上課前 5 天通知並全額退費</li>
-        <li>knitter in town 織造所保有修改內容之權利</li>
-      </ul>
-    `
-  },
-    'class4': {
-    title: '線上基礎課程 - 1',
-    price: 990,
-    tag: '鉤織課程',
-    body: `
-      <img src="class3-1.jpg" alt="基礎課程1作品" style="width:100%; height:auto; border-radius:10px; margin: 0.5rem 0 1.2rem; object-fit:cover;">
-      <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【課程內容】</strong></p>
-      <p>全系列分為 7 個單元，影片總長約一小時，可無限次觀看。獨創邏輯教學法，新手也能理解背後原理。</p>
-      <ul>
-        <li>0. 課前小提醒</li>
-        <li>1. 工具介紹</li>
-        <li>2. 針線的拿法</li>
-        <li>3. 起針與鎖針</li>
-        <li>4. 短針與長針</li>
-        <li>5. 縫合、纏繞與收尾</li>
-        <li>6. 掛繩</li>
-      </ul>
-      <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【購買方案】</strong></p>
-      <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 1.2rem;">
-        <li>《鉤織邏輯起步走》線上課程 $990，內含《鉤織邏輯起步走》線上課程及全套入門材料包（台製鉤針、42淺黃線材、記號扣組、寄送運費）</li>
-        <li>升級日本廣島旗艦套組 $1,090，內含《鉤織邏輯起步走》線上課程及全套升級材料包（升級為日製廣島灰柄鉤針、42淺黃線材、記號扣組、寄送運費）</li>
-      </ul>
-      <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【毛線色卡參考】</strong></p>
-      <p style="margin-top: 0; margin-bottom: 0.8rem; font-size: 0.88rem; color: #666;">有加購線材者請參考下方色卡，並請避免選擇高飽和度及深色線材。</p>
-      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.2rem;">
-        <img src="yarn-color1.jpg" alt="毛線色卡 001-030" style="width:100%; height:auto; border-radius:8px; display:block;">
-        <img src="yarn-color2.jpg" alt="毛線色卡 2231-2264" style="width:100%; height:auto; border-radius:8px; display:block;">
-        <img src="yarn-color3.jpg" alt="毛線色卡 66-73" style="width:100%; height:auto; border-radius:8px; display:block;">
-      </div>
-      
-      <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【報名須知】</strong></p>
-      <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 1.2rem;">
-        <li>表單填寫完畢不代表報名成功，匯款完成後務必通知我們以完成報名</li>
-        <li>報名完成後將於 24 小時內開通 Google Drive 影片觀看權限並發送通知</li>
-        <li>雲端影片觀看權限開通後恕不接受退費</li>
-        <li>本課程影片為【織造所】所有，僅供購買者個人觀看，禁止下載、轉載或商業傳播</li>
-        <li>knitter in town 織造所保有修改內容之權利</li>
-      </ul>
+          <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【報名須知】</strong></p>
+          <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 0.8rem;">
+            <li>表單填寫完畢不代表報名成功，匯款完成後務必通知我們以完成報名</li>
+            <li>為確保上課品質，恕無法攜伴參加</li>
+            <li>課堂禁止全程錄影，可針對特定部分提供示範影片</li>
+            <li>報名成功即開始準備材料，不得因個人因素取消預約，可選擇轉讓他人 / 轉為線上課程 / 延期上課</li>
+            <li>報名額滿即不再招生，如人數不足須取消課程，將於上課前 5 天通知並全額退費</li>
+            <li>knitter in town 織造所保有修改內容之權利</li>
+          </ul>
+        `
+      },
+      'class4': {
+        title: '線上基礎課程 - 1',
+        price: 990,
+        tag: '鉤織課程',
+        body: `
+          <img src="class3-1.jpg" alt="基礎課程1作品" style="width:100%; height:auto; border-radius:10px; margin: 0.5rem 0 1.2rem; object-fit:cover;">
+          <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【課程內容】</strong></p>
+          <p>全系列分為 7 個單元，影片總長約一小時，可無限次觀看。獨創邏輯教學法，新手也能理解背後原理。</p>
+          <ul>
+            <li>0. 課前小提醒</li>
+            <li>1. 工具介紹</li>
+            <li>2. 針線的拿法</li>
+            <li>3. 起針與鎖針</li>
+            <li>4. 短針與長針</li>
+            <li>5. 縫合、纏繞與收尾</li>
+            <li>6. 掛繩</li>
+          </ul>
+          <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【購買方案】</strong></p>
+          <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 1.2rem;">
+            <li>《鉤織邏輯起步走》線上課程 $990，內含《鉤織邏輯起步走》線上課程及全套入門材料包（台製鉤針、42淺黃線材、記號扣組、寄送運費）</li>
+            <li>升級日本廣島旗艦套組 $1,090，內含《鉤織邏輯起步走》線上課程及全套升級材料包（升級為日製廣島灰柄鉤針、42淺黃線材、記號扣組、寄送運費）</li>
+          </ul>
+          <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【毛線色卡參考】</strong></p>
+          <p style="margin-top: 0; margin-bottom: 0.8rem; font-size: 0.88rem; color: #666;">有加購線材者請參考下方色卡，並請避免選擇高飽和度及深色線材。</p>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.2rem;">
+            <img src="yarn-color1.jpg" alt="毛線色卡 001-030" style="width:100%; height:auto; border-radius:8px; display:block;">
+            <img src="yarn-color2.jpg" alt="毛線色卡 2231-2264" style="width:100%; height:auto; border-radius:8px; display:block;">
+            <img src="yarn-color3.jpg" alt="毛線色卡 66-73" style="width:100%; height:auto; border-radius:8px; display:block;">
+          </div>
+          
+          <p style="margin-top: 1.2rem; margin-bottom: 0.3rem;"><strong>【報名須知】</strong></p>
+          <ul style="line-height: 1.8; margin-top: 0; margin-bottom: 1.2rem;">
+            <li>表單填寫完畢不代表報名成功，匯款完成後務必通知我們以完成報名</li>
+            <li>報名完成後將於 24 小時內開通 Google Drive 影片觀看權限並發送通知</li>
+            <li>雲端影片觀看權限開通後恕不接受退費</li>
+            <li>本課程影片為【織造所】所有，僅供購買者個人觀看，禁止下載、轉載或商業傳播</li>
+            <li>knitter in town 織造所保有修改內容之權利</li>
+          </ul>
 
-      <div class="online-course-order-fields" style="margin-top:1.5rem; border-top:1px dashed var(--border-color); padding-top:1.2rem;">
-        <p style="margin:0 0 0.8rem; line-height:1.8;"><strong>【購買方案】*</strong></p>
-        <div style="display:flex; flex-direction:column; gap:0.7rem; font-size:0.92rem; line-height:1.8;">
-          <label><input type="radio" name="course-plan" value="《鉤織邏輯起步走》線上課程 $990"> 《鉤織邏輯起步走》線上課程 $990</label>
-          <label><input type="radio" name="course-plan" value="升級日本廣島旗艦套組 $1,090"> 升級日本廣島旗艦套組 $1,090</label>
-        </div>
+          <div class="online-course-order-fields" style="margin-top:1.5rem; border-top:1px dashed var(--border-color); padding-top:1.2rem;">
+            <p style="margin:0 0 0.8rem; line-height:1.8;"><strong>【購買方案】*</strong></p>
+            <div style="display:flex; flex-direction:column; gap:0.7rem; font-size:0.92rem; line-height:1.8;">
+              <label><input type="radio" name="course-plan" value="《鉤織邏輯起步走》線上課程 $990" checked> 《鉤織邏輯起步走》線上課程 $990</label>
+              <label><input type="radio" name="course-plan" value="升級日本廣島旗艦套組 $1,090"> 升級日本廣島旗艦套組 $1,090</label>
+            </div>
 
-        <p style="margin:1.2rem 0 0.6rem; line-height:1.8;"><strong>【加購】項目</strong></p>
-        <div style="display:flex; flex-direction:column; gap:0.6rem; font-size:0.92rem; line-height:1.8;">
-          <label><input type="checkbox" name="addon-option" value="加購【線材】+$60/球"> 加購【線材】+ $60/球</label>
-          <label><input type="checkbox" name="addon-option" value="加購【30 分鐘 1 對 1 線上診所】+$200"> 加購【30 分鐘 1 對 1 線上診所】+ $200</label>
-        </div>
+            <p style="margin:1.2rem 0 0.6rem; line-height:1.8;"><strong>【加購】項目</strong></p>
+            <div style="display:flex; flex-direction:column; gap:0.6rem; font-size:0.92rem; line-height:1.8;">
+              <label><input type="checkbox" name="addon-option" value="加購【線材】+$60/球"> 加購【線材】+ $60/球</label>
+              <label><input type="checkbox" name="addon-option" value="加購【30 分鐘 1 對 1 線上診所】+$200"> 加購【30 分鐘 1 對 1 線上診所】+ $200</label>
+            </div>
 
-        <label style="display:block; margin-top:1.2rem; margin-bottom:0.4rem; font-weight:600; line-height:1.8;">【加購線材顏色】</label>
-        <input type="text" id="color-code-input" class="form-input" placeholder="請填入編號，例如：001">
+            <label style="display:block; margin-top:1.2rem; margin-bottom:0.4rem; font-weight:600; line-height:1.8;">【加購線材顏色】</label>
+            <input type="text" id="color-code-input" class="form-input" placeholder="請填入編號，例如：001">
 
-        <label style="display:block; margin-top:1.2rem; margin-bottom:0.4rem; font-weight:600; line-height:1.8;">【收件地址與門市資訊】*</label>
-        <input type="text" id="shipping-info-input" class="form-input" placeholder="請填寫門市名稱（7-11寄送）或收件地址（郵局寄送）、收件人姓名及收件人電話">
+            <label style="display:block; margin-top:1.2rem; margin-bottom:0.4rem; font-weight:600; line-height:1.8;">【收件地址與門市資訊】*</label>
+            <input type="text" id="shipping-info-input" class="form-input" placeholder="請填寫門市名稱（7-11寄送）或收件地址（郵局寄送）、收件人姓名及收件人電話">
 
-        <label style="display:block; margin-top:1.2rem; margin-bottom:0.4rem; font-weight:600; line-height:1.8;">【Google Drive 影片觀看權限 Email】*</label>
-        <input type="email" id="drive-email-input" class="form-input" placeholder="例如：example@gmail.com">
-      </div>
-    `
-  },
+            <label style="display:block; margin-top:1.2rem; margin-bottom:0.4rem; font-weight:600; line-height:1.8;">【Google Drive 影片觀看權限 Email】*</label>
+            <input type="email" id="drive-email-input" class="form-input" placeholder="例如：example@gmail.com">
+          </div>
+        `
+      },
       'item1': {
         title: '【織造所原創系列】East-West 都會漫遊者 材料包', price: 1380, tag: '鉤織材料包',
         body: `
@@ -803,7 +803,7 @@ const detailsData = {
         body: `
           <div style="display: flex; flex-direction: column; gap: 12px; margin: 0.5rem 0 1.2rem;">
             <img src="Petit Walk - 1.jpg" alt="小步隨行包成品" style="width:100%; height:auto; border-radius:10px; display:block;">
-            <img src="East-West - 2.jpg" alt="利達豐QQ線"  style="width:100%; height:auto; border-radius:10px; margin: 0.5rem 0 1.2rem; object-fit:cover;">
+            <img src="East-West - 2.jpg" alt="利達豐QQ線" style="width:100%; height:auto; border-radius:10px; margin: 0.5rem 0 1.2rem; object-fit:cover;">
           </div>
           <p class="product-description" style="line-height:1.8; margin:0 0 1rem;">走輕盈優雅的極簡路線，背後附加卡層的便利設計讓你不再手忙腳亂，磁扣設計則使包口收納更俐落，是兼具實用性與低調奢華感的日常輕便隨行包。</p>
           <p><strong>【材料包內容】</strong></p>
@@ -833,8 +833,8 @@ const detailsData = {
         body: `
           <div style="display: flex; flex-direction: column; gap: 12px; margin: 0.5rem 0 1.2rem;">
             <img src="花漾氣球包 - 1.jpg" alt="花漾氣球包成品" style="width:100%; height:auto; border-radius:10px; display:block;">
-            <img src="花漾氣球包 - 2.jpg" alt="甜芯棉色卡1"  style="width:100%; height:auto; border-radius:10px; display:block;">
-            <img src="花漾氣球包 - 3.jpg" alt="甜芯棉色卡2"  style="width:100%; height:auto; border-radius:10px; margin: 0.5rem 0 1.2rem; object-fit:cover;">
+            <img src="花漾氣球包 - 2.jpg" alt="甜芯棉色卡1" style="width:100%; height:auto; border-radius:10px; display:block;">
+            <img src="花漾氣球包 - 3.jpg" alt="甜芯棉色卡2" style="width:100%; height:auto; border-radius:10px; margin: 0.5rem 0 1.2rem; object-fit:cover;">
           </div>
           <p class="product-description" style="line-height:1.8; margin:0 0 1rem;">以雙色拼接營造活潑又具層次感的視覺焦點，立體澎潤的袋身搭配花朵般綻放的樣式設計，手提輕巧又有型，非常適合日常約會或休閒出遊。</p>
           <p><strong>【材料包內容】</strong></p>
@@ -860,7 +860,7 @@ const detailsData = {
         body: `
           <div style="display: flex; flex-direction: column; gap: 12px; margin: 0.5rem 0 1.2rem;">
             <img src="法式網格手機袋.jpg" alt="法式網格手機袋成品" style="width:100%; height:auto; border-radius:10px; display:block;">
-            <img src="法式網格手機袋1.jpg" alt="法式網格手機袋色卡"  style="width:100%; height:auto; border-radius:10px; margin: 0.5rem 0 1.2rem; object-fit:cover;">
+            <img src="法式網格手機袋1.jpg" alt="法式網格手機袋色卡" style="width:100%; height:auto; border-radius:10px; margin: 0.5rem 0 1.2rem; object-fit:cover;">
           </div>
           <p class="product-description" style="line-height:1.8; margin:0 0 1rem;">簡約俐落的網格造型，展現輕盈兼具率性的透明美感。袋口點綴珍珠扣飾，為沉穩的包身增添優雅精緻的亮點，不論休閒還是正裝，絕對讓你成為亮眼的存在。</p>
           <p><strong>【材料包內容】</strong></p>
@@ -881,31 +881,30 @@ const detailsData = {
           <div style="margin-top:1.3rem;"><p><strong>【包款細節】</strong></p><ul><li>線徑約 1.5 mm，建議鉤針號數：3 - 4 號</li><li>完成尺寸參考：底 8 / 高 17（公分）</li><li>示範色：20</li></ul></div>
         `
       }
-};
+    };
 
     // 4. 購物車與彈窗控制腳本
     let cart = JSON.parse(localStorage.getItem('kit_cart')) || [];
 
     function openDetail(key) {
-  const data = detailsData[key];
-  
-  // 1. 如果找不到資料，在 Console 印出錯誤，方便檢查是哪個 Key 寫錯
-  if (!data) {
-    console.error(`[彈窗錯誤] detailsData 中找不到 Key: "${key}"，請檢查卡片按鈕的 onclick 傳值是否正確。`);
-    return;
-  }
+      const data = detailsData[key];
+      
+      if (!data) {
+        console.error(`[彈窗錯誤] detailsData 中找不到 Key: "${key}"`);
+        return;
+      }
 
-  // 取得彈窗元素
-  const modal = document.getElementById('detail-modal');
-  if (!modal) {
-    console.error('[彈窗錯誤] 網頁中找不到 id="detail-modal" 的 HTML 元素！');
-    return;
-  }
+      const modal = document.getElementById('detail-modal');
+      const content = document.getElementById('detail-content');
+      if (!modal || !content) {
+        console.error('[彈窗錯誤] 網頁中找不到 id="detail-modal" 或 id="detail-content" 的 HTML 元素！');
+        return;
+      }
       
       let selectsHtml = '';
       let isPlanningOnly = false;
 
-      // 1. 實體課場次選單 (改為「開課場次 *」並新增預設請選擇選項)
+      // 實體課場次選單
       if (data.sessions && data.sessions.length > 0) {
         if (data.sessions.length === 1 && data.sessions[0].includes('規劃中')) {
           isPlanningOnly = true;
@@ -924,10 +923,7 @@ const detailsData = {
         `;
       }
 
-      // 線上基礎課程 - 1 的方案欄位已放在課程內容的【報名須知】下方。
-      // 這裡只負責依選擇的方案與加購項目更新金額。
-
-      // 4. 按鈕判斷
+      // 按鈕預設樣式
       let actionBtnHtml = `
         <button class="btn-primary" style="width: auto; padding: 0.7rem 1.8rem;" onclick="addDetailToCart('${data.title}', ${data.price})">加入購物車 / 報名</button>
       `;
@@ -952,7 +948,6 @@ const detailsData = {
           </div>`;
         actionBtnHtml = `<button class="btn-primary" style="width:auto; padding:0.7rem 1.8rem;" onclick="addDetailToCart('${data.title}', 0)">加入購物車 / 購買</button>`;
       }
-
 
       if (key === 'item2') {
         selectsHtml += `
@@ -981,7 +976,6 @@ const detailsData = {
         `;
       }
 
-      const content = document.getElementById('detail-content');
       content.innerHTML = `
         <span class="tag tag-main">${data.tag}</span>
         <h2 style="margin: 0.5rem 0 1rem; color: var(--text-main); font-size: 1.5rem;">${data.title}</h2>
@@ -996,235 +990,203 @@ const detailsData = {
       // 線上基礎課程 - 1 方案與加購選項金額動態計算
       if (key === 'class4') {
         const updateClass4Price = () => {
-          let currentTotal = 990; // 預設基礎套組金額
+          let currentTotal = 990;
 
-          // 1. 方案判斷
           const selectedPlan = document.querySelector('input[name="course-plan"]:checked');
           if (selectedPlan && selectedPlan.value.includes('1,090')) {
             currentTotal = 1090;
           }
 
-          // 2. 加購項目判斷
           const selectedAddons = document.querySelectorAll('input[name="addon-option"]:checked');
           selectedAddons.forEach(addon => {
             if (addon.value.includes('+$60')) currentTotal += 60;
             if (addon.value.includes('+$200')) currentTotal += 200;
           });
 
-          // 3. 更新彈窗左下角顯示金額
-      const priceDisplay = document.getElementById('modal-price-display');
-      if (priceDisplay) priceDisplay.innerText = currentTotal.toLocaleString();
-    };
+          const priceDisplay = document.getElementById('modal-price-display');
+          if (priceDisplay) priceDisplay.innerText = currentTotal.toLocaleString();
+        };
 
-    // 綁定動態監聽
-    document.querySelectorAll('input[name="course-plan"], input[name="addon-option"]').forEach(input => {
-      input.addEventListener('change', updateClass4Price);
-    });
+        document.querySelectorAll('input[name="course-plan"], input[name="addon-option"]').forEach(input => {
+          input.addEventListener('change', updateClass4Price);
+        });
 
-    // 初始計算一次
-    updateClass4Price();
-  } // <--- 注意：這個 } 是 if (key === 'class3') 的結束！
-
-
-  if (key === 'item2') {
-    const updatePetitWalkPrice = () => {
-      const options = document.querySelectorAll('input[name="petit-walk-option"]:checked');
-      const total = Array.from(options).reduce((sum, option) => sum + Number(option.dataset.price || 0), 0);
-      const priceDisplay = document.getElementById('modal-price-display');
-      if (priceDisplay) priceDisplay.innerText = total.toLocaleString();
-    };
-    document.querySelectorAll('input[name="petit-walk-option"]').forEach(input => input.addEventListener('change', updatePetitWalkPrice));
-    updatePetitWalkPrice();
-  }
-
-  if (key === 'item1') {
-    const updateEastWestPrice = () => {
-      const options = document.querySelectorAll('input[name="east-west-option"]:checked');
-      const total = Array.from(options).reduce((sum, option) => sum + Number(option.dataset.price || 0), 0);
-      const priceDisplay = document.getElementById('modal-price-display');
-      if (priceDisplay) priceDisplay.innerText = total.toLocaleString();
-    };
-    document.querySelectorAll('input[name="east-west-option"]').forEach(input => input.addEventListener('change', updateEastWestPrice));
-    updateEastWestPrice();
-  }
-
-  // -------------------------------------------------------------
-  // ▼ 不管是 class1, class2, class3 還是 item1~4，最後都要執行打開彈窗 ▼
-  // -------------------------------------------------------------
-  // -------------------------------------------------------------
-  // ▼ 強制顯示彈窗（同時改 style 與加 active/show class）▼
-  // -------------------------------------------------------------
-  if (modal) {
-    modal.style.setProperty('display', 'flex', 'important'); // 強制覆蓋 display: none
-    modal.classList.add('active', 'show'); // 確保有吃 class 動畫顯現
-  } else {
-    console.error('[彈窗錯誤] 網頁 HTML 中找不到 id="detail-modal" 的元素！');
-  }
-}
-
-    function addDetailToCart(title, price) {
-  const sessionSelect = document.getElementById('session-select-input');
-  const colorSelect = document.getElementById('color-code-input');
-  const driveEmail = document.getElementById('drive-email-input');
-  const shippingInfo = document.getElementById('shipping-info-input');
-
-  // 1. 檢查實體課「開課場次」必填 (若存在且未停用)
-  if (sessionSelect && !sessionSelect.disabled && !sessionSelect.value) {
-    alert('請完成必填欄位：請選擇開課場次');
-    sessionSelect.focus();
-    return;
-  }
-
-  // 3. 線上基礎課程 - 1 必填欄位檢查
-  const selectedPlan = document.querySelector('input[name="course-plan"]:checked');
-  const selectedAddons = document.querySelectorAll('input[name="addon-option"]:checked');
-
-  if (title === '線上基礎課程 - 1') {
-    if (!selectedPlan) {
-      alert('請完成必填欄位：請選擇購買方案');
-      const firstPlan = document.querySelector('input[name="course-plan"]');
-      if (firstPlan) firstPlan.focus();
-      return;
-    }
-
-    if (driveEmail && !driveEmail.value.trim()) {
-      alert('請完成必填欄位：Google Drive 影片觀看權限 Email');
-      driveEmail.focus();
-      return;
-    }
-
-    if (shippingInfo && !shippingInfo.value.trim()) {
-      alert('請完成必填欄位：收件地址與門市資訊');
-      shippingInfo.focus();
-      return;
-    }
-
-    const addonYarnSelected = Array.from(selectedAddons).some(addon => addon.value.includes('線材'));
-    if (addonYarnSelected && (!colorSelect || !colorSelect.value.trim())) {
-      const colorInput = document.getElementById('color-code-input');
-      alert('您有加購線材，請填寫加購線材顏色編號，例如：001');
-      if (colorInput) colorInput.focus();
-      return;
-    }
-  } else {
-    // 其他線上課程仍沿用原本的 Email / 收件資訊檢查
-    if (driveEmail && !driveEmail.value.trim()) {
-      alert('請完成必填欄位：Google Drive Email');
-      driveEmail.focus();
-      return;
-    }
-    if (shippingInfo && !shippingInfo.value.trim()) {
-      alert('請完成必填欄位：收件地址與門市資訊');
-      shippingInfo.focus();
-      return;
-    }
-  }
-
-  // 4. 計算最後名稱與金額
-  let detailsText = [];
-  let finalPrice = typeof price === 'number' ? price : 990;
-
-  if (title === '【織造所原創系列】East-West 都會漫遊者 材料包') {
-    const selectedOptions = document.querySelectorAll('input[name="east-west-option"]:checked');
-    if (!selectedOptions.length) { alert('請至少選擇一項購買項目'); return; }
-
-    const kitColorInput = document.getElementById('east-west-kit-color-input');
-    const yarnColorInput = document.getElementById('east-west-yarn-color-input');
-
-    const kitSelected = Array.from(selectedOptions).some(option => option.value === '材料包');
-    const yarnSelected = Array.from(selectedOptions).some(option => option.value === '線材＆五金配件加購');
-
-    if (kitSelected && (!kitColorInput || !kitColorInput.value.trim())) {
-      alert('請填寫材料包的 QQ 線顏色編號，例如：Q15 深卡其');
-      if (kitColorInput) kitColorInput.focus();
-      return;
-    }
-
-    if (yarnSelected && (!yarnColorInput || !yarnColorInput.value.trim())) {
-      alert('請填寫線材＆五金配件加購的 QQ 線顏色編號，例如：Q15 深卡其');
-      if (yarnColorInput) yarnColorInput.focus();
-      return;
-    }
-
-    finalPrice = 0;
-    selectedOptions.forEach(option => {
-      detailsText.push(`${option.value} ${Number(option.dataset.price).toLocaleString()}`);
-
-      if (option.value === '材料包' && kitColorInput && kitColorInput.value.trim()) {
-        detailsText.push(`材料包 QQ 線顏色：${kitColorInput.value.trim()}`);
+        updateClass4Price();
       }
 
-      if (option.value === '線材＆五金配件加購' && yarnColorInput && yarnColorInput.value.trim()) {
-        detailsText.push(`加購線材 QQ 線顏色：${yarnColorInput.value.trim()}`);
+      if (key === 'item1') {
+        const updateEastWestPrice = () => {
+          const options = document.querySelectorAll('input[name="east-west-option"]:checked');
+          const total = Array.from(options).reduce((sum, option) => sum + Number(option.dataset.price || 0), 0);
+          const priceDisplay = document.getElementById('modal-price-display');
+          if (priceDisplay) priceDisplay.innerText = total.toLocaleString();
+        };
+        document.querySelectorAll('input[name="east-west-option"]').forEach(input => input.addEventListener('change', updateEastWestPrice));
+        updateEastWestPrice();
       }
 
-      finalPrice += Number(option.dataset.price);
-    });
-  }
-
-  if (title === '【織造所原創系列】Petit Walk 小步隨行包 材料包') {
-    const selectedOptions = document.querySelectorAll('input[name="petit-walk-option"]:checked');
-    if (!selectedOptions.length) {
-      alert('請至少選擇一項購買項目');
-      return;
-    }
-    const kitColorInput = document.getElementById('petit-walk-kit-color-input');
-    const yarnColorInput = document.getElementById('petit-walk-yarn-color-input');
-    const kitSelected = Array.from(selectedOptions).some(option => option.value === '材料包');
-    const yarnSelected = Array.from(selectedOptions).some(option => option.value === '線材＆五金配件加購');
-
-    if (kitSelected && (!kitColorInput || !kitColorInput.value.trim())) {
-      alert('請填寫材料包的 QQ 線顏色編號，例如：Q15 深卡其');
-      if (kitColorInput) kitColorInput.focus();
-      return;
-    }
-
-    if (yarnSelected && (!yarnColorInput || !yarnColorInput.value.trim())) {
-      alert('請填寫線材＆五金配件加購的 QQ 線顏色編號，例如：Q15 深卡其');
-      if (yarnColorInput) yarnColorInput.focus();
-      return;
-    }
-
-    finalPrice = 0;
-    selectedOptions.forEach(option => {
-      detailsText.push(`${option.value} ${Number(option.dataset.price).toLocaleString()}`);
-      if (option.value === '材料包' && kitColorInput && kitColorInput.value.trim()) {
-        detailsText.push('材料包 QQ 線顏色：' + kitColorInput.value.trim());
+      if (key === 'item2') {
+        const updatePetitWalkPrice = () => {
+          const options = document.querySelectorAll('input[name="petit-walk-option"]:checked');
+          const total = Array.from(options).reduce((sum, option) => sum + Number(option.dataset.price || 0), 0);
+          const priceDisplay = document.getElementById('modal-price-display');
+          if (priceDisplay) priceDisplay.innerText = total.toLocaleString();
+        };
+        document.querySelectorAll('input[name="petit-walk-option"]').forEach(input => input.addEventListener('change', updatePetitWalkPrice));
+        updatePetitWalkPrice();
       }
-      if (option.value === '線材＆五金配件加購' && yarnColorInput && yarnColorInput.value.trim()) {
-        detailsText.push('加購線材 QQ 線顏色：' + yarnColorInput.value.trim());
-      }
-      finalPrice += Number(option.dataset.price);
-    });
-  }
 
-  if (sessionSelect && sessionSelect.value) detailsText.push(sessionSelect.value);
-  if (colorSelect && colorSelect.value) detailsText.push(`配色: ${colorSelect.value.split(' ')[0]}`);
-
-  // 線上課程方案與加購金額統計
-  if (selectedPlan) {
-    detailsText.push(selectedPlan.value);
-    finalPrice = selectedPlan.value.includes('1,090') ? 1090 : 990;
-  }
-
-  selectedAddons.forEach(addon => {
-    detailsText.push(addon.value);
-    if (addon.value.includes('+$60')) finalPrice += 60;
-    if (addon.value.includes('+$200')) finalPrice += 200;
-  });
-
-  let finalName = title;
-  if (detailsText.length > 0) {
-    finalName = `${title} (${detailsText.join(' / ')})`;
-  }
-
-  // 加入購物車並關閉彈窗
-  addToCart(finalName, finalPrice);
-  closeDetail();
-}
+      // 開啟 Modal 視窗
+      modal.style.display = 'flex';
+    }
 
     function closeDetail() {
-      document.getElementById('detail-modal').style.display = 'none';
+      const modal = document.getElementById('detail-modal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    function addDetailToCart(title, price) {
+      const sessionSelect = document.getElementById('session-select-input');
+      const colorSelect = document.getElementById('color-code-input');
+      const driveEmail = document.getElementById('drive-email-input');
+      const shippingInfo = document.getElementById('shipping-info-input');
+
+      // 檢查實體課「開課場次」必填
+      if (sessionSelect && !sessionSelect.disabled && !sessionSelect.value) {
+        alert('請完成必填欄位：請選擇開課場次');
+        sessionSelect.focus();
+        return;
+      }
+
+      // 線上基礎課程 - 1 必填欄位檢查
+      const selectedPlan = document.querySelector('input[name="course-plan"]:checked');
+      const selectedAddons = document.querySelectorAll('input[name="addon-option"]:checked');
+
+      if (title === '線上基礎課程 - 1' || title.includes('線上基礎課程')) {
+        if (!selectedPlan) {
+          alert('請完成必填欄位：請選擇購買方案');
+          const firstPlan = document.querySelector('input[name="course-plan"]');
+          if (firstPlan) firstPlan.focus();
+          return;
+        }
+
+        if (driveEmail && !driveEmail.value.trim()) {
+          alert('請完成必填欄位：Google Drive 影片觀看權限 Email');
+          driveEmail.focus();
+          return;
+        }
+
+        if (shippingInfo && !shippingInfo.value.trim()) {
+          alert('請完成必填欄位：收件地址與門市資訊');
+          shippingInfo.focus();
+          return;
+        }
+
+        const addonYarnSelected = Array.from(selectedAddons).some(addon => addon.value.includes('線材'));
+        if (addonYarnSelected && (!colorSelect || !colorSelect.value.trim())) {
+          alert('您有加購線材，請填寫加購線材顏色編號，例如：001');
+          if (colorSelect) colorSelect.focus();
+          return;
+        }
+      }
+
+      // 計算最後名稱與金額
+      let detailsText = [];
+      let finalPrice = typeof price === 'number' ? price : 990;
+
+      if (title === '【織造所原創系列】East-West 都會漫遊者 DIY 材料包' || title.includes('East-West')) {
+        const selectedOptions = document.querySelectorAll('input[name="east-west-option"]:checked');
+        if (!selectedOptions.length) { alert('請至少選擇一項購買項目'); return; }
+
+        const kitColorInput = document.getElementById('east-west-kit-color-input');
+        const yarnColorInput = document.getElementById('east-west-yarn-color-input');
+
+        const kitSelected = Array.from(selectedOptions).some(option => option.value === '材料包');
+        const yarnSelected = Array.from(selectedOptions).some(option => option.value === '線材＆五金配件加購');
+
+        if (kitSelected && (!kitColorInput || !kitColorInput.value.trim())) {
+          alert('請填寫材料包的 QQ 線顏色編號，例如：Q15 深卡其');
+          if (kitColorInput) kitColorInput.focus();
+          return;
+        }
+
+        if (yarnSelected && (!yarnColorInput || !yarnColorInput.value.trim())) {
+          alert('請填寫線材＆五金配件加購的 QQ 線顏色編號，例如：Q15 深卡其');
+          if (yarnColorInput) yarnColorInput.focus();
+          return;
+        }
+
+        finalPrice = 0;
+        selectedOptions.forEach(option => {
+          detailsText.push(`${option.value} $${Number(option.dataset.price).toLocaleString()}`);
+
+          if (option.value === '材料包' && kitColorInput && kitColorInput.value.trim()) {
+            detailsText.push(`材料包 QQ 線顏色：${kitColorInput.value.trim()}`);
+          }
+
+          if (option.value === '線材＆五金配件加購' && yarnColorInput && yarnColorInput.value.trim()) {
+            detailsText.push(`加購線材 QQ 線顏色：${yarnColorInput.value.trim()}`);
+          }
+
+          finalPrice += Number(option.dataset.price);
+        });
+      }
+
+      if (title === '【織造所原創系列】Petit Walk 小步隨行包 材料包' || title.includes('Petit Walk')) {
+        const selectedOptions = document.querySelectorAll('input[name="petit-walk-option"]:checked');
+        if (!selectedOptions.length) { alert('請至少選擇一項購買項目'); return; }
+
+        const kitColorInput = document.getElementById('petit-walk-kit-color-input');
+        const yarnColorInput = document.getElementById('petit-walk-yarn-color-input');
+        const kitSelected = Array.from(selectedOptions).some(option => option.value === '材料包');
+        const yarnSelected = Array.from(selectedOptions).some(option => option.value === '線材＆五金配件加購');
+
+        if (kitSelected && (!kitColorInput || !kitColorInput.value.trim())) {
+          alert('請填寫材料包的 QQ 線顏色編號，例如：Q15 深卡其');
+          if (kitColorInput) kitColorInput.focus();
+          return;
+        }
+
+        if (yarnSelected && (!yarnColorInput || !yarnColorInput.value.trim())) {
+          alert('請填寫線材＆五金配件加購的 QQ 線顏色編號，例如：Q15 深卡其');
+          if (yarnColorInput) yarnColorInput.focus();
+          return;
+        }
+
+        finalPrice = 0;
+        selectedOptions.forEach(option => {
+          detailsText.push(`${option.value} $${Number(option.dataset.price).toLocaleString()}`);
+          if (option.value === '材料包' && kitColorInput && kitColorInput.value.trim()) {
+            detailsText.push('材料包 QQ 線顏色：' + kitColorInput.value.trim());
+          }
+          if (option.value === '線材＆五金配件加購' && yarnColorInput && yarnColorInput.value.trim()) {
+            detailsText.push('加購線材 QQ 線顏色：' + yarnColorInput.value.trim());
+          }
+          finalPrice += Number(option.dataset.price);
+        });
+      }
+
+      if (sessionSelect && sessionSelect.value) detailsText.push(sessionSelect.value);
+      if (colorSelect && colorSelect.value) detailsText.push(`配色: ${colorSelect.value.split(' ')[0]}`);
+
+      if (selectedPlan) {
+        detailsText.push(selectedPlan.value);
+        finalPrice = selectedPlan.value.includes('1,090') ? 1090 : 990;
+      }
+
+      selectedAddons.forEach(addon => {
+        detailsText.push(addon.value);
+        if (addon.value.includes('+$60')) finalPrice += 60;
+        if (addon.value.includes('+$200')) finalPrice += 200;
+      });
+
+      let finalName = title;
+      if (detailsText.length > 0) {
+        finalName = `${title} (${detailsText.join(' / ')})`;
+      }
+
+      addToCart(finalName, finalPrice);
+      closeDetail();
     }
 
     function addToCart(name, price) {
@@ -1298,7 +1260,6 @@ const detailsData = {
       });
     }
 
-    // 更新購物車 UI 與加減刪除控制
     function updateCartUI() {
       const cartCount = document.getElementById('cart-count');
       const cartItems = document.getElementById('cart-items');
@@ -1333,7 +1294,6 @@ const detailsData = {
       localStorage.setItem('kit_cart', JSON.stringify(cart));
     }
 
-    // 調整數量 (+1 或 -1)
     function changeQty(index, delta) {
       if (cart[index]) {
         cart[index].qty += delta;
@@ -1344,32 +1304,14 @@ const detailsData = {
       }
     }
 
-    // 移除指定商品
     function removeFromCart(index) {
       if (cart[index]) {
         cart.splice(index, 1);
         updateCartUI();
-  }
-}
+      }
+    }
 
-updateCartUI();
-
-// 新增關閉彈窗函式
-function closeDetail() {
-  const modal = document.getElementById('detail-modal');
-  if (modal) {
-    modal.style.display = 'none';
-  }
-}
-</script>
-
-<!-- 彈窗 HTML 結構放在 script 標籤外側 -->
-<div id="detail-modal" class="modal" style="display: none;">
-  <div class="modal-content">
-    <span class="close-btn" onclick="closeDetail()">&times;</span>
-    <div id="detail-modal-content"></div>
-  </div>
-</div>
-
+    updateCartUI();
+  </script>
 </body>
 </html>
