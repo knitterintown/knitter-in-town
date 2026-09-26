@@ -13,7 +13,7 @@
     :root {
   /* 60%｜米白底：溫暖、乾淨、保留手作紙張感 */
   --bg-main: #F6F2E9;
-  --card-bg: #E9E2D6;
+  --card-bg: #F6F2E9;
 
   /* 25%｜杏粉：品牌溫度與主要視覺亮點 */
   --header-bg: #E8C9B8;
@@ -32,7 +32,7 @@
   --text-light: #F6F2E9;
 
   /* 舊元件共用變數 */
-  --bg-card: #E9E2D6;
+  --bg-card: #F6F2E9;
   --accent-btn: #827266;
 }
 
@@ -182,7 +182,7 @@ header, .navbar {
     .tab-btn {
       background-color: var(--bg-card);
       color: var(--text-main);
-      border: 1px solid var(--border-color);
+      border: 2px solid var(--border-color);
       padding: 0.45rem 1.1rem;
       border-radius: 20px;
       cursor: pointer;
@@ -192,7 +192,7 @@ header, .navbar {
     }
     .tab-btn:hover, .tab-btn.active {
       background-color: var(--header-bg);
-      color: var(--text-light);
+      color: var(--text-main);
       border-color: var(--header-bg);
     }
 
@@ -209,20 +209,20 @@ header, .navbar {
       font-weight: 500;
       display: inline-block;
     }
-    .tag-main {
-      background-color: var(--text-muted);
-      color: #827266;
+     .tag-main {
+      background-color: var(--header-bg);
+      color: var(--text-main);
     }
-    .tag-sub {
-      background-color: var(--text-muted);
-      color: #827266;
-      border: 1px solid #C7C2D0;
+     .tag-sub {
+      background-color: var(--header-bg);
+      color: var(--text-main);
+      border: 1px solid var(--header-bg);
     }
 
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-    .card {
+     .card {
       background-color: var(--bg-card);
-      border: 1px solid var(--border-color);
+      border: 2px solid var(--border-color);
       border-radius: 14px;
       padding: 1.8rem;
       display: flex;
@@ -302,7 +302,7 @@ header, .navbar {
       max-height: 85vh;
       overflow-y: auto;
       box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-      border: 1px solid var(--border-color);
+      border: 2px solid var(--border-color);
       position: relative;
     }
     .close-btn {
@@ -336,7 +336,7 @@ header, .navbar {
 
     .bank-box {
       background-color: var(--bg-main);
-      border: 1px solid var(--border-color);
+      border: 2px solid var(--border-color);
       border-radius: 10px;
       padding: 1.2rem;
       margin: 1rem 0;
@@ -380,7 +380,7 @@ header, .navbar {
       width: 100%;
       padding: 0.65rem;
       margin-bottom: 0.6rem;
-      border: 1px solid var(--border-color);
+      border: 2px solid var(--border-color);
       border-radius: 8px;
       font-size: 0.92rem;
       background-color: #F6F2E9;
@@ -1226,9 +1226,9 @@ const detailsData = {
                 <div style="font-size: 0.85rem; color: var(--accent); margin-top: 0.2rem;">NT$ ${item.price * item.qty}</div>
               </div>
               <div style="display: flex; align-items: center; gap: 6px;">
-                <button onclick="changeQty(${index}, -1)" style="width: 26px; height: 26px; border-radius: 4px; border: 1px solid var(--border-color); background: #FAF7F2; cursor: pointer; font-weight: bold; color: var(--text-main);">-</button>
+                <button onclick="changeQty(${index}, -1)" style="width: 26px; height: 26px; border-radius: 4px; border: 2px solid var(--border-color); background: #FAF7F2; cursor: pointer; font-weight: bold; color: var(--text-main);">-</button>
                 <span style="font-size: 0.9rem; font-weight: 600; min-width: 20px; text-align: center;">${item.qty}</span>
-                <button onclick="changeQty(${index}, 1)" style="width: 26px; height: 26px; border-radius: 4px; border: 1px solid var(--border-color); background: #FAF7F2; cursor: pointer; font-weight: bold; color: var(--text-main);">+</button>
+                <button onclick="changeQty(${index}, 1)" style="width: 26px; height: 26px; border-radius: 4px; border: 2px solid var(--border-color); background: #FAF7F2; cursor: pointer; font-weight: bold; color: var(--text-main);">+</button>
                 <button onclick="removeFromCart(${index})" style="background: none; border: none; color: #827266; cursor: pointer; font-size: 1.1rem; margin-left: 6px; padding: 0 4px;" title="刪除">✕</button>
               </div>
             </div>
