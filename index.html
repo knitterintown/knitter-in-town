@@ -11,26 +11,25 @@
 
   <style>
     :root {
-  /* 60% 主背景：大面積白/奶白底，保持網頁清爽透亮 */
-  --bg-main: #D6CCC2;
+  /* 60% 主背景 */
+  --bg-main: #F6F2E9;
 
   /* 30% 次要色：頁首 Header、選單區域、側邊欄背景 */
-  --header-bg: #D2B2B2;      /* 主要品牌色：灰粉 */
-  --card-bg: #FAF7F2;        /* 卡片本體保持純白 */
-  --border-color: #D8C8B8;    /* 次要品牌色：暖米色 */
+  --header-bg: #E8C9B8;      /* 主要品牌色 */
+  --card-bg: #E9E2D6;        /* 卡片本體 */
+  --border-color: #D9A493;    /* 次要品牌色 */
 
-  /* 10% 強調色：暖灰棕，作為文字、按鈕與視覺重點 */
-  --text-main: #5F5955;      /* 主文字：深咖啡色，閱讀清晰 */
-  --text-muted: #8C8278;     /* 次要文字 */
-  --accent-btn: #8C8278;     /* 按鈕/購物車標籤底色：復古苔蘚墨綠 */
-  --accent-btn-hover: #746B64; /* 滑鼠懸停時的深墨綠 */
+  /* 10% 強調色，作為文字、按鈕與視覺重點 */
+  --text-main: #A38F7F;      /* 主文字：深咖啡色，閱讀清晰 */
+  --text-muted: #D9A493;     /* 次要文字 */
+  --accent-btn: #AEB8C9;     /* 按鈕/購物車標籤底色：復古苔蘚墨綠 */
 
   /* 舊元件共用變數：統一指向新版品牌色 */
-  --bg-card: #FAF7F2;
-  --text-light: #FAF7F2;
-  --accent: #8C8278;
-  --accent-hover: #746B64;
-  --secondary: #D2B2B2;
+  --bg-card: #E9E2D6;
+  --text-light: #D9A493;
+  --accent: #A38F7F;
+  --accent-hover: #E8C9B8;
+  --secondary: #E8C9B8;
 }
 
 /* 修正頂部 Header 樣式 */
@@ -42,14 +41,14 @@ header, .navbar {
 /* 修正購物車按鈕樣式 (10% 點綴) */
 .cart-button, #cart-toggle, .cart-btn {
   background-color: var(--accent-btn) !important;
-  color: #FAF7F2 !important;
+  color: #E8C9B8 !important;
   border: none !important;
 }
 
 /* 修正卡片報名按鈕樣式 (加上 .btn-full) */
 .card button, .card .btn, .detail-btn, .btn-detail, .btn-full {
   background-color: var(--accent-btn) !important;
-  color: #FAF7F2 !important;
+  color: #E8C9B8 !important;
   border: none !important;
   border-radius: 20px !important; /* 加上圓角更精緻 */
   padding: 10px 16px !important;
@@ -106,7 +105,7 @@ header, .navbar {
       opacity: 0.9;
       transition: opacity 0.2s, color 0.2s;
     }
-    nav a:hover { opacity: 1; color: #FAF7F2; }
+    nav a:hover { opacity: 1; color: #E8C9B8; }
     
     .cart-btn {
       background-color: var(--accent);
@@ -131,7 +130,7 @@ header, .navbar {
       margin: 0 auto;
     }
     .hero h1 { font-size: 2.1rem; margin-bottom: 0.8rem; color: var(--text-main); line-height: 1.4; }
-    .hero p { font-size: 1rem; color: #5F5955; margin-bottom: 2rem; letter-spacing: 0.08em; }
+    .hero p { font-size: 1rem; color: #A38F7F; margin-bottom: 2rem; letter-spacing: 0.08em; }
 
     .hero-slider {
       position: relative;
@@ -207,13 +206,13 @@ header, .navbar {
       display: inline-block;
     }
     .tag-main {
-      background-color: #8C8278;
-      color: #ffffff;
+      background-color: #D9A493;
+      color: #B7A093;
     }
     .tag-sub {
-      background-color: #D8C8B8;
-      color: #6A625D;
-      border: 1px solid #D8C8B8;
+      background-color: #D9A493;
+      color: #B7A093;
+      border: 1px solid #D9A493;
     }
 
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
@@ -235,14 +234,14 @@ header, .navbar {
     }
 
     .card h3 { font-size: 1.15rem; margin-bottom: 0.6rem; color: var(--text-main); font-weight: 600; }
-    .card p { font-size: 0.88rem; color: #5F5955; line-height: 1.6; }
+    .card p { font-size: 0.88rem; color: #A38F7F; line-height: 1.6; }
     .card .price { color: var(--accent); font-weight: 700; font-size: 1.2rem; margin: 1.2rem 0; }
     
     .btn-group { display: flex; gap: 0.6rem; }
     .btn-full {
       width: 100%;
       background-color: var(--accent);
-      color: #FAF7F2;
+      color: #F6F2E9;
       border: 1px solid var(--accent);
       padding: 0.7rem;
       border-radius: 8px;
@@ -264,11 +263,11 @@ header, .navbar {
       width: 50%;
       transition: all 0.2s;
     }
-    .btn-secondary:hover { background-color: var(--secondary); color: #FAF7F2; }
+    .btn-secondary:hover { background-color: var(--secondary); color: #F6F2E9; }
     
     .btn-primary {
       background-color: var(--accent);
-      color: #FAF7F2;
+      color: #F6F2E9;
       border: 1px solid var(--accent);
       padding: 0.6rem;
       border-radius: 8px;
@@ -311,7 +310,7 @@ header, .navbar {
     }
     .close-btn:hover { opacity: 1; }
 
-    .detail-body { font-size: 0.95rem; color: #5F5955; line-height: 1.8; margin-bottom: 1.8rem; }
+    .detail-body { font-size: 0.95rem; color: #D9A493; line-height: 1.8; margin-bottom: 1.8rem; }
     .detail-body ul { margin-left: 1.2rem; margin-top: 0.5rem; }
 
     .cart-item { display: flex; justify-content: space-between; margin-bottom: 1rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 0.6rem; font-size: 0.9rem; }
@@ -352,7 +351,7 @@ header, .navbar {
       margin: 0 6px 0 0;
       border: 1.5px solid var(--border-color);
       border-radius: 3px;
-      background: #FAF7F2;
+      background: #F6F2E9;
       vertical-align: -3px;
       position: relative;
       cursor: pointer;
@@ -368,7 +367,7 @@ header, .navbar {
       position: absolute;
       left: 2px;
       top: -3px;
-      color: #FAF7F2;
+      color: #F6F2E9;
       font-size: 13px;
       font-weight: 700;
     }
@@ -380,11 +379,11 @@ header, .navbar {
       border: 1px solid var(--border-color);
       border-radius: 8px;
       font-size: 0.92rem;
-      background-color: #FAF7F2;
+      background-color: #F6F2E9;
       color: var(--text-main);
     }
 
-    footer { text-align: center; padding: 2.5rem; border-top: 1px solid var(--border-color); margin-top: 4rem; font-size: 0.8rem; color: #8C8278; opacity: 0.8; }
+    footer { text-align: center; padding: 2.5rem; border-top: 1px solid var(--border-color); margin-top: 4rem; font-size: 0.8rem; color: #E9E2D6; opacity: 0.8; }
   </style>
 </head>
 <body>
