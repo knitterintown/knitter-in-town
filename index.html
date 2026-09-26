@@ -943,8 +943,14 @@ const detailsData = {
           <div style="margin-top:1.4rem; padding-top:1.2rem; border-top:1px solid var(--border-color);">
             <p style="font-weight:600; margin-bottom:0.6rem;">【購買項目】*</p>
             <div style="display:flex; flex-direction:column; gap:0.55rem; line-height:1.8; font-size:0.92rem;">
-              <label><input type="checkbox" name="petit-walk-option" value="材料包" data-price="1180"> 材料包 $1180</label>
-              <label><input type="checkbox" name="petit-walk-option" value="線材＆五金配件加購" data-price="780"> 線材 ＆ 五金配件加購 $780（不含織圖及線上課程）</label>
+              <label style="display:block;">
+                <input type="checkbox" name="petit-walk-option" value="材料包" data-price="1180"> 材料包 $1180
+                <input type="text" id="petit-walk-kit-color-input" class="form-input" placeholder="請填寫您選擇的 QQ 線顏色編號（例：Q15 深卡其）" style="margin:0.35rem 0 0 22px; width:calc(100% - 22px);">
+              </label>
+              <label style="display:block;">
+                <input type="checkbox" name="petit-walk-option" value="線材＆五金配件加購" data-price="780"> 線材 ＆ 五金配件加購 $780（不含織圖及線上課程）
+                <input type="text" id="petit-walk-yarn-color-input" class="form-input" placeholder="請填寫您選擇的 QQ 線顏色編號（例：Q15 深卡其）" style="margin:0.35rem 0 0 22px; width:calc(100% - 22px);">
+              </label>
               <label><input type="checkbox" name="petit-walk-option" value="日本廣島紅柄鉤針 5 號" data-price="280"> 日本廣島紅柄鉤針 5 號 $280</label>
               <label><input type="checkbox" name="petit-walk-option" value="日本廣島紅柄鉤針 6 號" data-price="280"> 日本廣島紅柄鉤針 6 號 $280</label>
               <label><input type="checkbox" name="petit-walk-option" value="成品包" data-price="2280"> 成品包 $2280</label>
@@ -1146,9 +1152,32 @@ const detailsData = {
       alert('請至少選擇一項購買項目');
       return;
     }
+    const kitColorInput = document.getElementById('petit-walk-kit-color-input');
+    const yarnColorInput = document.getElementById('petit-walk-yarn-color-input');
+    const kitSelected = Array.from(selectedOptions).some(option => option.value === '材料包');
+    const yarnSelected = Array.from(selectedOptions).some(option => option.value === '線材＆五金配件加購');
+
+    if (kitSelected && (!kitColorInput || !kitColorInput.value.trim())) {
+      alert('請填寫材料包的 QQ 線顏色編號，例如：Q15 深卡其');
+      if (kitColorInput) kitColorInput.focus();
+      return;
+    }
+
+    if (yarnSelected && (!yarnColorInput || !yarnColorInput.value.trim())) {
+      alert('請填寫線材＆五金配件加購的 QQ 線顏色編號，例如：Q15 深卡其');
+      if (yarnColorInput) yarnColorInput.focus();
+      return;
+    }
+
     finalPrice = 0;
     selectedOptions.forEach(option => {
-      detailsText.push(`${option.value} ${Number(option.dataset.price).toLocaleString()}`);
+      detailsText.push(\`\${option.value} \${Number(option.dataset.price).toLocaleString()}\`);
+      if (option.value === '材料包' && kitColorInput && kitColorInput.value.trim()) {
+        detailsText.push('材料包 QQ 線顏色：' + kitColorInput.value.trim());
+      }
+      if (option.value === '線材＆五金配件加購' && yarnColorInput && yarnColorInput.value.trim()) {
+        detailsText.push('加購線材 QQ 線顏色：' + yarnColorInput.value.trim());
+      }
       finalPrice += Number(option.dataset.price);
     });
   }
