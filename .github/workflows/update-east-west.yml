@@ -1,0 +1,160 @@
+name: Update East-West order flow
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/update-east-west.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update index.html
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const path = 'index.html';
+            const { data: file } = await github.rest.repos.getContent({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              path,
+              ref: 'main'
+            });
+            let html = Buffer.from(file.content, 'base64').toString('utf8');
+            const itemStart = html.indexOf("'item1': {");
+            const itemEnd = html.indexOf("'item2': {", itemStart);
+            if (itemStart < 0 || itemEnd < 0) throw new Error('找不到 East-West item1/item2 區塊');
+            let item = html.slice(itemStart, itemEnd);
+
+            const details = `
+          <div style="margin-top:1rem; line-height:1.8;">
+            <p><strong>款式亮點與特色</strong></p>
+            <ul style="margin:0.4rem 0 1rem 1.2rem;">
+              <li>實用大容量空間：精心規劃的完美比例，不僅放得下手機與長夾，還能順暢容納「多一點」的日常必需品—無論是一瓶水還是一把折傘，都能輕鬆收納。</li>
+              <li>特色編繩背帶設計：特別在背帶細節中注入繩結編織，透過不同材質與層次的交織，創造出極具視覺巧思的細節變化，讓簡約的包款更具設計感。</li>
+              <li>輕量硬挺 QQ 線：嚴選利達豐優質線材，質地柔軟輕盈卻極具硬挺度，長時間背負不沉重，且能常保包型扎實挺拔。</li>
+              <li>百搭經典輪廓：乾淨平整的針目結構，完美契合極簡美學。正裝俐落、休閒隨性，一包就能駕馭各種穿搭場合。</li>
+              <li>簡約極致的細節：極簡純黑皮標 + 百搭黑編繩背帶，以最克制洗鍊的方式為作品點綴，展現不張揚的職人質感。</li>
+            </ul>
+            <p><strong>織造所獨家教學輔導</strong></p>
+            <p>購買即享線上針目結構與張力解答支援，不用擔心看懂織圖卻織不出完美形狀！</p>
+            <p style="margin-top:0.8rem;"><strong>包款細節</strong></p>
+            <p>線徑約 2 mm，建議鉤針號數: 5 - 6 號</p>
+            <p>完成尺寸參考: 寬 28 / 長 17（公分）</p>
+            <p>示範色: Q15 深卡其</p>
+            <p style="margin-top:0.8rem;"><strong>購買項目</strong></p>
+            <ul style="margin:0.4rem 0 0 1.2rem;">
+              <li>材料包 $1380</li>
+              <li>線材 ＆ 五金配件加購 $880（不含織圖及線上課程）</li>
+              <li>日本廣島紅柄鉤針 5 號 $280</li>
+              <li>日本廣島紅柄鉤針 6 號 $280</li>
+              <li>成品包 $2680</li>
+            </ul>
+          </div>`;
+
+            if (!item.includes('款式亮點與特色')) {
+              const contentHeading = '<p><strong>【材料包內容】</strong></p>';
+              const h = item.indexOf(contentHeading);
+              if (h < 0) throw new Error('找不到【材料包內容】');
+              const listEnd = item.indexOf('</ul>', h);
+              if (listEnd < 0) throw new Error('找不到材料包內容清單結尾');
+              item = item.slice(0, listEnd + 5) + '\n' + details + item.slice(listEnd + 5);
+            }
+
+            html = html.slice(0, itemStart) + item + html.slice(itemEnd);
+
+            const buyerPhone = '<input type="tel" id="buyer-phone" class="form-input" placeholder="聯絡電話 *">';
+            const storeInput = '<input type="text" id="store-info" class="form-input" placeholder="7-11 收貨門市 *">';
+            if (!html.includes('id="store-info"')) {
+              if (!html.includes(buyerPhone)) throw new Error('找不到訂購人電話欄位');
+              html = html.replace(buyerPhone, buyerPhone + '\n      ' + storeInput);
+            }
+
+            html = html.replace(
+              /function openBankModal\(\) \{[\s\S]*?\n    \}/,
+              `function openBankModal() {
+      if (cart.length === 0) return alert('購物車是空的！');
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const shippingFee = subtotal < 1800 ? 60 : 0;
+      const total = subtotal + shippingFee;
+      document.getElementById('bank-total').innerText = total;
+      const shippingEl = document.getElementById('bank-shipping');
+      if (shippingEl) shippingEl.innerText = shippingFee > 0 ? '運費：NT$ 60' : '運費：NT$ 0（滿 NT$ 1,800 免運）';
+      closeCart();
+      document.getElementById('bank-modal').style.display = 'flex';
+    }`
+            );
+
+            html = html.replace(
+              /function submitOrderToLine\(\) \{[\s\S]*?\n    \}/,
+              `function submitOrderToLine() {
+      const name = document.getElementById('buyer-name').value.trim();
+      const phone = document.getElementById('buyer-phone').value.trim();
+      const store = document.getElementById('store-info').value.trim();
+
+      if (!name || !phone || !store) {
+        alert('請填寫訂購人姓名、聯絡電話及 7-11 收貨門市！');
+        return;
+      }
+
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const shippingFee = subtotal < 1800 ? 60 : 0;
+      const total = subtotal + shippingFee;
+      const itemList = cart.map(item => \`${'${'}item.name} x${'${'}item.qty}\`).join('、');
+      const orderText = \`【織造所｜訂單成立通知】\\n\` +
+                        \`------------------------\\n\` +
+                        \`訂購人：${'${'}name}\\n\` +
+                        \`聯絡電話：${'${'}phone}\\n\` +
+                        \`7-11 收貨門市：${'${'}store}\\n\` +
+                        \`訂購品項：${'${'}itemList}\\n\` +
+                        \`商品小計：NT$ ${'${'}subtotal}\\n\` +
+                        \`運費：NT$ ${'${'}shippingFee}\\n\` +
+                        \`應付總額：NT$ ${'${'}total}\\n\` +
+                        \`------------------------\\n\` +
+                        \`匯款銀行：807 永豐銀行\\n\` +
+                        \`轉帳帳號：10101800006824\`;
+
+      navigator.clipboard.writeText(orderText).then(() => {
+        alert('訂單明細已複製！\\n\\n按下「確定」將開啟官方 LINE，請直接「貼上訊息」送出即可！');
+        window.open('https://lin.ee/yyzyhp2', '_blank');
+        cart = [];
+        document.getElementById('buyer-name').value = '';
+        document.getElementById('buyer-phone').value = '';
+        document.getElementById('store-info').value = '';
+        updateCartUI();
+        closeBankModal();
+      }).catch(() => {
+        alert('訂單已成立！請私訊官方 LINE 告知您的姓名、7-11 收貨門市與訂購品項。');
+        window.open('https://lin.ee/yyzyhp2', '_blank');
+      });
+    }`
+            );
+
+            const bankTotal = '<p style="margin-top: 0.4rem; border-top: 1px dashed var(--border-color); padding-top: 0.4rem; color: var(--accent); font-weight: 600;">\n          應付總金額：NT$ <span id="bank-total">0</span>\n        </p>';
+            if (!html.includes('id="bank-shipping"')) {
+              if (!html.includes(bankTotal)) throw new Error('找不到銀行結算總額欄位');
+              html = html.replace(bankTotal, '<p id="bank-shipping" style="margin-top:0.4rem; color:var(--text-muted);">運費：NT$ 0</p>\n      ' + bankTotal);
+            }
+
+            html = html.replace('https://line.me/R/ti/p/@YOUR_LINE_ID', 'https://lin.ee/yyzyhp2');
+
+            if (html === Buffer.from(file.content, 'base64').toString('utf8')) {
+              core.info('沒有需要更新的內容，跳過 commit');
+              return;
+            }
+
+            await github.rest.repos.createOrUpdateFileContents({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              path,
+              message: '更新 East-West 材料包內容與結算資訊',
+              content: Buffer.from(html, 'utf8').toString('base64'),
+              sha: file.sha,
+              branch: 'main'
+            });
+
+            core.info('index.html 更新完成');
